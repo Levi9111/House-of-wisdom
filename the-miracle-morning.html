@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Miracle Morning – Hal Elrod | Master Reference</title>
+    <style>
+        @page { size: A4; margin: 15mm; }
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Georgia", serif;
+            color: #d1d5db;
+            background: radial-gradient(circle at top right, #451a03, #1c1917 50%, #0c0a09 100%);
+            min-height: 100vh;
+            padding: 60px 20px;
+            line-height: 1.7;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        header { text-align: center; margin-bottom: 80px; }
+
+        h1 {
+            font-size: 64px;
+            letter-spacing: -1px;
+            margin: 0;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #fef3c7, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.2));
+        }
+
+        .author-tag {
+            font-size: 14px;
+            letter-spacing: 5px;
+            color: #f59e0b;
+            text-transform: uppercase;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .intro-manifesto {
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(245, 158, 11, 0.1);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            font-size: 19px;
+            text-align: center;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .master-layout { display: flex; flex-direction: column; gap: 30px; }
+
+        .section-node {
+            background: rgba(28, 25, 23, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-node:hover {
+            background: rgba(28, 25, 23, 0.6);
+            border-color: rgba(245, 158, 11, 0.3);
+            transform: scale(1.01);
+        }
+
+        .section-node.active {
+            background: rgba(12, 10, 9, 0.9);
+            border-color: #f59e0b;
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .node-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .node-number {
+            font-size: 40px;
+            font-weight: 900;
+            color: rgba(245, 158, 11, 0.1);
+            font-style: italic;
+        }
+
+        .node-title { font-size: 28px; color: #fff7ed; font-weight: bold; }
+
+        .node-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.7s ease;
+        }
+
+        .section-node.active .node-details {
+            max-height: 2000px;
+            opacity: 1;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px dashed rgba(245, 158, 11, 0.2);
+        }
+
+        .content-block { margin-bottom: 35px; }
+
+        .block-label {
+            color: #f59e0b;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .strategy-list { list-style: none; padding: 0; }
+
+        .strategy-list li {
+            margin-bottom: 25px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .strategy-list li::before {
+            content: '☀️';
+            position: absolute;
+            left: 0;
+            color: #f59e0b;
+        }
+
+        .strategy-list strong {
+            color: #fffbeb;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .savers-box {
+            background: linear-gradient(to right, rgba(245, 158, 11, 0.1), transparent);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 2px solid #f59e0b;
+            margin-top: 20px;
+        }
+
+        .quote-footer {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 24px;
+            font-style: italic;
+            color: #f59e0b;
+        }
+
+        /* New styles for expanded content */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .detail-card {
+            background: rgba(68, 64, 60, 0.4);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(245, 158, 11, 0.1);
+        }
+
+        .detail-card h4 {
+            color: #fbbf24;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .phases-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .phases-list li {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: rgba(245, 158, 11, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .phases-list strong {
+            color: #fef3c7;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 40px; }
+            .section-node { padding: 25px; }
+            .detail-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>The Miracle Morning</h1>
+            <span class="author-tag">Hal Elrod</span>
+        </header>
+
+        <div class="intro-manifesto">
+            <p><em>"Your level of success will rarely exceed your level of personal development."</em> This is the core premise. The way you start your morning sets the tone for your entire day and, ultimately, the trajectory of your life [citation:5][citation:9]. This is the **S.A.V.E.R.S.** method—a proven, 6-step blueprint for daily transformation that has sold over 2 million copies and been translated into 40 languages[citation:4][citation:8].</p>
+            <p><strong>Hal Elrod's Story:</strong> The methodology was born from desperation after Hal hit rock bottom twice in a decade. His incredible personal resilience—surviving a near-fatal car accident where he was declared dead for six minutes and told he might never walk again, to later beating aggressive leukemia—fuels the book's powerful message: if he can transform his life, anyone can[citation:1][citation:8].</p>
+        </div>
+
+        <div class="master-layout">
+
+            <div class="section-node">
+                <div class="node-header">
+                    <div class="node-number">01</div>
+                    <div class="node-title">The Life S.A.V.E.R.S. | Deep Dive</div>
+                </div>
+                <div class="node-summary">The six practices to transform your inner world, thereby transforming your external results. Customize the time for each (e.g., 10 minutes each for a 60-minute routine)[citation:5].</div>
+
+                <div class="node-details">
+                    <div class="detail-grid">
+                        <div class="detail-card">
+                            <h4>1. Silence (5+ min)</h4>
+                            <p>Purposeful silence—through meditation, prayer, reflection, deep breathing, or gratitude—centers you, reduces stress, and creates clarity for the day ahead[citation:1][citation:5].</p>
+                            <p><strong>Meditation Guide:</strong> Sit upright (not in bed). Close eyes and focus on slow, deep belly breathing: inhale (3 sec), hold (3 sec), exhale (3 sec). Acknowledge wandering thoughts, then gently return focus to your breath[citation:5][citation:9]. Imagine inhaling peace and exhaling stress.</p>
+                        </div>
+                        <div class="detail-card">
+                            <h4>2. Affirmations (5+ min)</h4>
+                            <p>Verbal scripts to reprogram your subconscious mind, overcome limiting beliefs, and align your thinking with your goals[citation:1][citation:9].</p>
+                            <p><strong>How to Write Them:</strong>
+                                <br>1. <em>What you really want</em> in each life area.
+                                <br>2. <em>Why you want it</em> (your deep motivations).
+                                <br>3. <em>Who you need to be</em> to achieve it.
+                                <br>4. <em>What you're committed to doing</em> (specific actions).
+                                <br>5. Add inspiring quotes[citation:9].
+                            </p>
+                            <p>Recite them aloud with emotion and powerful physiology (stand tall, make a fist)[citation:9].</p>
+                        </div>
+                        <div class="detail-card">
+                            <h4>3. Visualization (5+ min)</h4>
+                            <p>Mentally rehearse your ideal day and the successful achievement of your goals. This primes your brain to recognize opportunities and execute plans[citation:1][citation:10].</p>
+                            <p><strong>Two-Part Process:</strong>
+                                <br>1. <strong>Outcome Visualization:</strong> Vividly see, feel, and experience already having achieved your goal.
+                                <br>2. <strong>Process Visualization:</strong> See yourself engaged in the specific, positive actions required each day, enjoying the process[citation:9].
+                            </p>
+                        </div>
+                        <div class="detail-card">
+                            <h4>4. Exercise (20+ min)</h4>
+                            <p>Boosts blood flow, mental alertness, energy, health, and emotional well-being. Even 60 seconds of jumping jacks or push-ups makes a difference[citation:1][citation:9][citation:10].</p>
+                        </div>
+                        <div class="detail-card">
+                            <h4>5. Reading (20+ min)</h4>
+                            <p>Acquire knowledge from experts. Commit to a minimum of 10 pages per day—that's over 18 books a year[citation:1][citation:10].</p>
+                            <p><strong>Strategy:</strong> Read with a highlighter or pen. Underline, circle, and take notes in the margins. Re-read exceptional personal development books to internalize lessons[citation:9].</p>
+                        </div>
+                        <div class="detail-card">
+                            <h4>6. Scribing (5+ min)</h4>
+                            <p>Journaling to deepen gratitude, gain insights, track progress, and clarify priorities[citation:1].</p>
+                            <p><strong>What to Write:</strong> Goals, dreams, plans, things you're grateful for, lessons learned, daily commitments[citation:9]. Reviewing past entries provides powerful proof of your growth[citation:10].</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-node">
+                <div class="node-header">
+                    <div class="node-number">02</div>
+                    <div class="node-title">The Snooze-Proof & Habit Formation System</div>
+                </div>
+                <div class="node-summary">A comprehensive system to get up reliably and cement the Miracle Morning as a lifelong habit.</div>
+
+                <div class="node-details">
+                    <div class="content-block">
+                        <span class="block-label">The 5-Step Snooze-Proof Wake-Up Strategy[citation:9]</span>
+                        <ul class="strategy-list">
+                            <li><strong>1. Set Intentions Before Bed:</strong> Create genuine excitement. Your last thought at night becomes your first thought in the morning. Try a bedtime affirmation: <em>"Thank you for this sleep. It is exactly what I need to wake up energized and excited."</em>[citation:2][citation:10]</li>
+                            <li><strong>2. Move Your Alarm Across the Room:</strong> Force physical movement. Motion creates energy[citation:9].</li>
+                            <li><strong>3. Brush Your Teeth:</strong> Immediate activity and fresh mint wake up your senses[citation:2].</li>
+                            <li><strong>4. Drink a Full Glass of Water:</strong> Rehydrate after 6-8 hours of dehydration[citation:2][citation:9].</li>
+                            <li><strong>5. Get Dressed or Shower:</strong> Complete the physical awakening[citation:9].</li>
+                        </ul>
+                        <p><strong>Bonus Tips:</strong> Use a timed light or heater to make the room inviting the moment you wake[citation:9].</p>
+                    </div>
+
+                    <div class="content-block">
+                        <span class="block-label">The 30-Day Life Transformation: Habit Phases[citation:9]</span>
+                        <p>Hal divides habit formation into three 10-day phases. Understanding this makes the process manageable.</p>
+                        <ul class="phases-list">
+                            <li><strong>Days 1-10: Unbearable.</strong> The new routine feels difficult and foreign. Your mind resists. Remember: this phase is temporary. Commit to pushing through.</li>
+                            <li><strong>Days 11-20: Uncomfortable.</strong> It gets easier but still requires discipline. You're building confidence. Stay committed and don't revert to old patterns.</li>
+                            <li><strong>Days 21-30: Unstoppable.</strong> The habit becomes ingrained. You start to feel the transformative benefits. Be vigilant here—don't get overconfident and skip a day[citation:3][citation:9].</li>
+                        </ul>
+                        <p><em>Note:</em> Some practitioners report the "wobble" can come later (around Day 60). The key is self-compassion: give yourself partial credit, don't reset your count to zero after a miss, and plan for breaks[citation:3].</p>
+                    </div>
+
+                    <div class="savers-box">
+                        <strong>The "Miracle Evening" (New in Updated Edition):</strong>
+                        <p>Your morning starts the night before. The updated edition adds over 40 pages on optimizing bedtime and sleep to wake up refreshed[citation:1][citation:4][citation:8]. It's not about needing less sleep, but about improving sleep quality and mindset. Create a pre-sleep ritual to unwind and set positive intentions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-node">
+                <div class="node-header">
+                    <div class="node-number">03</div>
+                    <div class="node-title">Customization & Advanced Application</div>
+                </div>
+                <div class="node-summary">Adapt the routine to your life, overcome obstacles, and scale the philosophy beyond the morning.</div>
+
+                <div class="node-details">
+                    <div class="content-block">
+                        <span class="block-label">The 6-Minute Miracle (For "Busy" People)</span>
+                        <p>On truly hectic days, a condensed routine maintains momentum[citation:9]:</p>
+                        <div class="savers-box">
+                            <ul>
+                                <li><strong>Minute 1:</strong> Sit in purposeful Silence. Breathe deeply.</li>
+                                <li><strong>Minute 2:</strong> Read your key Affirmations out loud.</li>
+                                <strong>Minute 3:</strong> Visualize your day going perfectly.
+                                <strong>Minute 4:</strong> Write (Scribe) one thing you're grateful for and your top priority.</li>
+                                <strong>Minute 5:</strong> Read one page of an inspiring book.</li>
+                                <strong>Minute 6:</strong> Exercise: Do jumping jacks or push-ups.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="detail-grid">
+                        <div class="detail-card">
+                            <h4>Customizing Your Routine</h4>
+                            <p>The framework is adaptable[citation:5].
+                                <br><strong>For Night Owls:</strong> Do your "Miracle Morning" in the evening. The sequence matters more than the clock.
+                                <br><strong>For Parents/Shift Workers:</strong> Start with the 6-minute version. Focus on the 1-2 SAVERS that would help most (e.g., Silence & Affirmations).
+                                <br><strong>Key:</strong> The goal is daily personal development, not rigid perfection[citation:3][citation:7].
+                            </p>
+                        </div>
+                        <div class="detail-card">
+                            <h4>The "Miracle Life" Mindset</h4>
+                            <p>The updated edition introduces <strong>"The Miracle Life"</strong>—beginning a path to inner freedom to love the life you have while creating the life you want[citation:1][citation:8]. This expands the philosophy from a morning tactic to a holistic approach for happiness and fulfillment.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <span class="block-label">Real-World Insights & Overcoming Resistance</span>
+                        <ul class="strategy-list">
+                            <li><strong>On Sleep Mindset:</strong> While Hal shares his experience that mindset can influence perceived rest, long-term health relies on listening to your body and getting sufficient quality sleep[citation:2][citation:3][citation:6].</li>
+                            <li><strong>The "95% Reality Check":</strong> Hal posits that only 5% of society lives a "Level 10" life. While some find this framing motivating, others find it divisive. Focus on the core message: raising your own standards without comparing to others[citation:3][citation:5][citation:6].</li>
+                            <li><strong>Sustaining the Habit:</strong> Use a habit tracker. Be kind to yourself—if you miss a full routine but do one component, give yourself partial credit and keep going[citation:3].</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="quote-footer">
+            "The moment you accept total responsibility for everything in your life is the moment you claim the power to change anything in your life."[citation:9]
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nodes = document.querySelectorAll('.section-node');
+            nodes.forEach(node => {
+                node.addEventListener('click', function() {
+                    if (this.classList.contains('active')) {
+                        this.classList.remove('active');
+                    } else {
+                        nodes.forEach(n => n.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.section-node')) {
+                    nodes.forEach(n => n.classList.remove('active'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
