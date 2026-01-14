@@ -87,10 +87,9 @@
             border-color: var(--gold);
         }
 
-        /* Library Grid */
         .library-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 30px;
             padding: 0 40px 100px 40px;
             max-width: 1400px;
@@ -98,33 +97,34 @@
         }
 
         .book-card {
-            text-decoration: none;
-            background: rgba(20, 20, 20, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 40px;
-            border-radius: 12px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
-            min-height: 320px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            min-height: 350px;
+            padding: 40px;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(5px);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: pointer;
         }
 
         .book-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9));
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.95));
             z-index: 1;
         }
 
         .book-card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.07);
             border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
         }
 
         .book-meta {
@@ -137,39 +137,44 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: block;
         }
 
         .book-title {
-            font-size: 24px;
+            font-size: 26px;
             color: #fff;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             line-height: 1.2;
+            font-weight: bold;
         }
 
         .book-author {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--slate);
             font-style: italic;
         }
 
-        /* Theme-Specific Accents */
-        .card-power { border-bottom: 4px solid var(--gold); }
+        /* Category Glow Accents */
+        .card-power { border-bottom: 5px solid var(--gold); }
+        .card-power:hover { box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15); }
         .card-power .book-tag { color: var(--gold); }
 
-        .card-strategy { border-bottom: 4px solid var(--crimson); }
+        .card-strategy { border-bottom: 5px solid var(--crimson); }
+        .card-strategy:hover { box-shadow: 0 10px 40px rgba(196, 30, 58, 0.15); }
         .card-strategy .book-tag { color: var(--crimson); }
 
-        .card-habits { border-bottom: 4px solid var(--cyan); }
+        .card-habits { border-bottom: 5px solid var(--cyan); }
+        .card-habits:hover { box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15); }
         .card-habits .book-tag { color: var(--cyan); }
 
-        .card-psychology { border-bottom: 4px solid var(--purple); }
-        .card-psychology .book-tag { color: var(--purple); }
+        .card-psych { border-bottom: 5px solid var(--purple); }
+        .card-psych:hover { box-shadow: 0 10px 40px rgba(124, 58, 237, 0.15); }
+        .card-psych .book-tag { color: var(--purple); }
 
         @media (max-width: 768px) {
-            header h1 { font-size: 36px; letter-spacing: 4px; }
-            .library-grid { padding: 0 20px 60px 20px; }
+            header h1 { font-size: 42px; letter-spacing: 4px; }
+            .library-grid { padding: 0 20px; }
         }
     </style>
 </head>
@@ -184,142 +189,144 @@
         <input type="text" id="bookSearch" placeholder="Search the library..." onkeyup="filterLibrary()">
     </div>
 
-    <main class="library-grid" id="library">
+    <main class="library-grid">
         <a href="48_laws_of_power_single_page.html" class="book-card card-power">
             <div class="book-meta">
                 <span class="book-tag">Mastery</span>
-                <h2 class="book-title">48 Laws of Power</h2>
-                <p class="book-author">Robert Greene</p>
+                <div class="book-title">48 Laws of Power</div>
+                <div class="book-author">Robert Greene</div>
             </div>
         </a>
 
         <a href="laws_human_nature_redesign.html" class="book-card card-power">
             <div class="book-meta">
                 <span class="book-tag">Mastery</span>
-                <h2 class="book-title">Laws of Human Nature</h2>
-                <p class="book-author">Robert Greene</p>
+                <div class="book-title">Laws of Human Nature</div>
+                <div class="book-author">Robert Greene</div>
             </div>
         </a>
 
         <a href="art-of-war.html" class="book-card card-strategy">
             <div class="book-meta">
                 <span class="book-tag">Strategy</span>
-                <h2 class="book-title">The Art of War</h2>
-                <p class="book-author">Sun Tzu</p>
+                <div class="book-title">The Art of War</div>
+                <div class="book-author">Sun Tzu</div>
             </div>
         </a>
 
         <a href="how-to-think-like-a-roman-emperor.html" class="book-card card-strategy">
             <div class="book-meta">
                 <span class="book-tag">Stoicism</span>
-                <h2 class="book-title">How to Think Like a Roman Emperor</h2>
-                <p class="book-author">Donald Robertson</p>
+                <div class="book-title">How to Think Like a Roman Emperor</div>
+                <div class="book-author">Donald Robertson</div>
             </div>
         </a>
 
         <a href="atomic-habits.html" class="book-card card-habits">
             <div class="book-meta">
                 <span class="book-tag">Systems</span>
-                <h2 class="book-title">Atomic Habits</h2>
-                <p class="book-author">James Clear</p>
+                <div class="book-title">Atomic Habits</div>
+                <div class="book-author">James Clear</div>
             </div>
         </a>
 
         <a href="deep-work.html" class="book-card card-habits">
             <div class="book-meta">
-                <span class="book-tag">Systems</span>
-                <h2 class="book-title">Deep Work</h2>
-                <p class="book-author">Cal Newport</p>
+                <span class="book-tag">Focus</span>
+                <div class="book-title">Deep Work</div>
+                <div class="book-author">Cal Newport</div>
             </div>
         </a>
 
         <a href="The-Compound-Effect.html" class="book-card card-habits">
             <div class="book-meta">
-                <span class="book-tag">Systems</span>
-                <h2 class="book-title">The Compound Effect</h2>
-                <p class="book-author">Darren Hardy</p>
+                <span class="book-tag">Growth</span>
+                <div class="book-title">The Compound Effect</div>
+                <div class="book-author">Darren Hardy</div>
             </div>
         </a>
 
-        <a href="mens-search-for-meaning.html" class="book-card card-psychology">
+        <a href="mens-search-for-meaning.html" class="book-card card-psych">
             <div class="book-meta">
                 <span class="book-tag">Meaning</span>
-                <h2 class="book-title">Man's Search for Meaning</h2>
-                <p class="book-author">Viktor Frankl</p>
+                <div class="book-title">Man's Search for Meaning</div>
+                <div class="book-author">Viktor Frankl</div>
             </div>
         </a>
 
-        <a href="lucifer-effect.html" class="book-card card-psychology">
+        <a href="lucifer-effect.html" class="book-card card-psych">
             <div class="book-meta">
                 <span class="book-tag">Psychology</span>
-                <h2 class="book-title">The Lucifer Effect</h2>
-                <p class="book-author">Philip Zimbardo</p>
+                <div class="book-title">The Lucifer Effect</div>
+                <div class="book-author">Philip Zimbardo</div>
             </div>
         </a>
 
         <a href="how-to-win-friends.html" class="book-card card-power">
             <div class="book-meta">
                 <span class="book-tag">Influence</span>
-                <h2 class="book-title">How to Win Friends...</h2>
-                <p class="book-author">Dale Carnegie</p>
+                <div class="book-title">How to Win Friends...</div>
+                <div class="book-author">Dale Carnegie</div>
             </div>
         </a>
 
         <a href="exactly-what-to-say.html" class="book-card card-power">
             <div class="book-meta">
                 <span class="book-tag">Influence</span>
-                <h2 class="book-title">Exactly What to Say</h2>
-                <p class="book-author">Phil M. Jones</p>
+                <div class="book-title">Exactly What to Say</div>
+                <div class="book-author">Phil M. Jones</div>
             </div>
         </a>
 
         <a href="how-to-say-no.html" class="book-card card-habits">
             <div class="book-meta">
                 <span class="book-tag">Boundaries</span>
-                <h2 class="book-title">How to Say No</h2>
-                <p class="book-author">Damon Zahariades</p>
+                <div class="book-title">How to Say No</div>
+                <div class="book-author">Damon Zahariades</div>
             </div>
         </a>
 
-        <a href="building-a-story-brand.html" class="book-card card-psychology" style="border-bottom-color: #4361ee;">
+        <a href="building-a-story-brand.html" class="book-card card-psych">
             <div class="book-meta">
                 <span class="book-tag">Marketing</span>
-                <h2 class="book-title">Building a StoryBrand</h2>
-                <p class="book-author">Donald Miller</p>
+                <div class="book-title">Building a StoryBrand</div>
+                <div class="book-author">Donald Miller</div>
             </div>
         </a>
 
-        <a href="start-with-why.html" class="book-card card-psychology" style="border-bottom-color: #f3e5ab;">
+        <a href="start-with-why.html" class="book-card card-psych">
             <div class="book-meta">
                 <span class="book-tag">Leadership</span>
-                <h2 class="book-title">Start with Why</h2>
-                <p class="book-author">Simon Sinek</p>
+                <div class="book-title">Start with Why</div>
+                <div class="book-author">Simon Sinek</div>
             </div>
         </a>
 
-        <a href="think-and-grow-rich.html" class="book-card card-power" style="border-bottom-color: #ffd700;">
+        <a href="think-and-grow-rich.html" class="book-card card-power">
             <div class="book-meta">
-                <span class="book-tag">Wealth</span>
-                <h2 class="book-title">Think and Grow Rich</h2>
-                <p class="book-author">Napoleon Hill</p>
+                <span class="book-tag">Prosperity</span>
+                <div class="book-title">Think and Grow Rich</div>
+                <div class="book-author">Napoleon Hill</div>
             </div>
         </a>
     </main>
 
     <script>
         function filterLibrary() {
-            let input = document.getElementById('bookSearch').value.toLowerCase();
-            let cards = document.getElementsByClassName('book-card');
+            const input = document.getElementById('bookSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('.book-card');
             
-            for (let i = 0; i < cards.length; i++) {
-                let title = cards[i].querySelector('.book-title').innerText.toLowerCase();
-                let author = cards[i].querySelector('.book-author').innerText.toLowerCase();
-                if (title.includes(input) || author.includes(input)) {
-                    cards[i].style.display = "";
+            cards.forEach(card => {
+                const title = card.querySelector('.book-title').textContent.toLowerCase();
+                const author = card.querySelector('.book-author').textContent.toLowerCase();
+                const tag = card.querySelector('.book-tag').textContent.toLowerCase();
+                
+                if (title.includes(input) || author.includes(input) || tag.includes(input)) {
+                    card.style.display = "flex";
                 } else {
-                    cards[i].style.display = "none";
+                    card.style.display = "none";
                 }
-            }
+            });
         }
     </script>
 </body>
