@@ -11,6 +11,9 @@
             --crimson: #c41e3a;
             --cyan: #00d4ff;
             --purple: #7c3aed;
+            --emerald: #10b981;
+            --sky: #38bdf8;
+            --amber: #f59e0b;
             --slate: #94a3b8;
         }
 
@@ -28,7 +31,6 @@
             overflow-x: hidden;
         }
 
-        /* Subtle Background Texture */
         body::before {
             content: '';
             position: fixed;
@@ -83,9 +85,7 @@
             transition: border 0.3s;
         }
 
-        #bookSearch:focus {
-            border-color: var(--gold);
-        }
+        #bookSearch:focus { border-color: var(--gold); }
 
         .library-grid {
             display: grid;
@@ -109,7 +109,6 @@
             position: relative;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            cursor: pointer;
         }
 
         .book-card::before {
@@ -127,10 +126,7 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.8);
         }
 
-        .book-meta {
-            position: relative;
-            z-index: 2;
-        }
+        .book-meta { position: relative; z-index: 2; }
 
         .book-tag {
             font-size: 10px;
@@ -155,22 +151,14 @@
             font-style: italic;
         }
 
-        /* Category Glow Accents */
+        /* Border Accents */
         .card-power { border-bottom: 5px solid var(--gold); }
-        .card-power:hover { box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15); }
-        .card-power .book-tag { color: var(--gold); }
-
         .card-strategy { border-bottom: 5px solid var(--crimson); }
-        .card-strategy:hover { box-shadow: 0 10px 40px rgba(196, 30, 58, 0.15); }
-        .card-strategy .book-tag { color: var(--crimson); }
-
         .card-habits { border-bottom: 5px solid var(--cyan); }
-        .card-habits:hover { box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15); }
-        .card-habits .book-tag { color: var(--cyan); }
-
         .card-psych { border-bottom: 5px solid var(--purple); }
-        .card-psych:hover { box-shadow: 0 10px 40px rgba(124, 58, 237, 0.15); }
-        .card-psych .book-tag { color: var(--purple); }
+        .card-efficiency { border-bottom: 5px solid var(--sky); }
+        .card-frog { border-bottom: 5px solid var(--emerald); }
+        .card-morning { border-bottom: 5px solid var(--amber); }
 
         @media (max-width: 768px) {
             header h1 { font-size: 42px; letter-spacing: 4px; }
@@ -189,7 +177,39 @@
         <input type="text" id="bookSearch" placeholder="Search the library..." onkeyup="filterLibrary()">
     </div>
 
-    <main class="library-grid">
+    <main class="library-grid" id="library">
+        <a href="time-management.html" class="book-card card-efficiency">
+            <div class="book-meta">
+                <span class="book-tag">Efficiency</span>
+                <div class="book-title">Time Management</div>
+                <div class="book-author">Brian Tracy</div>
+            </div>
+        </a>
+
+        <a href="eat-that-frog.html" class="book-card card-frog">
+            <div class="book-meta">
+                <span class="book-tag">Execution</span>
+                <div class="book-title">Eat That Frog!</div>
+                <div class="book-author">Brian Tracy</div>
+            </div>
+        </a>
+
+        <a href="the-miracle-morning.html" class="book-card card-morning">
+            <div class="book-meta">
+                <span class="book-tag">Routine</span>
+                <div class="book-title">The Miracle Morning</div>
+                <div class="book-author">Hal Elrod</div>
+            </div>
+        </a>
+
+        <a href="rich-dad-poor-dad.html" class="book-card card-power">
+            <div class="book-meta">
+                <span class="book-tag">Wealth</span>
+                <div class="book-title">Rich Dad Poor Dad</div>
+                <div class="book-author">Robert Kiyosaki</div>
+            </div>
+        </a>
+
         <a href="48_laws_of_power_single_page.html" class="book-card card-power">
             <div class="book-meta">
                 <span class="book-tag">Mastery</span>
@@ -315,17 +335,10 @@
         function filterLibrary() {
             const input = document.getElementById('bookSearch').value.toLowerCase();
             const cards = document.querySelectorAll('.book-card');
-            
             cards.forEach(card => {
                 const title = card.querySelector('.book-title').textContent.toLowerCase();
                 const author = card.querySelector('.book-author').textContent.toLowerCase();
-                const tag = card.querySelector('.book-tag').textContent.toLowerCase();
-                
-                if (title.includes(input) || author.includes(input) || tag.includes(input)) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
+                card.style.display = (title.includes(input) || author.includes(input)) ? "flex" : "none";
             });
         }
     </script>
