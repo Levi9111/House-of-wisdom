@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Richest Man in Babylon – George S. Clason | Master Reference</title>
+    <style>
+        @page { size: A4; margin: 15mm; }
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Georgia", serif;
+            color: #d4c4b5;
+            background: linear-gradient(rgba(20, 15, 10, 0.9), rgba(20, 15, 10, 0.9)), 
+                        url('https://www.transparenttextures.com/patterns/natural-paper.png'),
+                        #2c1e14;
+            min-height: 100vh;
+            padding: 80px 20px;
+            line-height: 1.8;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        header { text-align: center; margin-bottom: 80px; }
+
+        h1 {
+            font-size: 58px;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            background: linear-gradient(to bottom, #f3e5ab, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            display: block;
+            margin-top: 15px;
+            font-size: 13px;
+            letter-spacing: 5px;
+            color: #4b6cb7; /* Lapis Lazuli Blue */
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .intro-manifesto {
+            margin: 40px auto 80px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            backdrop-filter: blur(20px);
+            font-size: 19px;
+            text-align: center;
+            border-left: 4px solid #d4af37;
+            color: #b8a88e;
+        }
+
+        /* Monolithic Layout */
+        .monolith {
+            background: rgba(30, 25, 20, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            margin-bottom: 35px;
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            cursor: pointer;
+            position: relative;
+            border-radius: 2px;
+        }
+
+        .monolith:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            background: rgba(40, 35, 30, 0.8);
+        }
+
+        .monolith.active {
+            border-color: #d4af37;
+            background: rgba(20, 15, 10, 0.95);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+        }
+
+        .monolith-header {
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .m-index {
+            font-size: 32px;
+            font-weight: 900;
+            color: rgba(212, 175, 55, 0.2);
+            font-family: serif;
+        }
+
+        .m-title h2 {
+            margin: 0;
+            font-size: 28px;
+            color: #f3e5ab;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Detailed Content */
+        .monolith-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            padding: 0 40px;
+            transition: all 0.6s ease;
+        }
+
+        .monolith.active .monolith-content {
+            max-height: 4000px;
+            opacity: 1;
+            padding-bottom: 50px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .sub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding-top: 30px;
+        }
+
+        .block-title {
+            color: #d4af37;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .p-text {
+            font-size: 16px;
+            color: #b8a88e;
+            text-align: justify;
+        }
+
+        .law-box {
+            background: rgba(75, 108, 183, 0.1);
+            padding: 30px;
+            border-left: 3px solid #4b6cb7;
+            margin-top: 20px;
+            grid-column: span 2;
+        }
+
+        .law-box h4 {
+            color: #f3e5ab;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        /* New styles for expanded content */
+        .tablet-inscription {
+            background: rgba(68, 64, 60, 0.3);
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 3px solid #d4af37;
+            font-style: italic;
+            color: #e3d9c6;
+        }
+
+        .principles-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 15px;
+        }
+
+        .principles-table th {
+            background: rgba(212, 175, 55, 0.15);
+            color: #f3e5ab;
+            padding: 12px 15px;
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .principles-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            vertical-align: top;
+        }
+
+        .principles-table tr:hover {
+            background: rgba(212, 175, 55, 0.03);
+        }
+
+        .character-block {
+            background: rgba(30, 25, 20, 0.5);
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .character-block strong {
+            color: #d4af37;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .footer-quote {
+            margin-top: 80px;
+            text-align: center;
+            font-size: 24px;
+            font-style: italic;
+            color: #f3e5ab;
+            padding: 40px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        @media (max-width: 800px) {
+            .sub-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 38px; }
+            .principles-table { font-size: 14px; }
+            .principles-table td { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>The Richest Man in Babylon</h1>
+            <span class="subtitle">Ancient Secrets to Wealth & Prosperity</span>
+        </header>
+
+        <div class="intro-manifesto">
+            <p>"A part of all I earn is mine to keep." This is the foundational rule that made a poor scribe the wealthiest man in Babylon. First published in 1926, George S. Clason's timeless classic uses parables set 4,000 years ago to reveal financial principles as unchanging as the laws of gravity[citation:1][citation:6]. The book has sold over 2 million copies and remains a cornerstone of personal financial advice[citation:7].</p>
+            <p>At its height, Babylon was the wealthiest city in the world because its citizens understood money[citation:1]. This is the wisdom of Arkad, shared to cure a lean purse and teach gold to labor diligently for its owner[citation:6][citation:10].</p>
+        </div>
+
+        <div class="monolith-layout">
+            
+            <div class="monolith">
+                <div class="monolith-header">
+                    <div class="m-index">01</div>
+                    <div class="m-title"><h2>The Seven Cures for a Lean Purse</h2></div>
+                </div>
+                <div class="monolith-content">
+                    <div class="tablet-inscription">
+                        "Wealth, like a tree, grows from a tiny seed. The first copper you save is the seed from which your tree of wealth shall grow."[citation:3]
+                    </div>
+                    <p class="p-text">Arkad's seven cures are a sequential blueprint for building wealth from any starting point. They begin with the discipline of saving and culminate in the wisdom to protect and grow your fortune[citation:6].</p>
+                    
+                    <table class="principles-table">
+                        <thead>
+                            <tr>
+                                <th>Cure</th>
+                                <th>The Ancient Principle</th>
+                                <th>Modern Interpretation & Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. Start thy purse to fattening</strong></td>
+                                <td>"For every ten coins thou placest within thy purse, take out for use but nine."[citation:6] Save at least one-tenth of all you earn before you pay any other expense.</td>
+                                <td><strong>Pay Yourself First.</strong> Automate a transfer of 10% of every paycheck to savings or investment before budgeting for anything else. This is the non-negotiable seed of all wealth[citation:2][citation:10].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Control thy expenditures</strong></td>
+                                <td>"Confuse not the necessary expenses with thy desires."[citation:6] Your "necessary" expenses will always grow to match your income unless you consciously decide otherwise[citation:1].</td>
+                                <td><strong>Budget with Intent.</strong> Create a plan for your money that prioritizes goals and fixed costs. Spend freely on what you love, but cut ruthlessly on what doesn't matter. Avoid lifestyle inflation[citation:2][citation:8].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Make thy gold multiply</strong></td>
+                                <td>"Put each coin to laboring that it may reproduce its kind... learn to make your treasure work for you. Make it your slave."[citation:1][citation:6]</td>
+                                <td><strong>Invest Wisely.</strong> Money sitting idle loses value. Seek profitable employment for your savings through investments that generate compound returns. Every dollar invested is a worker for you[citation:3][citation:10].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Guard thy treasures from loss</strong></td>
+                                <td>"The penalty of risk is probable loss. Study carefully, before parting with thy treasure."[citation:6] Do not be intrigued by impossible earnings or romantic get-rich-quick schemes[citation:1].</td>
+                                <td><strong>Protect Your Principal.</strong> Seek safety first. Consult experts, understand the risks, and diversify. If an investment sounds too good to be true, it likely is[citation:3][citation:8].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5. Make of thy dwelling a profitable investment</strong></td>
+                                <td>"Own thy own home."[citation:1] "I recommend that every man own the roof that sheltereth him and his."[citation:6]</td>
+                                <td><strong>Build Equity, Don't Just Pay Rent.</strong> Transition from paying a landlord to building ownership in an appreciating asset. This establishes a foundation of secure, tangible wealth[citation:8][citation:10].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>6. Insure a future income</strong></td>
+                                <td>Provide in advance for the needs of your growing age and the protection of your family[citation:6]. Ensure a continuous stream of gold for when you are no longer young[citation:1].</td>
+                                <td><strong>Plan for Retirement & Protection.</strong> Utilize retirement accounts (RSPs, pensions) and insurance to create a future income stream that is independent of your labor. Protect your family's future[citation:7][citation:8].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>7. Increase thy ability to earn</strong></td>
+                                <td>"Cultivate thy own powers, to study and become wiser, to become more skillful."[citation:1] "The more of wisdom we know, the more we may earn."[citation:6]</td>
+                                <td><strong>Invest in Yourself.</strong> The highest-return investment is in your own skills and knowledge. As you perfect your craft and wisdom, your capacity to earn—and to invest wisely—increases exponentially[citation:8][citation:10].</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="law-box">
+                        <h4>The Core Philosophy</h4>
+                        <p class="p-text">"A man's wealth is not in the coins he carries in his purse; it is in the income he buildeth, the golden stream that continually floweth into his purse and keepeth it always bulging."[citation:3] The cures are not about hoarding coins, but about systematically building and protecting a lasting, productive estate. They crush the spirit of procrastination, for "no man can arrive at the fullest measure of success until he does so."[citation:10]</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="monolith">
+                <div class="monolith-header">
+                    <div class="m-index">02</div>
+                    <div class="m-title"><h2>The Five Laws of Gold</h2></div>
+                </div>
+                <div class="monolith-content">
+                    <div class="sub-grid">
+                        <div>
+                            <span class="block-title">The Laws Themselves</span>
+                            <p class="p-text">Given by Arkad to his son, these are the immutable rules that govern money itself. To command gold, one must first obey its laws[citation:6].</p>
+                            <div class="character-block">
+                                <strong>1. The First Law</strong>
+                                <em>"Gold cometh gladly and in increasing quantity to any man who will put by not less than one-tenth of his earnings to create an estate for his future and that of his family."[citation:6]</em>
+                                <p>Gold rewards the simple, consistent act of saving first.</p>
+                            </div>
+                            <div class="character-block">
+                                <strong>2. The Second Law</strong>
+                                <em>"Gold laboreth diligently and contentedly for the wise owner who finds for it profitable employment, multiplying even as the flocks of the field."[citation:6]</em>
+                                <p>Gold is a willing worker. It multiplies through wise investment and compound growth.</p>
+                            </div>
+                            <div class="character-block">
+                                <strong>3. The Third Law</strong>
+                                <em>"Gold clingeth to the protection of the cautious owner who invests it under the advice of men wise in its handling."[citation:6]</em>
+                                <p>Safety first. Seek counsel from those with proven success, not from every passerby with an opinion[citation:1].</p>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="block-title">The Laws in Practice</span>
+                            <div class="character-block">
+                                <strong>4. The Fourth Law</strong>
+                                <em>"Gold slippeth away from the man who invests it in businesses or purposes with which he is not familiar or which are not approved by those skilled in its keep."[citation:6]</em>
+                                <p>Invest in what you understand. Avoid ventures where you cannot judge the risk. This is the law against following uninformed "tips"[citation:1].</p>
+                            </div>
+                            <div class="character-block">
+                                <strong>5. The Fifth Law</strong>
+                                <em>"Gold flees the man who would force it to impossible earnings or who followeth the alluring advice of tricksters and schemers..."[citation:6]</em>
+                                <p>Greed is the great destroyer of wealth. Chasing unrealistic returns or falling for scams will empty your purse faster than anything[citation:1].</p>
+                            </div>
+                            <p class="p-text" style="margin-top: 20px;"><strong>The Summation:</strong> "Without wisdom, gold is quickly lost by those who have it, but with wisdom, gold can be secured by those who have it not."[citation:6] These laws teach that the secure accumulation of wealth is a function of wisdom, patience, and disciplined action—not of luck or reckless speculation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="monolith">
+                <div class="monolith-header">
+                    <div class="m-index">03</div>
+                    <div class="m-title"><h2>Parables, Characters & Deeper Wisdom</h2></div>
+                </div>
+                <div class="monolith-content">
+                    <div class="sub-grid">
+                        <div>
+                            <span class="block-title">The Goddess of Luck & The Prepared Mind</span>
+                            <p class="p-text">"Good luck can be enticed by accepting opportunity."[citation:3] The Babylonians understood that luck is not random. <em>"Opportunity is a haughty goddess who wastes no time with those who are unprepared."[citation:3][citation:10]</em></p>
+                            <p class="p-text">True luck is the marriage of <strong>preparation</strong> (saving, gaining wisdom) and <strong>action</strong> (seizing the right moment). It favors those who work diligently and put themselves in the path of opportunity, not those who wait idly at the gaming tables[citation:9].</p>
+                            
+                            <span class="block-title" style="margin-top: 30px;">Key Characters of Babylon</span>
+                            <div class="character-block">
+                                <strong>Arkad</strong>: The titular richest man. Once a poor scribe, he learned the laws of gold from the wise money lender Algamish and systematically applied them to build his fortune, which he now generously shares[citation:7].
+                            </div>
+                            <div class="character-block">
+                                <strong>Bansir & Kobbi</strong>: A chariot builder and a musician. Their frustration with their empty purses drives them to seek out Arkad, initiating the book's core teachings[citation:7].
+                            </div>
+                            <div class="character-block">
+                                <strong>Sharru Nada</strong>: The "Camel Trader of Babylon." His parable teaches that <em>"Where the determination is, the way can be found"</em>[citation:6], emphasizing that hard work and perseverance are the base upon which wealth is built[citation:1][citation:9].
+                            </div>
+                        </div>
+                        <div>
+                            <span class="block-title">Other Essential Parables</span>
+                            <div class="character-block">
+                                <strong>The Gold Lender of Babylon</strong>
+                                <em>"Better a little caution than a great regret."[citation:6]</em> The parable of Mathon the gold lender teaches prudent lending: always have a guarantee of repayment, and understand that "humans in the throes of great emotions are not safe risks"[citation:1][citation:3].
+                            </div>
+                            <div class="character-block">
+                                <strong>The Walls of Babylon</strong>
+                                <em>"We cannot afford to be without adequate protection."[citation:6]</em> Just as the great walls protected the city's wealth, insurance and safeguards protect your personal fortune from life's unforeseen sieges[citation:7].
+                            </div>
+                            <div class="character-block">
+                                <strong>Getting Out of Debt</strong>
+                                A crucial, actionable plan: Live on 70% of your income. Use 20% to repay debts faithfully, and still save 10%. <em>"No man respects himself if he does not repay his debts."</em> With discipline, debts disappear surprisingly fast[citation:1].
+                            </div>
+
+                            <span class="block-title" style="margin-top: 30px;">A Final, Powerful Truth</span>
+                            <p class="p-text">The book distinguishes between the mindset of the free and the enslaved: <em>"The soul of a free man looks at the world as a series of problems to be solved. Meanwhile, the soul of a slave whines, 'What can I do?'"</em>[citation:1]</p>
+                            <p class="p-text">Financial freedom begins with adopting the proactive, determined soul of a free man or woman, taking responsibility, and applying these timeless laws.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="quote-footer">
+            "Where the determination is, a way can be found."[citation:6]
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const monoliths = document.querySelectorAll('.monolith');
+            monoliths.forEach(m => {
+                m.addEventListener('click', function() {
+                    if (this.classList.contains('active')) {
+                        this.classList.remove('active');
+                    } else {
+                        monoliths.forEach(other => other.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.monolith')) {
+                    monoliths.forEach(m => m.classList.remove('active'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
