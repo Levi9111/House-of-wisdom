@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eat That Frog! – Brian Tracy | Master Reference</title>
+    <style>
+        @page { size: A4; margin: 15mm; }
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Georgia", serif;
+            color: #d1d5db;
+            background: radial-gradient(circle at top right, #064e3b, #022c22 50%, #010b0a 100%);
+            min-height: 100vh;
+            padding: 60px 20px;
+            line-height: 1.7;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        header { text-align: center; margin-bottom: 80px; }
+
+        h1 {
+            font-size: 64px;
+            letter-spacing: -2px;
+            margin: 0;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #d1fae5, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            filter: drop-shadow(0 0 25px rgba(16, 185, 129, 0.3));
+        }
+
+        .author-tag {
+            font-size: 14px;
+            letter-spacing: 5px;
+            color: #10b981;
+            text-transform: uppercase;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .intro-manifesto {
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            font-size: 19px;
+            text-align: center;
+            border-bottom: 4px solid #10b981;
+        }
+
+        .master-layout { display: flex; flex-direction: column; gap: 30px; }
+
+        .section-node {
+            background: rgba(6, 78, 59, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-node:hover {
+            background: rgba(6, 78, 59, 0.4);
+            border-color: rgba(16, 185, 129, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .section-node.active {
+            background: rgba(2, 44, 34, 0.9);
+            border-color: #10b981;
+            box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.7);
+        }
+
+        .node-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .node-icon {
+            font-size: 35px;
+            color: rgba(16, 185, 129, 0.2);
+            font-weight: 900;
+        }
+
+        .node-title { font-size: 28px; color: #f0fdf4; font-weight: bold; }
+        
+        .node-summary {
+            font-size: 16px;
+            color: #a7f3d0;
+            margin-left: 55px;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .node-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.7s ease;
+        }
+
+        .section-node.active .node-details {
+            max-height: 3500px;
+            opacity: 1;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .content-block { margin-bottom: 35px; }
+
+        .block-label {
+            color: #34d399;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .detailed-text {
+            font-size: 16px;
+            color: #9ca3af;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .strategy-list { list-style: none; padding: 0; }
+
+        .strategy-list li {
+            margin-bottom: 25px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .strategy-list li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+        }
+
+        .strategy-list strong {
+            color: #ecfdf5;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .numbered-list {
+            list-style-type: decimal;
+            padding-left: 25px;
+            color: #d1d5db;
+        }
+        
+        .numbered-list li {
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+
+        .key-box {
+            background: rgba(16, 185, 129, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            border-right: 4px solid #10b981;
+            margin: 20px 0;
+        }
+
+        .footer-quote {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 24px;
+            font-style: italic;
+            color: #10b981;
+            padding: 40px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 44px; }
+            .section-node { padding: 25px; }
+            .node-summary { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Eat That Frog!</h1>
+            <span class="author-tag">Brian Tracy's 21 Great Ways to Stop Procrastinating</span>
+        </header>
+
+        <div class="intro-manifesto">
+            Procrastination is the thief of time and the enemy of success. The key to peak performance is the habit of **doing the hardest task first**. If you have two important tasks, start with the biggest, hardest, and most important one first. Discipline yourself to begin immediately and then to persist until the task is complete before you go on to something else. This single discipline can double your productivity from the first day you practice it.
+        </div>
+
+        <div class="master-layout">
+            
+            <div class="section-node">
+                <div class="node-header">
+                    <div class="node-icon">01</div>
+                    <div class="node-title">The Table Setting: Preparing for Success</div>
+                </div>
+                <div class="node-summary">Clarity is king—knowing exactly what your frog looks like before you eat it.</div>
+                
+                <div class="node-details">
+                    <div class="content-block">
+                        <span class="block-label">The Psychology of Clarity</span>
+                        <div class="detailed-text">
+                            Brian Tracy's research reveals that only 3% of adults have clear, written goals, and these individuals accomplish 5 to 10 times as much as people without written goals. The fundamental reason people procrastinate is ambiguity—when a task is vague or poorly defined, the brain resists starting. Clear goals activate the reticular activating system (RAS) in your brain, which then filters the world for opportunities and resources to achieve those goals. Your mind cannot hit a target it cannot see.
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">The 10/90 Rule in Action</span>
+                        <div class="detailed-text">
+                            Tracy's famous 10/90 Rule states: "The first 10% of time that you spend planning and organizing your work will save you 90% of the time in getting the work done once you begin." This means if you have a 10-hour task, investing one full hour in meticulous planning will reduce the execution time to just nine hours—and often much less due to increased efficiency and reduced mistakes. Planning includes: breaking the task into steps, gathering resources, anticipating obstacles, and setting checkpoints.
+                        </div>
+                    </div>
+                    <div class="key-box">
+                        <strong>Think on Paper: The Seven-Step Goal-Setting Process</strong>
+                        <ol class="numbered-list">
+                            <li><strong>Decide Exactly What You Want:</strong> Be specific. "Increase sales" is vague; "Increase sales by 20% in the next quarter" is clear.</li>
+                            <li><strong>Write It Down:</strong> A goal that is not in writing is merely a wish or fantasy with no energy behind it.</li>
+                            <li><strong>Set a Deadline:</strong> Without a deadline, there's no urgency. If it's a large goal, set sub-deadlines.</li>
+                            <li><strong>Make a List of Everything You Will Need to Do:</strong> Brainstorm every single step, then organize them by sequence and priority.</li>
+                            <li><strong>Organize Your List Into a Plan:</strong> Put the steps in order. What must be done first? What can be done simultaneously?</li>
+                            <li><strong>Take Action Immediately:</strong> Do something, anything, to begin creating momentum.</li>
+                            <li><strong>Do Something Every Day:</strong> Resolve to take at least one action item from your plan each day that moves you toward your goal.</li>
+                        </ol>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">The Master List & Daily List System</span>
+                        <ul class="strategy-list">
+                            <li>
+                                <strong>Create a Master List:</strong> Capture every task, project, and responsibility in one place. This clears mental RAM and reduces anxiety.
+                            </li>
+                            <li>
+                                <strong>The Night-Before Ritual:</strong> Each evening, review your Master List and create your Daily List for tomorrow. Use the ABCDE method to prioritize (A = Must do, B = Should do, C = Nice to do, D = Delegate, E = Eliminate).
+                            </li>
+                            <li>
+                                <strong>Identify Your A-1 Frog:</strong> On your Daily List, ask: "If I could only do one thing on this list today, which one would have the greatest positive impact?" That is tomorrow's frog.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-node">
+                <div class="node-header">
+                    <div class="node-icon">02</div>
+                    <div class="node-title">The Pareto Principle (80/20 Rule)</div>
+                </div>
+                <div class="node-summary">Focus relentlessly on the vital few tasks that create the majority of your results.</div>
+                
+                <div class="node-details">
+                    <div class="content-block">
+                        <span class="block-label">The Mathematics of Productivity</span>
+                        <div class="detailed-text">
+                            Vilfredo Pareto observed that 80% of the wealth was owned by 20% of the people. This principle applies universally: 80% of your results come from 20% of your activities; 80% of your sales come from 20% of your clients; 80% of your problems come from 20% of causes. The critical insight for productivity is that if you have ten items on your list, two of those items will be worth more than the other eight combined. Those two are your frogs. Tracy warns: "Resist the temptation to clear up small things first. If you choose to start your day working on low-value tasks, you will soon develop the habit of always starting and working on low-value tasks."
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">Identifying Your High-Value 20%</span>
+                        <ul class="strategy-list">
+                            <li>
+                                <strong>The Three-Question Filter:</strong> For each task, ask: (1) Is this task in my area of unique skill? (2) Does this task make a significant contribution to my organization? (3) Is this something only I can do, or can it be delegated?
+                            </li>
+                            <li>
+                                <strong>Value vs. Time Analysis:</strong> Track your time for a week. For each hour block, note the activity and then rate it on a 1-10 scale for value contribution. You'll quickly see patterns showing where your high-value time goes.
+                            </li>
+                            <li>
+                                <strong>The "Stop Doing" List:</strong> As important as your to-do list is your "stop doing" list—the low-value 80% activities that consume time but contribute little. This includes unnecessary meetings, excessive email checking, and administrative work that could be automated or delegated.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="key-box">
+                        <strong>The "Vital Few" Strategy in Practice:</strong>
+                        <p>Each morning, apply the Pareto Principle to your Daily List. Ask: <strong>"Which one task, if completed exceptionally well, would have the greatest positive impact on my career or life?"</strong> That is your #1 frog. Then identify your #2 frog. Once identified, commit to spending the first 90 minutes of your workday exclusively on these two tasks before doing anything else. This ensures that even if your day gets derailed, you've accomplished what matters most.</p>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">Common High-Value Activities by Profession</span>
+                        <div class="detailed-text">
+                            <strong>For Executives:</strong> Strategic planning, key relationship building, major decision-making. <strong>For Sales Professionals:</strong> Prospecting new clients, presenting to decision-makers, closing deals. <strong>For Creatives:</strong> Uninterrupted creation time, skill development, portfolio-building projects. <strong>For Students:</strong> Understanding core concepts, practicing application, seeking feedback from experts. The pattern is consistent across fields: the high-value activities are those that directly create, deliver, or improve your primary offering.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-node">
+                <div class="node-header">
+                    <div class="node-icon">03</div>
+                    <div class="node-title">The Salami Slice Method</div>
+                </div>
+                <div class="node-summary">How to eat even the biggest frogs by breaking them into bite-sized pieces.</div>
+                
+                <div class="node-details">
+                    <div class="content-block">
+                        <span class="block-label">The Psychology of Task Initiation</span>
+                        <div class="detailed-text">
+                            The biggest barrier to tackling large projects isn't ability—it's initiation. When faced with a massive, complex task (like writing a book, launching a business, or completing a major report), the brain experiences "cognitive overload" and seeks escape through procrastination. The Salami Slice Method defeats this by transforming an overwhelming project into a series of small, manageable steps. Just as you wouldn't try to eat an entire salami in one bite, you shouldn't try to complete a massive project in one sitting.
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">Techniques for Effective Slicing</span>
+                        <ul class="strategy-list">
+                            <li>
+                                <strong>Single-Handling:</strong> Once you start a slice, do not put it down until it is 100% finished. Research shows that task-switching can cost up to 40% of your productive time due to "attention residue"—your mind continues thinking about the previous task. Complete one slice before moving to the next.
+                            </li>
+                            <li>
+                                <strong>The "Swiss Cheese" Method:</strong> Poke holes in a daunting task by committing to work on it for just five minutes. Set a timer. Often, the hardest part is starting, and once you begin, momentum carries you forward. After five minutes, you can stop guilt-free, but you'll often find yourself continuing.
+                            </li>
+                            <li>
+                                <strong>The "Salami End" Technique:</strong> Start with the very end of the project—the final step. What does "done" look like? Work backward from completion to create your slices. This creates clarity and often reveals that some steps you thought were necessary aren't actually required.
+                            </li>
+                            <li>
+                                <strong>The "Next Action" Principle:</strong> For each slice, define the very next physical action required. Instead of "work on report" (vague), write "open Word document and write heading for section 1" (specific and actionable).
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="key-box">
+                        <strong>Example: Writing a 50-Page Business Plan</strong>
+                        <p><strong>Whole Salami (Overwhelming):</strong> "Write business plan"<br>
+                        <strong>Slices (Manageable):</strong> 1. Create outline with 5 main sections (1 hour). 2. Write executive summary (90 minutes). 3. Complete market analysis section (2 hours). 4. Draft financial projections (3 hours). 5. Write management team section (1 hour). 6. Complete appendix materials (2 hours). 7. Review and edit entire document (2 hours). 8. Format for presentation (1 hour).</p>
+                        <p>Each slice becomes a daily frog that can be eaten in a single focused session.</p>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">Creating Momentum with Completion</span>
+                        <div class="detailed-text">
+                            Each completed slice creates a small "completion high"—a release of dopamine that reinforces the productive behavior. This creates a positive feedback loop: completing one slice makes you more likely to complete the next. Tracy emphasizes creating "victory spirals" rather than "failure cycles." By consistently completing slices, you build self-efficacy—the belief in your ability to accomplish tasks—which is the ultimate antidote to procrastination.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-node">
+                <div class="node-header">
+                    <div class="node-icon">04</div>
+                    <div class="node-title">The Frog-Eating Mindset</div>
+                </div>
+                <div class="node-summary">Developing the habits and psychology that make eating frogs a daily practice.</div>
+                
+                <div class="node-details">
+                    <div class="content-block">
+                        <span class="block-label">Self-Discipline as a Muscle</span>
+                        <div class="detailed-text">
+                            Tracy argues that self-discipline is like a muscle—it strengthens with use and atrophies with neglect. Each time you eat your frog first thing in the morning, you strengthen your "discipline muscle." Each time you procrastinate, you weaken it. The good news: starting to exercise this muscle yields immediate results. The first day you practice eating your frog, you'll feel more productive. Within a week, it becomes easier. Within a month, it becomes a habit. Within three months, it transforms your identity—you begin to see yourself as a proactive, productive person.
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">The Core Habits of Frog Eaters</span>
+                        <ul class="strategy-list">
+                            <li>
+                                <strong>The Morning Ritual:</strong> Successful frog eaters have a non-negotiable morning routine: review goals, identify the day's frog, and begin work on it within the first hour of the workday—before checking email, social media, or attending meetings.
+                            </li>
+                            <li>
+                                <strong>Time Blocking:</strong> Schedule specific, uninterrupted blocks for frog-eating. Protect these blocks as you would important meetings. The average person needs 90-120 minutes of uninterrupted time for deep work on their most important task.
+                            </li>
+                            <li>
+                                <strong>Environment Design:</strong> Create a frog-eating environment. This means eliminating distractions: turning off notifications, using website blockers during frog-eating time, having all necessary materials ready, and communicating your focused time to colleagues.
+                            </li>
+                            <li>
+                                <strong>The Completion Compulsion:</strong> Develop a bias toward finishing. Once you start a frog, make it your mission to see it through to completion before moving to other tasks. Partial completion creates mental clutter—unfinished tasks occupy valuable mental space through the Zeigarnik Effect.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">Overcoming the Five Main Excuses</span>
+                        <div class="detailed-text">
+                            Tracy identifies five common excuses people use to avoid eating their frogs: (1) "I don't know where to start" → Use the Salami Slice Method. (2) "I don't have enough time" → Use the 10/90 Rule for planning. (3) "I'm not in the mood" → Action precedes motivation; just start. (4) "It might not work out" → Failure to act guarantees failure. (5) "It's too hard" → Break it down further until the next step feels manageable. Recognize these as mental resistance, not legitimate reasons.
+                        </div>
+                    </div>
+                    <div class="key-box">
+                        <strong>Brian Tracy's Golden Rules of Frog Eating:</strong>
+                        <ol class="numbered-list">
+                            <li>If you have to eat two frogs, eat the ugliest one first.</li>
+                            <li>If you have to eat a live frog, it doesn't pay to sit and look at it for very long.</li>
+                            <li>The first hour of your workday determines your productivity for the entire day.</li>
+                            <li>Your ability to select your most important task at each moment is the key skill of time management.</li>
+                            <li>You become what you think about most of the time. Think about completing important tasks.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="footer-quote">
+            "One of the very worst uses of time is to do something very well that need not be done at all. Your ability to select your most important task at each moment, and then to start on that task and get it done both quickly and well, will probably have more of an impact on your success than any other quality or skill you can develop." — Brian Tracy
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nodes = document.querySelectorAll('.section-node');
+            nodes.forEach(node => {
+                node.addEventListener('click', function() {
+                    if (this.classList.contains('active')) {
+                        this.classList.remove('active');
+                    } else {
+                        nodes.forEach(n => n.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.section-node')) {
+                    nodes.forEach(n => n.classList.remove('active'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
