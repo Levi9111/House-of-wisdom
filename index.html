@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Wisdom | The Master Library</title>
+    <style>
+        :root {
+            --bg: #050505;
+            --gold: #d4af37;
+            --crimson: #c41e3a;
+            --cyan: #00d4ff;
+            --purple: #7c3aed;
+            --slate: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            font-family: "Georgia", serif;
+            color: #e2e8f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Subtle Background Texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(20, 20, 20, 0.8), transparent),
+                        url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+
+        header h1 {
+            font-size: 64px;
+            text-transform: uppercase;
+            letter-spacing: 12px;
+            background: linear-gradient(to bottom, #fff, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        header p {
+            font-size: 14px;
+            letter-spacing: 6px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: -30px auto 60px auto;
+            padding: 0 20px;
+        }
+
+        #bookSearch {
+            width: 100%;
+            padding: 15px 25px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            color: white;
+            font-family: inherit;
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        #bookSearch:focus {
+            border-color: var(--gold);
+        }
+
+        /* Library Grid */
+        .library-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 40px 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .book-card {
+            text-decoration: none;
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 320px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9));
+            z-index: 1;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .book-meta {
+            position: relative;
+            z-index: 2;
+        }
+
+        .book-tag {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .book-title {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .book-author {
+            font-size: 13px;
+            color: var(--slate);
+            font-style: italic;
+        }
+
+        /* Theme-Specific Accents */
+        .card-power { border-bottom: 4px solid var(--gold); }
+        .card-power .book-tag { color: var(--gold); }
+
+        .card-strategy { border-bottom: 4px solid var(--crimson); }
+        .card-strategy .book-tag { color: var(--crimson); }
+
+        .card-habits { border-bottom: 4px solid var(--cyan); }
+        .card-habits .book-tag { color: var(--cyan); }
+
+        .card-psychology { border-bottom: 4px solid var(--purple); }
+        .card-psychology .book-tag { color: var(--purple); }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 36px; letter-spacing: 4px; }
+            .library-grid { padding: 0 20px 60px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>House of Wisdom</h1>
+        <p>A Curated Archive of Human Achievement</p>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="bookSearch" placeholder="Search the library..." onkeyup="filterLibrary()">
+    </div>
+
+    <main class="library-grid" id="library">
+        <a href="48_laws_of_power_single_page.html" class="book-card card-power">
+            <div class="book-meta">
+                <span class="book-tag">Mastery</span>
+                <h2 class="book-title">48 Laws of Power</h2>
+                <p class="book-author">Robert Greene</p>
+            </div>
+        </a>
+
+        <a href="laws_human_nature_redesign.html" class="book-card card-power">
+            <div class="book-meta">
+                <span class="book-tag">Mastery</span>
+                <h2 class="book-title">Laws of Human Nature</h2>
+                <p class="book-author">Robert Greene</p>
+            </div>
+        </a>
+
+        <a href="art-of-war.html" class="book-card card-strategy">
+            <div class="book-meta">
+                <span class="book-tag">Strategy</span>
+                <h2 class="book-title">The Art of War</h2>
+                <p class="book-author">Sun Tzu</p>
+            </div>
+        </a>
+
+        <a href="how-to-think-like-a-roman-emperor.html" class="book-card card-strategy">
+            <div class="book-meta">
+                <span class="book-tag">Stoicism</span>
+                <h2 class="book-title">How to Think Like a Roman Emperor</h2>
+                <p class="book-author">Donald Robertson</p>
+            </div>
+        </a>
+
+        <a href="atomic-habits.html" class="book-card card-habits">
+            <div class="book-meta">
+                <span class="book-tag">Systems</span>
+                <h2 class="book-title">Atomic Habits</h2>
+                <p class="book-author">James Clear</p>
+            </div>
+        </a>
+
+        <a href="deep-work.html" class="book-card card-habits">
+            <div class="book-meta">
+                <span class="book-tag">Systems</span>
+                <h2 class="book-title">Deep Work</h2>
+                <p class="book-author">Cal Newport</p>
+            </div>
+        </a>
+
+        <a href="The-Compound-Effect.html" class="book-card card-habits">
+            <div class="book-meta">
+                <span class="book-tag">Systems</span>
+                <h2 class="book-title">The Compound Effect</h2>
+                <p class="book-author">Darren Hardy</p>
+            </div>
+        </a>
+
+        <a href="mens-search-for-meaning.html" class="book-card card-psychology">
+            <div class="book-meta">
+                <span class="book-tag">Meaning</span>
+                <h2 class="book-title">Man's Search for Meaning</h2>
+                <p class="book-author">Viktor Frankl</p>
+            </div>
+        </a>
+
+        <a href="lucifer-effect.html" class="book-card card-psychology">
+            <div class="book-meta">
+                <span class="book-tag">Psychology</span>
+                <h2 class="book-title">The Lucifer Effect</h2>
+                <p class="book-author">Philip Zimbardo</p>
+            </div>
+        </a>
+
+        <a href="how-to-win-friends.html" class="book-card card-power">
+            <div class="book-meta">
+                <span class="book-tag">Influence</span>
+                <h2 class="book-title">How to Win Friends...</h2>
+                <p class="book-author">Dale Carnegie</p>
+            </div>
+        </a>
+
+        <a href="exactly-what-to-say.html" class="book-card card-power">
+            <div class="book-meta">
+                <span class="book-tag">Influence</span>
+                <h2 class="book-title">Exactly What to Say</h2>
+                <p class="book-author">Phil M. Jones</p>
+            </div>
+        </a>
+
+        <a href="how-to-say-no.html" class="book-card card-habits">
+            <div class="book-meta">
+                <span class="book-tag">Boundaries</span>
+                <h2 class="book-title">How to Say No</h2>
+                <p class="book-author">Damon Zahariades</p>
+            </div>
+        </a>
+
+        <a href="building-a-story-brand.html" class="book-card card-psychology" style="border-bottom-color: #4361ee;">
+            <div class="book-meta">
+                <span class="book-tag">Marketing</span>
+                <h2 class="book-title">Building a StoryBrand</h2>
+                <p class="book-author">Donald Miller</p>
+            </div>
+        </a>
+
+        <a href="start-with-why.html" class="book-card card-psychology" style="border-bottom-color: #f3e5ab;">
+            <div class="book-meta">
+                <span class="book-tag">Leadership</span>
+                <h2 class="book-title">Start with Why</h2>
+                <p class="book-author">Simon Sinek</p>
+            </div>
+        </a>
+
+        <a href="think-and-grow-rich.html" class="book-card card-power" style="border-bottom-color: #ffd700;">
+            <div class="book-meta">
+                <span class="book-tag">Wealth</span>
+                <h2 class="book-title">Think and Grow Rich</h2>
+                <p class="book-author">Napoleon Hill</p>
+            </div>
+        </a>
+    </main>
+
+    <script>
+        function filterLibrary() {
+            let input = document.getElementById('bookSearch').value.toLowerCase();
+            let cards = document.getElementsByClassName('book-card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].querySelector('.book-title').innerText.toLowerCase();
+                let author = cards[i].querySelector('.book-author').innerText.toLowerCase();
+                if (title.includes(input) || author.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
