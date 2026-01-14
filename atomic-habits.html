@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atomic Habits</title>
+<style>
+@page {
+    size: A4;
+    margin: 22mm;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Georgia", "Times New Roman", serif;
+    color: #1a1a1a;
+    background: linear-gradient(135deg, #050810 0%, #0a1525 50%, #0f1f35 100%);
+    min-height: 100vh;
+    padding: 50px 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 56px;
+    letter-spacing: 3px;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #00d4ff, #7de2f7, #00d4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+    text-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 15px;
+    color: #7db4d8;
+    margin-bottom: 30px;
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+.intro {
+    text-align: center;
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    line-height: 1.7;
+    color: #8fa9c5;
+    padding: 30px;
+    background: rgba(15, 25, 40, 0.6);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 180, 220, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.laws {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.law {
+    padding: 35px;
+    background: rgba(15, 25, 40, 0.7);
+    border: 1px solid rgba(0, 180, 220, 0.25);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.law::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.law:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 212, 255, 0.6);
+    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.25);
+}
+
+.law:hover::before {
+    opacity: 1;
+}
+
+.law.active {
+    border-color: rgba(0, 212, 255, 0.8);
+    box-shadow: 0 20px 50px rgba(0, 212, 255, 0.35);
+    background: rgba(20, 35, 60, 0.85);
+}
+
+.law.active .law-details {
+    max-height: 1200px;
+    opacity: 1;
+    padding-top: 25px;
+    margin-top: 25px;
+}
+
+.law-number {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #00d4ff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+.law-title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #e8f4f8;
+    position: relative;
+    z-index: 1;
+}
+
+.law-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #8fa9c5;
+    position: relative;
+    z-index: 1;
+}
+
+.law-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    position: relative;
+    border-top: 1px solid rgba(0, 212, 255, 0.15);
+}
+
+.law-details::before {
+    content: '▲';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #00d4ff;
+    background: #0a1525;
+    padding: 0 12px;
+    font-size: 10px;
+}
+
+.detail-section {
+    margin-bottom: 20px;
+}
+
+.detail-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #00d4ff;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.detail-content {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #a8c6e5;
+    padding-left: 10px;
+}
+
+.detail-content ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.detail-content li {
+    margin-bottom: 6px;
+}
+
+.quote {
+    font-style: italic;
+    color: #7db4d8;
+    border-left: 3px solid rgba(0, 212, 255, 0.5);
+    padding-left: 15px;
+    margin: 15px 0;
+}
+
+.principle-box {
+    background: rgba(0, 180, 220, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+@media print {
+    body {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+    
+    .law.active .law-details {
+        max-height: none;
+        opacity: 1;
+        padding-top: 25px;
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 36px;
+    }
+    
+    .laws {
+        grid-template-columns: 1fr;
+    }
+    
+    .intro {
+        font-size: 16px;
+        padding: 25px;
+    }
+    
+    .law-title {
+        font-size: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+<h1>Atomic Habits</h1>
+<div class="subtitle">An actionable one-page reference - Click any law for detailed strategies</div>
+
+<div class="intro">
+    Small habits compound into remarkable results. Focus on systems, not goals, and
+    design your environment so the right actions become inevitable. The four laws of behavior change provide a simple set of rules for creating good habits and breaking bad ones.
+</div>
+
+<div class="laws">
+    <!-- Law 1 -->
+    <div class="law">
+        <div class="law-number">Law One</div>
+        <div class="law-title">Make It Obvious</div>
+        <div class="law-text">
+            Design your environment so the cues for good habits are clear, visible,
+            and unavoidable while the cues for bad habits are hidden or removed.
+        </div>
+        
+        <div class="law-details">
+            <div class="detail-section">
+                <div class="detail-title">Core Principle</div>
+                <div class="detail-content">
+                    The first step to changing behavior is awareness. We must notice our habits before we can change them. By making cues for good habits obvious and cues for bad habits invisible, we remove the need for willpower.
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <div class="detail-title">Implementation Strategies</div>
+                <div class="detail-content">
+                    <ul>
+                        <li><strong>Habit Stacking:</strong> Link new habits to existing ones (e.g., "After I pour my morning coffee, I will meditate for one minute")</li>
+                        <li><strong>Environment Design:</strong> Make cues of good habits visible (place workout clothes next to your bed, put fruits on the counter)</li>
+                        <li><strong>Implementation Intentions:</strong> Use the formula "I will [BEHAVIOR] at [TIME] in [LOCATION]"</li>
+                        <li><strong>One Space, One Use:</strong> Designate specific spaces for specific activities (e.g., only work at your desk, only sleep in bed)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <div class="detail-title">Breaking Bad Habits</div>
+                <div class="detail-content">
+                    To break a bad habit, make the cue invisible. Remove the triggers from your environment:
+                    <ul>
+                        <li>Uninstall social media apps if you want to reduce scrolling</li>
+                        <li>Don't keep junk food in the house</li>
+                        <li>Turn off notifications for distracting apps</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="principle-box">
+                <div class="detail-title">Key Insight</div>
+                <div class="detail-content">
+                    "You don't rise to the level of your goals, you fall to the level of your systems. The environment is the invisible hand that shapes human behavior."
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Law 2 -->
+    <div class="law">
+        <div class="law-number">Law Two</div>
+        <div class="law-title">Make It Attractive</div>
+        <div class="law-text">
+            Increase motivation by associating habits with positive emotions,
+            rewards, and identities you want to reinforce.
+        </div>
+        
+        <div class="law-details">
+            <div class="detail-section">
+                <div class="detail-title">Core Principle</div>
+                <div class="detail-content">
+                    The more attractive an opportunity, the more likely it is to become habit-forming. We can make habits attractive by pairing them with something we already enjoy or by connecting them to our desired identity.
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <div class="detail-title">Implementation Strategies</div>
+                <div class="detail-content">
+                    <ul>
+                        <li><strong>Temptation Bundling:</strong> Pair an action you want to do with an action you need to do (e.g., only listen to your favorite podcast while exercising)</li>
+                        <li><strong>Identity Reinforcement:</strong> Focus on who you wish to become, not just what you want to achieve (e.g., "I'm a healthy person" vs "I want to lose weight")</li>
+                        <li><strong>Positive Peer Pressure:</strong> Join a culture where your desired behavior is normal behavior</li>
+                        <li><strong>Reframing Mindset:</strong> Change how you talk about habits (e.g., "I get to exercise" instead of "I have to exercise")</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <div class="detail-title">Breaking Bad Habits</div>
+                <div class="detail-content">
+                    To break a bad habit, make it unattractive. Highlight the benefits of avoiding the bad habit:
+                    <ul>
+                        <li>Create a "habit contract" with consequences for bad behavior</li>
+                        <li>Reframe your mindset about bad habits (e.g., "Smoking makes me smell bad and costs money")</li>
+                        <li>Find a better substitute that provides similar benefits</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <div class="detail-title">The Dopamine Connection</div>
+                <div class="detail-content">
+                    Dopamine is released not only when you experience pleasure, but when you anticipate it. This is why checking social media becomes addictive—you anticipate likes and comments. You can hack this by creating anticipation for good habits.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Law 3 -->
+    <div class="law">
+        <div class="law-number">Law Three</div>
+        <div class="law-title">Make It Easy</div>
+        <div class="law-text">
+            Reduce friction by simplifying habits, lowering resistance,
+            and focusing on consistency rather than intensity.
+        </div>
+        
+        <div class="law-details">
+            <div class="detail-section">
+                <div class="detail-title">Core Principle</div>
+                <div class="detail-content">
+                    Human behavior follows the Law of Least Effort. We naturally gravitate toward the option that requires the least amount of work. By reducing the friction associated with good behaviors, we make them easier to adopt.
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <div class="detail-title">Implementation Strategies</div>
+                <div class="detail-content">
+                    <ul>
+                        <li><strong>The Two-Minute Rule:</strong> Scale down your habits until they take two minutes or less to do (e.g., "read before bed" becomes "read one page")</li>
+                        <li><strong>Reduce Friction:</strong> Prime your environment for future use (e.g., set out your workout clothes the night before, keep a water bottle on your desk)</li>
+                        <li><strong>Master the Entry Point:</strong> The most important part of a habit is getting started; momentum builds after initiation</li>
+                        <li><strong>Automate Your Habits:</strong> Use technology to automate good decisions (e.g., automatic transfers to savings, meal delivery services)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <div class="detail-title">Breaking Bad Habits</div>
+                <div class="detail-content">
+                    To break a bad habit, increase friction. Make bad habits difficult:
+                    <ul>
+                        <li>Unplug the TV after use so you have to plug it in next time</li>
+                        <li>Delete credit card information from shopping sites</li>
+                        <li>Keep your phone in another room while working</li>
+                        <li>Use a smaller plate to reduce overeating</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <div class="detail-title">The Power of Repetition</div>
+                <div class="detail-content">
+                    "Habits form based on frequency, not time. Each repetition is a vote for the type of person you wish to become. Don't break the chain of consistency."
+                </div>
+            </div>
+            
+            <div class="principle-box">
+                <div class="detail-title">Key Insight</div>
+                <div class="detail-content">
+                    The most effective form of learning is practice, not planning. Focus on taking action, not being in motion. Motion makes you feel like you're getting things done without actually producing results.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Law 4 -->
+    <div class="law">
+        <div class="law-number">Law Four</div>
+        <div class="law-title">Make It Satisfying</div>
+        <div class="law-text">
+            Reinforce habits with immediate rewards so the brain associates
+            the behavior with success and progress.
+        </div>
+        
+        <div class="law-details">
+            <div class="detail-section">
+                <div class="detail-title">Core Principle</div>
+                <div class="detail-content">
+                    What is immediately rewarded is repeated. What is immediately punished is avoided. Because good habits often have delayed rewards while bad habits offer immediate gratification, we need to add immediate satisfaction to good habits.
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <div class="detail-title">Implementation Strategies</div>
+                <div class="detail-content">
+                    <ul>
+                        <li><strong>Reinforcement Rewards:</strong> Give yourself an immediate reward after completing a habit (e.g., a piece of chocolate after a workout, a few minutes of social media after focused work)</li>
+                        <li><strong>Habit Tracking:</strong> Use visual measures like a habit tracker or calendar chain to see your progress (the mere act of tracking can be satisfying)</li>
+                        <li><strong>Never Miss Twice:</strong> Give yourself permission to miss once, but never twice—this prevents the "what the hell" effect where one slip turns into a complete breakdown</li>
+                        <li><strong>Accountability Partners:</strong> Create immediate costs to inaction by making commitments to others</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <div class="detail-title">Breaking Bad Habits</div>
+                <div class="detail-content">
+                    To break a bad habit, make it unsatisfying. Add an immediate cost:
+                    <ul>
+                        <li>Create a habit contract with financial penalties</li>
+                        <li>Tell friends about your commitment to create social accountability</li>
+                        <li>Use apps that block websites and charge you money if you access them</li>
+                        <li>Visualize the long-term consequences of the bad habit</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="detail-section">
+                <div class="detail-title">The Cardinal Rule of Behavior Change</div>
+                <div class="detail-content">
+                    "What is rewarded is repeated. What is punished is avoided. You teach people what to do by what you reward. You teach yourself what to do by what you find satisfying."
+                </div>
+            </div>
+            
+            <div class="principle-box">
+                <div class="detail-title">Key Insight</div>
+                <div class="detail-content">
+                    The first three laws—make it obvious, attractive, and easy—increase the odds that a behavior will be performed this time. The fourth law—make it satisfying—increases the odds that a behavior will be repeated next time.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const laws = document.querySelectorAll('.law');
+    
+    laws.forEach(law => {
+        law.addEventListener('click', function() {
+            // Close other open laws
+            laws.forEach(otherLaw => {
+                if (otherLaw !== law && otherLaw.classList.contains('active')) {
+                    otherLaw.classList.remove('active');
+                }
+            });
+            
+            // Toggle current law
+            this.classList.toggle('active');
+        });
+    });
+    
+    // Close law when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.law')) {
+            laws.forEach(law => {
+                law.classList.remove('active');
+            });
+        }
+    });
+});
+</script>
+
+</body>
+</html>
