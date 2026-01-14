@@ -14,14 +14,12 @@
             --emerald: #10b981;
             --sky: #38bdf8;
             --amber: #f59e0b;
+            --sapphire: #60a5fa;
+            --sandstone: #d4c4b5;
             --slate: #94a3b8;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: var(--bg);
@@ -145,20 +143,35 @@
             font-weight: bold;
         }
 
-        .book-author {
-            font-size: 14px;
-            color: var(--slate);
-            font-style: italic;
-        }
+        .book-author { font-size: 14px; color: var(--slate); font-style: italic; }
 
-        /* Border Accents */
-        .card-power { border-bottom: 5px solid var(--gold); }
+        /* Categorized Accents */
+        .card-wealth { border-bottom: 5px solid var(--gold); }
+        .card-wealth .book-tag { color: var(--gold); }
+
         .card-strategy { border-bottom: 5px solid var(--crimson); }
-        .card-habits { border-bottom: 5px solid var(--cyan); }
+        .card-strategy .book-tag { color: var(--crimson); }
+
+        .card-systems { border-bottom: 5px solid var(--cyan); }
+        .card-systems .book-tag { color: var(--cyan); }
+
         .card-psych { border-bottom: 5px solid var(--purple); }
+        .card-psych .book-tag { color: var(--purple); }
+
         .card-efficiency { border-bottom: 5px solid var(--sky); }
-        .card-frog { border-bottom: 5px solid var(--emerald); }
+        .card-efficiency .book-tag { color: var(--sky); }
+
+        .card-execution { border-bottom: 5px solid var(--emerald); }
+        .card-execution .book-tag { color: var(--emerald); }
+
         .card-morning { border-bottom: 5px solid var(--amber); }
+        .card-morning .book-tag { color: var(--amber); }
+
+        .card-behavior { border-bottom: 5px solid var(--sapphire); }
+        .card-behavior .book-tag { color: var(--sapphire); }
+
+        .card-ancient { border-bottom: 5px solid var(--sandstone); }
+        .card-ancient .book-tag { color: var(--sandstone); }
 
         @media (max-width: 768px) {
             header h1 { font-size: 42px; letter-spacing: 4px; }
@@ -178,6 +191,23 @@
     </div>
 
     <main class="library-grid" id="library">
+        
+        <a href="the-psychology-of-money.html" class="book-card card-behavior">
+            <div class="book-meta">
+                <span class="book-tag">Behavioral Finance</span>
+                <div class="book-title">The Psychology of Money</div>
+                <div class="book-author">Morgan Housel</div>
+            </div>
+        </a>
+
+        <a href="the-richest-man-in-babylon.html" class="book-card card-ancient">
+            <div class="book-meta">
+                <span class="book-tag">Ancient Wealth</span>
+                <div class="book-title">The Richest Man in Babylon</div>
+                <div class="book-author">George S. Clason</div>
+            </div>
+        </a>
+
         <a href="time-management.html" class="book-card card-efficiency">
             <div class="book-meta">
                 <span class="book-tag">Efficiency</span>
@@ -186,7 +216,7 @@
             </div>
         </a>
 
-        <a href="eat-that-frog.html" class="book-card card-frog">
+        <a href="eat-that-frog.html" class="book-card card-execution">
             <div class="book-meta">
                 <span class="book-tag">Execution</span>
                 <div class="book-title">Eat That Frog!</div>
@@ -202,7 +232,7 @@
             </div>
         </a>
 
-        <a href="rich-dad-poor-dad.html" class="book-card card-power">
+        <a href="rich-dad-poor-dad.html" class="book-card card-wealth">
             <div class="book-meta">
                 <span class="book-tag">Wealth</span>
                 <div class="book-title">Rich Dad Poor Dad</div>
@@ -210,18 +240,10 @@
             </div>
         </a>
 
-        <a href="48_laws_of_power_single_page.html" class="book-card card-power">
+        <a href="48_laws_of_power_single_page.html" class="book-card card-wealth">
             <div class="book-meta">
                 <span class="book-tag">Mastery</span>
                 <div class="book-title">48 Laws of Power</div>
-                <div class="book-author">Robert Greene</div>
-            </div>
-        </a>
-
-        <a href="laws_human_nature_redesign.html" class="book-card card-power">
-            <div class="book-meta">
-                <span class="book-tag">Mastery</span>
-                <div class="book-title">Laws of Human Nature</div>
                 <div class="book-author">Robert Greene</div>
             </div>
         </a>
@@ -242,7 +264,7 @@
             </div>
         </a>
 
-        <a href="atomic-habits.html" class="book-card card-habits">
+        <a href="atomic-habits.html" class="book-card card-systems">
             <div class="book-meta">
                 <span class="book-tag">Systems</span>
                 <div class="book-title">Atomic Habits</div>
@@ -250,7 +272,7 @@
             </div>
         </a>
 
-        <a href="deep-work.html" class="book-card card-habits">
+        <a href="deep-work.html" class="book-card card-systems">
             <div class="book-meta">
                 <span class="book-tag">Focus</span>
                 <div class="book-title">Deep Work</div>
@@ -258,7 +280,7 @@
             </div>
         </a>
 
-        <a href="The-Compound-Effect.html" class="book-card card-habits">
+        <a href="The-Compound-Effect.html" class="book-card card-systems">
             <div class="book-meta">
                 <span class="book-tag">Growth</span>
                 <div class="book-title">The Compound Effect</div>
@@ -282,7 +304,7 @@
             </div>
         </a>
 
-        <a href="how-to-win-friends.html" class="book-card card-power">
+        <a href="how-to-win-friends.html" class="book-card card-wealth">
             <div class="book-meta">
                 <span class="book-tag">Influence</span>
                 <div class="book-title">How to Win Friends...</div>
@@ -290,7 +312,7 @@
             </div>
         </a>
 
-        <a href="exactly-what-to-say.html" class="book-card card-power">
+        <a href="exactly-what-to-say.html" class="book-card card-wealth">
             <div class="book-meta">
                 <span class="book-tag">Influence</span>
                 <div class="book-title">Exactly What to Say</div>
@@ -298,35 +320,11 @@
             </div>
         </a>
 
-        <a href="how-to-say-no.html" class="book-card card-habits">
+        <a href="how-to-say-no.html" class="book-card card-systems">
             <div class="book-meta">
                 <span class="book-tag">Boundaries</span>
                 <div class="book-title">How to Say No</div>
                 <div class="book-author">Damon Zahariades</div>
-            </div>
-        </a>
-
-        <a href="building-a-story-brand.html" class="book-card card-psych">
-            <div class="book-meta">
-                <span class="book-tag">Marketing</span>
-                <div class="book-title">Building a StoryBrand</div>
-                <div class="book-author">Donald Miller</div>
-            </div>
-        </a>
-
-        <a href="start-with-why.html" class="book-card card-psych">
-            <div class="book-meta">
-                <span class="book-tag">Leadership</span>
-                <div class="book-title">Start with Why</div>
-                <div class="book-author">Simon Sinek</div>
-            </div>
-        </a>
-
-        <a href="think-and-grow-rich.html" class="book-card card-power">
-            <div class="book-meta">
-                <span class="book-tag">Prosperity</span>
-                <div class="book-title">Think and Grow Rich</div>
-                <div class="book-author">Napoleon Hill</div>
             </div>
         </a>
     </main>
