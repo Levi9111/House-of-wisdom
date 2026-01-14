@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Compound Effect - Summary</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: Georgia, serif; line-height: 1.7; color: #c8b8a0; margin: 0; padding: 50px 20px;
+            background: linear-gradient(135deg, #0d0a08 0%, #1a1612 50%, #221e18 100%); min-height: 100vh;
+        }
+        .container {
+            max-width: 900px; margin: 0 auto; background: rgba(26, 22, 18, 0.5); padding: 50px; border-radius: 16px;
+            border: 1px solid rgba(255, 140, 0, 0.2); backdrop-filter: blur(10px);
+        }
+        h1 {
+            text-align: center; font-size: 52px; margin: 0 0 10px 0; letter-spacing: 3px; font-weight: bold;
+            background: linear-gradient(135deg, #ff8c00, #ffa500, #ff8c00); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 40px rgba(255, 140, 0, 0.3);
+        }
+        h3.author { text-align: center; color: #9a8570; font-size: 18px; margin-bottom: 30px; letter-spacing: 2px; }
+        .intro {
+            text-align: center; font-size: 17px; line-height: 1.8; color: #b8a890; margin-bottom: 40px; padding: 25px;
+            background: rgba(34, 30, 24, 0.4); border-radius: 10px; border: 1px solid rgba(255, 140, 0, 0.15);
+        }
+        .cards-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .card {
+            padding: 25px; background: rgba(34, 30, 24, 0.4); border-radius: 12px; cursor: pointer; position: relative; overflow: hidden;
+            border: 1px solid rgba(255, 140, 0, 0.25); backdrop-filter: blur(10px); transition: all 0.3s ease;
+        }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08), transparent); opacity: 0; transition: opacity 0.3s ease;
+        }
+        .card:hover { transform: translateY(-6px); border-color: rgba(255, 140, 0, 0.6); box-shadow: 0 12px 35px rgba(255, 140, 0, 0.25); }
+        .card:hover::before { opacity: 1; }
+        .card.active { border-color: rgba(255, 140, 0, 0.8); background: rgba(40, 34, 28, 0.85); box-shadow: 0 20px 50px rgba(255, 140, 0, 0.35); }
+        .card.active .card-details { max-height: 3000px; opacity: 1; padding-top: 20px; margin-top: 20px; }
+        .card-number { font-size: 11px; font-weight: bold; letter-spacing: 2px; color: #ff8c00; margin-bottom: 12px; text-transform: uppercase; position: relative; z-index: 1; }
+        .card-title { font-size: 22px; font-weight: bold; margin-bottom: 15px; color: #e8d8c4; position: relative; z-index: 1; }
+        .card-text { font-size: 15px; line-height: 1.7; color: #b8a890; position: relative; z-index: 1; }
+        .card-details {
+            max-height: 0; opacity: 0; overflow: hidden; transition: all 0.5s ease; position: relative;
+            border-top: 1px solid rgba(255, 140, 0, 0.15);
+        }
+        .card-details::before {
+            content: '📈'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+            color: #ff8c00; background: #0d0a08; padding: 0 12px; font-size: 10px;
+        }
+        .detail-section { margin-bottom: 22px; }
+        .detail-title { font-size: 14px; font-weight: bold; color: #ff8c00; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+        .detail-content { font-size: 15px; line-height: 1.6; color: #c9b8a9; }
+        .detail-content ul { margin: 8px 0; padding-left: 20px; }
+        .detail-content li { margin-bottom: 6px; }
+        .quote {
+            font-style: italic; color: #d4a98c; border-left: 3px solid rgba(255, 140, 0, 0.5);
+            padding-left: 15px; margin: 15px 0;
+        }
+        .exercise-box {
+            background: rgba(255, 140, 0, 0.08); border: 1px solid rgba(255, 140, 0, 0.2);
+            border-radius: 8px; padding: 15px; margin: 15px 0;
+        }
+        h2 {
+            font-size: 32px; margin: 50px 0 30px 0; text-align: center; color: #ff8c00; letter-spacing: 2px; position: relative;
+        }
+        h2::after { content: ''; display: block; width: 60px; height: 3px; background: linear-gradient(90deg, transparent, #ff8c00, transparent); margin: 15px auto 0; }
+        .full-width-section { margin-top: 40px; padding: 30px; background: rgba(34, 30, 24, 0.4); border-radius: 12px; border: 1px solid rgba(255, 140, 0, 0.2); }
+        blockquote {
+            border-left: 4px solid #ff8c00; padding: 25px 25px 25px 30px; margin: 30px 0;
+            background: rgba(34, 30, 24, 0.5); border-radius: 8px; color: #d4c4b0; font-style: italic; font-size: 17px; line-height: 1.8;
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+            .container { padding: 30px 25px; }
+            h2 { font-size: 26px; }
+            .cards-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Compound Effect</h1>
+        <h3 class="author">By Darren Hardy</h3>
+
+        <div class="intro">
+            <strong>The Compound Effect</strong> explains how small, smart choices, consistently made over time, lead to significant results. Success doesn't happen overnight; it's the result of the cumulative effect of small, consistent actions repeated daily. Darren Hardy emphasizes that success is less about dramatic actions and more about discipline, routine, and incremental improvements.
+        </div>
+
+        <h2>The Core Principles</h2>
+        <div class="cards-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-number">Principle 1</div>
+                <div class="card-title">The Power of Small Choices</div>
+                <div class="card-text">Every decision you make—no matter how small—is a deposit in the bank of your future self. Success or failure is the compounded result of daily habits.</div>
+                <div class="card-details">
+                    <div class="detail-section">
+                        <div class="detail-title">The Core Lesson</div>
+                        <div class="detail-content">
+                            Massive success is not the result of one massive action, but the accumulation of countless small, seemingly insignificant choices. A 1% improvement daily compounds into being 37 times better in a year, while a 1% decline daily erodes you to almost nothing.
+                        </div>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-title">The Formula</div>
+                        <div class="detail-content">
+                            Small, Smart Choices + Consistency + Time = RADICAL DIFFERENCE. Hardy contrasts the "Ripple Effect" (positive) with the "Bermuda Triangle of Life" (negative small choices that compound into disaster).
+                        </div>
+                    </div>
+                    <div class="exercise-box">
+                        <div class="detail-title">Practical Exercise: The Choice Audit</div>
+                        <div class="detail-content">
+                            For one day, track all your small choices—what you eat, what you read, how you react to frustration. Categorize them as "Success Deposits" or "Failure Withdrawals." The goal is awareness.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-number">Principle 2</div>
+                <div class="card-title">Habits Shape Your Life</div>
+                <div class="card-text">Your daily habits are the compound interest of self-improvement. They are the automatic, unconscious behaviors that ultimately design your destiny.</div>
+                <div class="card-details">
+                    <div class="detail-section">
+                        <div class="detail-title">The Core Lesson</div>
+                        <div class="detail-content">
+                            You don't rise to the level of your goals; you fall to the level of your systems (habits). A habit is a choice you deliberately make at some point, and then stop thinking about, but continue doing, often every day.
+                        </div>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-title">Creating & Breaking Habits</div>
+                        <div class="detail-content">
+                            <ul>
+                                <li><strong>To Install:</strong> Make it obvious, easy, attractive, and satisfying (the "Atomic Habits" framework aligns perfectly here). Stack it onto an existing habit.</li>
+                                <li><strong>To Break:</strong> Make it invisible, difficult, unattractive, and unsatisfying.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="exercise-box">
+                        <div class="detail-title">Practical Exercise: The Keystone Habit</div>
+                        <div class="detail-content">
+                            Identify one "keystone habit" that will make other positive habits easier. For many, this is a morning routine (e.g., 20 minutes of reading, 10 minutes of planning your day). Commit to it for 30 days.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-number">Principle 3</div>
+                <div class="card-title">Momentum Matters</div>
+                <div class="card-text">Consistency builds momentum, and momentum is the force multiplier. It's easier to keep a moving object in motion than to start a stationary one.</div>
+                <div class="card-details">
+                    <div class="detail-section">
+                        <div class="detail-title">The Core Lesson</div>
+                        <div class="detail-content">
+                            The hardest part is getting started. The first few weeks of a new habit require immense willpower. However, once momentum is built, the behavior becomes more automatic, and progress begins to feel easier and faster—this is the "flywheel effect."
+                        </div>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-title">The Physics of Progress</div>
+                        <div class="detail-content">
+                            Think of momentum like pushing a massive flywheel. The initial pushes are slow and hard, but with persistent effort in the same direction, the wheel builds momentum until it spins with its own force. Your job is to never let it stop.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <div class="card-number">Principle 4</div>
+                <div class="card-title">Track Your Progress</div>
+                <div class="card-text">What gets measured gets managed. Tracking your behavior provides instant feedback and makes the invisible visible.</div>
+                <div class="card-details">
+                    <div class="detail-section">
+                        <div class="detail-title">The Core Lesson</div>
+                        <div class="detail-content">
+                            You cannot improve what you do not measure. Tracking makes you conscious of your behavior and creates a powerful feedback loop. It turns abstract goals into concrete data.
+                        </div>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-title">The "No Zero Days" Rule</div>
+                        <div class="detail-content">
+                            A powerful tracking mindset is to have "No Zero Days." You don't have to be perfect, but you must do something, however small, toward your goal every single day. Track a simple "✓" on a calendar. The visual chain is powerful motivation.
+                        </div>
+                    </div>
+                    <div class="exercise-box">
+                        <div class="detail-title">Practical Exercise: The Habit Tracker</div>
+                        <div class="detail-content">
+                            Get a calendar or journal. Pick 1-3 key actions for your goal (e.g., "Read 10 pages," "Exercise 20 min," "No sugar"). Mark an "X" on each day you complete it. Your only job is to not break the chain.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card">
+                <div class="card-number">Principle 5</div>
+                <div class="card-title">Choices and Responsibility</div>
+                <div class="card-text">You are where you are because of the choices you've made. Taking radical ownership is the first step toward change.</div>
+                <div class="card-details">
+                    <div class="detail-section">
+                        <div class="detail-title">The Core Lesson</div>
+                        <div class="detail-content">
+                            Externalizing blame ("the economy," "my boss," "bad luck") is the ultimate failure formula. The moment you take 100% responsibility for everything in your life is the moment you claim the power to change it. Hardy calls this being "response-able."
+                        </div>
+                    </div>
+                    <div class="quote">"The Compound Effect is the principle of reaping huge rewards from a series of small, smart choices. What's most interesting about this process to me is that, even though the results are massive, the steps, in the moment, don't feel significant." – Darren Hardy</div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="card">
+                <div class="card-number">Principle 6</div>
+                <div class="card-title">The Importance of Routine</div>
+                <div class="card-text">Designing daily routines that align with your goals automates success and eliminates decision fatigue.</div>
+                <div class="card-details">
+                    <div class="detail-section">
+                        <div class="detail-title">The Core Lesson</div>
+                        <div class="detail-content">
+                            A routine is a series of habits strung together. Your morning and evening routines set the tone for your entire day and recovery. By designing routines, you pre-commit to success and conserve willpower for important decisions.
+                        </div>
+                    </div>
+                    <div class="detail-section">
+                        <div class="detail-title">Creating a Winning Routine</div>
+                        <div class="detail-content">
+                            A simple, powerful routine might look like:
+                            <ul>
+                                <li><strong>Morning (45 min):</strong> Hydrate, 5 min of meditation/breathing, 20 min of exercise, 10 min of reading/learning, 10 min to review goals/plan day.</li>
+                                <li><strong>Evening (20 min):</strong> Shut off screens, journal 3 things you're grateful for, review the day's wins, plan the top 3 priorities for tomorrow.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>The Practical Implementation System</h2>
+        <div class="full-width-section">
+            <p>To put The Compound Effect into action, follow this simple four-part system:</p>
+            <ul>
+                <li><strong>1. Identify Core Behaviors:</strong> Pick 2-3 small, specific, non-negotiable actions that directly align with your #1 goal (e.g., for health: "Drink a glass of water first thing," "Take a 10-minute walk," "Eat vegetables with lunch").</li>
+                <li><strong>2. Eliminate "Bermuda Triangle" Choices:</strong> Identify one small negative behavior to stop (e.g., mindless scrolling before bed, that afternoon soda, complaining). Replace it with a neutral or positive alternative.</li>
+                <li><strong>3. Set Up Tracking:</strong> Use the simplest method possible—a checkbox on your phone, an "X" on a wall calendar. The act of recording is the reinforcement.</li>
+                <li><strong>4. Schedule Weekly Reviews:</strong> Every Sunday, spend 15 minutes reviewing your tracker. Did you maintain momentum? What small adjustment will make next week 1% better? This review cements learning and drives iteration.</li>
+            </ul>
+            <blockquote>
+                "The Compound Effect shows that massive success doesn't require massive action; it requires consistency, patience, and taking responsibility for your daily choices. Small, smart steps taken consistently over time will yield extraordinary results."
+            </blockquote>
+            <p><strong>Final Takeaway:</strong> The journey of a thousand miles begins with a single step, but it's the 10,000th step that gets you to the destination. Your power lies not in grand gestures, but in the relentless, daily decision to be 1% better. Compound the good, eliminate the bad, and watch your life transform over time.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Close other open cards
+                    cards.forEach(otherCard => {
+                        if (otherCard !== card && otherCard.classList.contains('active')) {
+                            otherCard.classList.remove('active');
+                        }
+                    });
+                    // Toggle current card
+                    this.classList.toggle('active');
+                });
+            });
+            // Click outside to close
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.card')) {
+                    cards.forEach(card => card.classList.remove('active'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
