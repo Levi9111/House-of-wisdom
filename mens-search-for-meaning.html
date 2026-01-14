@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Man's Search for Meaning – Viktor Frankl</title>
+    <style>
+        /* [All your original CSS styles remain perfectly intact] */
+        @page { size: A4; margin: 15mm; }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Georgia", serif;
+            color: #d1d5db;
+            background: linear-gradient(rgba(0,0,0,0.92), rgba(0,0,0,0.92)),
+                        url('https://www.transparenttextures.com/patterns/dark-matter.png'),
+                        #0a0a0a;
+            min-height: 100vh;
+            padding: 80px 20px;
+            line-height: 1.8;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 100px; }
+        h1 {
+            font-size: 62px;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(to bottom, #ffffff, #666666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .subtitle {
+            display: block;
+            margin-top: 20px;
+            font-size: 13px;
+            letter-spacing: 6px;
+            color: #991b1b; /* Blood/Dark Red */
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .intro-text {
+            text-align: center;
+            font-size: 20px;
+            color: #94a3b8;
+            margin: 40px auto 80px auto;
+            max-width: 800px;
+            font-style: italic;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 40px;
+        }
+        .monolith {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 30px;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            position: relative;
+        }
+        .monolith:hover {
+            background: rgba(30, 30, 30, 0.9);
+            border-color: rgba(153, 27, 27, 0.4);
+        }
+        .monolith.active {
+            border-color: #991b1b;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.9);
+            background: #111111;
+        }
+        .monolith-header {
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .m-index {
+            font-size: 50px;
+            font-weight: 900;
+            color: rgba(153, 27, 27, 0.2);
+            font-family: Arial, sans-serif;
+        }
+        .m-title h2 {
+            margin: 0;
+            font-size: 32px;
+            color: #f3f4f6;
+            letter-spacing: 1px;
+        }
+        .m-title p {
+            margin: 8px 0 0 0;
+            color: #6b7280;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+        .monolith-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            padding: 0 50px;
+            transition: all 0.8s ease;
+        }
+        .monolith.active .monolith-content {
+            max-height: 3000px;
+            opacity: 1;
+            padding-bottom: 60px;
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        .sub-section h3 {
+            color: #991b1b;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(153, 27, 27, 0.2);
+            padding-bottom: 10px;
+        }
+        .detailed-p {
+            font-size: 16px;
+            color: #9ca3af;
+            text-align: justify;
+        }
+        .manifesto-box {
+            grid-column: span 2;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-left: 2px solid #991b1b;
+            font-style: italic;
+            color: #e5e7eb;
+            font-size: 18px;
+        }
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+        }
+        .bullet-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            color: #d1d5db;
+        }
+        .bullet-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: #991b1b;
+        }
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            padding: 80px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .final-quote {
+            font-size: 28px;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        @media (max-width: 850px) {
+            .content-grid { grid-template-columns: 1fr; }
+            .monolith-header { padding: 30px; gap: 20px; }
+            h1 { font-size: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Man's Search for Meaning</h1>
+        <!-- Corrected the author from Friedrich Nietzsche to Viktor Frankl -->
+        <span class="subtitle">Viktor Frankl's Journey & Logotherapy</span>
+    </header>
+
+    <div class="intro-text">
+        "He who has a why to live can bear almost any how." — Friedrich Nietzsche[citation:10]. This precept became the bedrock of psychiatrist Viktor Frankl's survival in the Holocaust and his revolutionary psychotherapy.
+    </div>
+
+    <div class="monolith-layout">
+
+        <div class="monolith">
+            <div class="monolith-header">
+                <div class="m-index">01</div>
+                <div class="m-title">
+                    <h2>The Crucible of the Camp</h2>
+                    <p>Survival, Observation, and the Birth of a Theory</p>
+                </div>
+            </div>
+            <div class="monolith-content">
+                <div class="content-grid">
+                    <div class="sub-section">
+                        <h3>Historical Context & Initial Shock</h3>
+                        <p class="detailed-p">
+                            In September 1942, Viktor Frankl, a young Viennese psychiatrist, was transported to the Nazi concentration camp system[citation:1]. Like many, he initially experienced the "delusion of reprieve," a psychological state where the condemned cling to the irrational hope of a last-minute pardon[citation:10]. This shock was the first of three distinct psychological phases he identified in prisoners. Upon arrival at Auschwitz, a single glance from an SS officer decided life or death—left for labor, right for the gas chamber[citation:1]. Frankl consciously chose his attitude, standing tall to appear fit for work, an early exercise of what he would later call "the last of the human freedoms"[citation:1][citation:10].
+                        </p>
+                    </div>
+                    <div class="sub-section">
+                        <h3>The Protective Shield of Apathy</h3>
+                        <p class="detailed-p">
+                            The second phase was marked by a deep, necessary <strong>apathy</strong>[citation:4][citation:10]. As the brutal routine set in, emotions blunted to preserve energy for sheer survival. Beatings and suffering became background noise. Frankl observed that this emotional death was a critical defense mechanism; feeling too much in such an environment would have been psychologically unsustainable[citation:10]. Within this numbness, a stark Darwinian struggle unfolded, where a single piece of bread could mean the difference between life and death.
+                        </p>
+                    </div>
+                    <div class="sub-section">
+                        <h3>The Inner Retreat & Spiritual Freedom</h3>
+                        <p class="detailed-p">
+                            The third reaction was the discovery of an <strong>inner life</strong>. Frankl noted that those with a rich intellectual or spiritual background often fared better[citation:1][citation:10]. He himself survived a death march by escaping into his mind, envisioning himself lecturing on the psychology of the camp after liberation[citation:1]. The most profound moments of meaning came from love and memory. Thinking of his wife, he realized that love transcends physical presence: "Love goes very far beyond the physical person of the beloved"[citation:10]. He also drew strength from a meaningful future goal: the desire to reconstruct his lost manuscript on logotherapy[citation:1][citation:5].
+                        </p>
+                    </div>
+                    <div class="sub-section">
+                        <h3>Liberation & Depersonalization</h3>
+                        <p class="detailed-p">
+                            The final phase, <strong>depersonalization</strong>, occurred after liberation[citation:4][citation:10]. Freedom felt unreal, like a dream. Former prisoners had to relearn joy and shed the moral distortions of camp life, grappling with the truth that "no one has the right to do wrong, not even if wrong has been done to them"[citation:10]. Frankl emerged not with bitterness, but with a profound observation: the world is divided not by race or creed, but into "two races of men"—the decent and the indecent—and both types are found in every group[citation:10].
+                        </p>
+                    </div>
+                    <div class="manifesto-box">
+                        "Everything can be taken from a man but one thing: the last of the human freedoms—to choose one’s attitude in any given set of circumstances, to choose one’s own way."[citation:1][citation:10]
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="monolith">
+            <div class="monolith-header">
+                <div class="m-index">02</div>
+                <div class="m-title">
+                    <h2>Logotherapy Explained</h2>
+                    <p>The Will to Meaning as the Primary Drive</p>
+                </div>
+            </div>
+            <div class="monolith-content">
+                <div class="content-grid">
+                    <div class="sub-section">
+                        <h3>Foundations: The Third Viennese School</h3>
+                        <p class="detailed-p">
+                            Logotherapy (from the Greek <em>Logos</em>, meaning "meaning") positions itself as the "Third Viennese School of Psychotherapy"[citation:1]. It contrasts with Freud's focus on the <strong>will to pleasure</strong> and Adler's on the <strong>will to power</strong>, proposing instead that the primary motivational force in humans is the <strong>will to meaning</strong>[citation:1][citation:5]. Frankl argued that existential frustration—the struggle to find meaning—is not in itself pathological, but a natural and human distress[citation:1][citation:10].
+                        </p>
+                    </div>
+                    <div class="sub-section">
+                        <h3>The Existential Vacuum</h3>
+                        <p class="detailed-p">
+                            When the will to meaning is thwarted, people fall into an <strong>existential vacuum</strong>, a state of inner emptiness and boredom[citation:1]. This vacuum, Frankl warned, is often masked by conformism (doing what others do) or totalitarianism (doing what others want one to do). In modern life, it can manifest as addiction, depression, or aggression. The solution is not to seek a tensionless state of peace, but to embrace the "striving and struggling for a worthwhile goal"[citation:10].
+                        </p>
+                    </div>
+                    <div class="sub-section">
+                        <h3>The Three Avenues to Meaning</h3>
+                        <ul class="bullet-list">
+                            <li><strong>Through Work (Deed):</strong> By creating something or performing a significant action. For Frankl, this was his unfinished manuscript[citation:1][citation:5]. He believed that each person has a unique "vocation" or task to fulfill[citation:4].</li>
+                            <li><strong>Through Love (Experience):</strong> By encountering someone or experiencing something—like beauty, art, or nature. Love allows one to see the potential in another person[citation:5][citation:10]. Frankl's love for his wife provided immense strength, even after he learned of her death[citation:1].</li>
+                            <li><strong>Through Suffering (Attitude):</strong> When faced with unavoidable suffering, we can choose our attitude toward it. By turning personal tragedy into a triumph, suffering gains meaning[citation:4][citation:5]. This is not masochism, but the courageous acceptance of one's fate as a unique task.</li>
+                        </ul>
+                    </div>
+                    <div class="sub-section">
+                        <h3>The Question Life Asks</h3>
+                        <p class="detailed-p">
+                            Logotherapy flips the script on the existential question. We should not ask, "What is the meaning of life?" as if life owes us an answer. Instead, we must recognize that <strong>life is questioning us</strong>, daily and hourly[citation:1][citation:10]. Our responsibility is to answer—through our work, relationships, and conduct. "Life ultimately means taking the responsibility to find the right answer to its problems and to fulfill the tasks which it constantly sets for each individual"[citation:10].
+                        </p>
+                    </div>
+                    <div class="sub-section">
+                        <h3>Tragic Optimism</h3>
+                        <p class="detailed-p">
+                            Frankl's culminating concept is <strong>tragic optimism</strong>—the ability to remain hopeful and say "yes to life" in spite of its tragic aspects: pain, guilt, and death[citation:4]. It means finding potential meaning in suffering, deriving responsibility from guilt, and seeing the finiteness of life as a motivation to act responsibly. This is not naive positivity, but a hard-won optimism that acknowledges and transcends despair.
+                        </p>
+                    </div>
+                    <div class="manifesto-box">
+                        "What man actually needs is not a tensionless state but rather the striving and struggling for some goal worthy of him."[citation:1]
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="monolith">
+            <div class="monolith-header">
+                <div class="m-index">03</div>
+                <div class="m-title">
+                    <h2>Techniques & Modern Legacy</h2>
+                    <p>Paradoxical Intention, Dereflection, and Lasting Impact</p>
+                </div>
+            </div>
+            <div class="monolith-content">
+                <div class="content-grid">
+                    <div class="sub-section">
+                        <h3>Paradoxical Intention</h3>
+                        <p class="detailed-p">
+                            This clinical technique involves <strong>wishing for the very thing one fears</strong>[citation:4]. For a patient with severe insomnia who fears not sleeping, the logotherapist would advise them to <em>try to stay awake as long as possible</em>. This uses humor and self-distancing to break the cycle of anticipatory anxiety. By confronting the fear head-on in a paradoxical way, the patient robs it of its power, as the symptom cannot thrive under the intention to produce it.
+                        </p>
+                    </div>
+                    <div class="sub-section">
+                        <h3>Dereflection</h3>
+                        <p class="detailed-p">
+                            Where paradoxical intention counters fear, dereflection counters <strong>hyper-reflection</strong> (excessive self-observation). It involves shifting focus away from oneself and onto a meaningful goal or another person[citation:4]. For someone obsessed with a personal flaw, dereflection would guide them to engage fully in an activity or help someone else. By forgetting oneself in service to a cause or love for another, neurotic self-scrutiny dissolves.
+                        </p>
+                    </div>
+                    <div class="sub-section">
+                        <h3>Logotherapy's Enduring Relevance</h3>
+                        <p class="detailed-p">
+                            Since its publication in 1946, <em>Man's Search for Meaning</em> has sold over 10 million copies and been translated into two dozen languages[citation:1]. Its principles underpin modern therapeutic approaches like <strong>Acceptance and Commitment Therapy (ACT)</strong> and aspects of cognitive-behavioral therapy[citation:1]. In an age of material comfort but spiritual uncertainty, Frankl's answer to the existential vacuum remains vital. His work teaches that meaning is not invented subjectively, but <strong>detected</strong> in the objective realities of our lives, responsibilities, and relationships[citation:5].
+                        </p>
+                    </div>
+                    <div class="sub-section">
+                        <h3>A Guide for Contemporary Life</h3>
+                        <p class="detailed-p">
+                            Frankl's insights apply far beyond the clinic. They offer a framework for navigating modern challenges like burnout, purposelessness, and societal change[citation:5]. The core lesson is that our freedom lies in the space between a stimulus (what happens to us) and our response. In that space lies our power to choose our attitude, and in that choice lies our growth and our dignity[citation:5]. The search for meaning is not a problem to be solved, but a lifelong journey and responsibility.
+                        </p>
+                    </div>
+                    <div class="manifesto-box">
+                        "Don’t aim at success—the more you aim at it and make it a target, the more you are going to miss it. For success, like happiness, cannot be pursued; it must ensue... as the unintended side-effect of one's dedication to a cause greater than oneself."[citation:10]
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="final-quote">
+            "When we are no longer able to change a situation, we are challenged to change ourselves." — Viktor E. Frankl
+        </div>
+    </footer>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const monoliths = document.querySelectorAll('.monolith');
+
+        monoliths.forEach(m => {
+            m.addEventListener('click', function() {
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
+                } else {
+                    monoliths.forEach(other => other.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.monolith')) {
+                monoliths.forEach(m => m.classList.remove('active'));
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
