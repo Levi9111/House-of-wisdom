@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Win Friends & Influence People – Dale Carnegie</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 22mm;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Georgia", "Times New Roman", serif;
+            color: #e2e8f0;
+            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+            min-height: 100vh;
+            padding: 50px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 52px;
+            letter-spacing: 3px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #fbbf24, #fffbeb, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            text-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
+        }
+
+        .author {
+            text-align: center;
+            font-size: 15px;
+            color: #94a3b8;
+            margin-bottom: 35px;
+            font-style: italic;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .intro {
+            text-align: center;
+            font-size: 18px;
+            max-width: 850px;
+            margin: 0 auto 60px auto;
+            line-height: 1.8;
+            color: #cbd5e1;
+            padding: 35px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 16px;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .chapters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .principle-card {
+            padding: 30px;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(251, 191, 36, 0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .principle-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(251, 191, 36, 0.5);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .principle-card:hover::before {
+            opacity: 1;
+        }
+
+        .principle-card.active {
+            border-color: rgba(251, 191, 36, 0.8);
+            background: rgba(30, 41, 59, 0.9);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .principle-card.active .card-details {
+            max-height: 5000px;
+            opacity: 1;
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+
+        .card-number {
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #fbbf24;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #f8fafc;
+        }
+
+        .card-summary {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #94a3b8;
+        }
+
+        .card-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            position: relative;
+            border-top: 1px solid rgba(251, 191, 36, 0.1);
+        }
+
+        .card-details::before {
+            content: '✒';
+            position: absolute;
+            top: -11px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fbbf24;
+            background: #0f172a;
+            padding: 0 12px;
+            font-size: 12px;
+        }
+
+        .detail-section {
+            margin-bottom: 20px;
+        }
+
+        .detail-header {
+            font-size: 13px;
+            font-weight: bold;
+            color: #fbbf24;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-body {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+
+        .detail-body ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        .detail-body li {
+            margin-bottom: 10px;
+        }
+
+        .insight-box {
+            background: rgba(251, 191, 36, 0.07);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .carnegie-quote {
+            font-style: italic;
+            color: #fbbf24;
+            border-left: 3px solid rgba(251, 191, 36, 0.5);
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+
+        .footer-quote {
+            max-width: 800px;
+            margin: 60px auto 0 auto;
+            text-align: center;
+            font-style: italic;
+            font-size: 20px;
+            color: #fbbf24;
+            border-top: 1px solid rgba(251, 191, 36, 0.2);
+            padding-top: 30px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+            .chapters { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>How to Win Friends & Influence People</h1>
+    <div class="author">By Dale Carnegie</div>
+
+    <div class="intro">
+        Published in 1936, this masterpiece remains the definitive guide on human relations. Carnegie's philosophy is built on a simple yet profound truth: <strong>the deep-seated human desire to feel important.</strong> This book distills timeless principles for building relationships, influencing others, and achieving success through understanding human nature. The methods are not manipulative tricks but foundations for genuine character development and sincere human connection.
+    </div>
+
+    <div class="chapters">
+        <div class="principle-card">
+            <div class="card-number">Part One</div>
+            <div class="card-title">Fundamental Techniques in Handling People</div>
+            <div class="card-summary">Three core principles that form the bedrock of all human relations, teaching you how to interact without breeding resentment.</div>
+            <div class="card-details">
+                <div class="detail-section">
+                    <div class="detail-header">The Three Foundational Rules</div>
+                    <div class="detail-body">
+                        <ul>
+                            <li><strong>Don't criticize, condemn, or complain:</strong> Criticism is futile because it puts a person on the defensive and makes them strive to justify themselves. It wounds pride, hurts sense of importance, and arouses resentment. As psychologist B.F. Skinner proved, animals rewarded for good behavior learn more effectively than those punished for bad behavior. The same applies to humans.</li>
+                            <li><strong>Give honest and sincere appreciation:</strong> The big secret of dealing with people. Flattery comes from the teeth out and is selfish and insincere. Appreciation comes from the heart out and is unselfish. People hunger for appreciation as they hunger for food. Remember: the deepest principle in human nature is the craving to be appreciated.</li>
+                            <li><strong>Arouse in the other person an eager want:</strong> The only way to influence people is to talk about what they want and show them how to get it. Whether in business, family, or social life, success comes from seeing things from the other person's point of view as well as your own.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="carnegie-quote">"When dealing with people, remember you are not dealing with creatures of logic, but with creatures of emotion, creatures bristling with prejudice and motivated by pride and vanity." – Dale Carnegie</div>
+                <div class="insight-box">
+                    <div class="detail-header">Practical Application</div>
+                    <div class="detail-body">
+                        Before criticizing anyone tomorrow, pause and remember: this person may justify themselves and condemn you in return. Instead of criticizing, try to understand them. Ask yourself: "Why would they act that way?" This fosters empathy and patience.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="principle-card">
+            <div class="card-number">Part Two</div>
+            <div class="card-title">Six Ways to Make People Like You</div>
+            <div class="card-summary">Practical methods for building instant rapport and becoming genuinely interested in others.</div>
+            <div class="card-details">
+                <div class="detail-section">
+                    <div class="detail-header">The Six Principles</div>
+                    <div class="detail-body">
+                        <ul>
+                            <li><strong>Become genuinely interested in other people:</strong> You can make more friends in two months by being interested in others than in two years by trying to get others interested in you. Dogs make friends quickly because they show genuine interest (wagging tails, excitement). People who don't bother to be interested in others have the greatest difficulties in life.</li>
+                            <li><strong>Smile:</strong> A simple yet powerful action. A smile says "I like you, you make me happy." It costs nothing but creates much. It happens in a flash but the memory sometimes lasts forever. An ancient Chinese proverb says: "A man without a smiling face must not open a shop."</li>
+                            <li><strong>Remember that a person's name is to that person the sweetest and most important sound in any language:</strong> Names set individuals apart, make them feel unique. Remember names and use them naturally in conversation.</li>
+                            <li><strong>Be a good listener. Encourage others to talk about themselves:</strong> Ask questions they'll enjoy answering. Listen intently; be genuinely interested. Nothing is more flattering than giving someone your undivided attention.</li>
+                            <li><strong>Talk in terms of the other person's interests:</strong> Roosevelt knew this secret. Before expecting a visitor, he studied topics he knew his guest would be interested in. Talking in terms of the other person's interests benefits both parties.</li>
+                            <li><strong>Make the other person feel important – and do it sincerely:</strong> The golden rule: "Do unto others as you would have others do unto you." Almost every person you meet feels superior to you in some way. Let them realize in some subtle way that you recognize their importance.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="insight-box">
+                    <div class="detail-header">The Listening Technique</div>
+                    <div class="detail-body">
+                        When conversing, focus 100% on understanding the other person rather than thinking about what you'll say next. Ask follow-up questions. Paraphrase what they've said to show you're listening. This single practice can transform your relationships more than any other.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="principle-card">
+            <div class="card-number">Part Three</div>
+            <div class="card-title">How to Win People to Your Way of Thinking</div>
+            <div class="card-summary">Twelve principles for persuading others, avoiding arguments, and getting cooperation.</div>
+            <div class="card-details">
+                <div class="detail-section">
+                    <div class="detail-header">Key Persuasion Principles</div>
+                    <div class="detail-body">
+                        <ul>
+                            <li><strong>The only way to get the best of an argument is to avoid it:</strong> You can't win an argument. If you lose it, you lose it; and if you win it, you lose it. Why? Because you've made the other person feel inferior, hurt their pride, and made them resent you.</li>
+                            <li><strong>Show respect for the other person's opinions. Never say "You're wrong.":</strong> Telling someone they're wrong is a direct blow to their intelligence, judgment, and pride. It makes them want to strike back.</li>
+                            <li><strong>If you are wrong, admit it quickly and emphatically:</strong> When we're right, let's try to win people gently; when we're wrong, admit it quickly. This produces surprising results.</li>
+                            <li><strong>Begin in a friendly way:</strong> A drop of honey catches more flies than a gallon of gall. Begin conversations gently, with appreciation and understanding.</li>
+                            <li><strong>Get the other person saying "yes, yes" immediately:</strong> Start with points of agreement. Keep emphasizing things you both agree on. Get them saying "yes" as soon as possible.</li>
+                            <li><strong>Let the other person do a great deal of the talking:</strong> Let them talk themselves out. They know more about their problems than you do. Ask questions and let them tell you a few things.</li>
+                            <li><strong>Let the other person feel the idea is his or hers:</strong> People are more convinced by reasons they discover themselves than by those found by others.</li>
+                            <li><strong>Try honestly to see things from the other person's point of view:</strong> Success in dealing with people depends on sympathetic grasp of the other person's viewpoint.</li>
+                            <li><strong>Be sympathetic with the other person's ideas and desires:</strong> Three-fourths of the people you meet are hungering for sympathy. Give it to them.</li>
+                            <li><strong>Appeal to nobler motives:</strong> People are honest and want to fulfill their obligations. Even those who are inclined to be difficult will respond if you appeal to their nobler motives.</li>
+                            <li><strong>Dramatize your ideas:</strong> Merely stating a truth isn't enough. The truth must be vivid, interesting, dramatic. Use showmanship.</li>
+                            <li><strong>Throw down a challenge:</strong> The thing that most motivates people is the game. The desire to excel, the urge to prove one's worth.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="carnegie-quote">"You can't win an argument. You can't because if you lose it, you lose it; and if you win it, you lose it." – Dale Carnegie</div>
+            </div>
+        </div>
+
+        <div class="principle-card">
+            <div class="card-number">Part Four</div>
+            <div class="card-title">Be a Leader: How to Change People Without Giving Offense</div>
+            <div class="card-summary">Nine methods for effective leadership, offering constructive criticism, and inspiring change.</div>
+            <div class="card-details">
+                <div class="detail-section">
+                    <div class="detail-header">Leadership Principles</div>
+                    <div class="detail-body">
+                        <ul>
+                            <li><strong>Begin with praise and honest appreciation:</strong> It's always easier to listen to unpleasant things after hearing praise of our good points.</li>
+                            <li><strong>Call attention to people's mistakes indirectly:</strong> Instead of direct criticism, mention your own similar mistakes first, then guide them gently.</li>
+                            <li><strong>Talk about your own mistakes before criticizing the other person:</strong> Admitting your own faults reduces defensiveness and makes criticism easier to accept.</li>
+                            <li><strong>Ask questions instead of giving direct orders:</strong> "You might consider this..." or "Do you think that would work?" saves pride and gives a sense of importance.</li>
+                            <li><strong>Let the other person save face:</strong> Nothing diminishes dignity like attacking someone in front of others. Even if you're right, let them save their dignity.</li>
+                            <li><strong>Praise every improvement:</strong> Be "hearty in your approbation and lavish in your praise." People thrive on praise.</li>
+                            <li><strong>Give the other person a fine reputation to live up to:</strong> If you want to improve a person in a certain aspect, act as though that particular trait were already one of their outstanding characteristics.</li>
+                            <li><strong>Use encouragement. Make the fault seem easy to correct:</strong> Minimize the fault, emphasize the person's ability to overcome it easily.</li>
+                            <li><strong>Make the other person happy about doing what you suggest:</strong> When making requests: be sincere, know exactly what you want, be empathetic, consider benefits to the other person, match benefits to their wants, and communicate these benefits.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="insight-box">
+                    <div class="detail-header">The Leadership Mindset</div>
+                    <div class="detail-body">
+                        True leadership isn't about commanding but about inspiring. The most effective leaders make their followers feel capable, valued, and understood. They focus on strengths rather than weaknesses, possibilities rather than limitations, and progress rather than perfection.
+                    </div>
+                </div>
+                <div class="carnegie-quote">"Leadership is the art of getting someone else to do something you want done because he wants to do it." – Dwight D. Eisenhower (quoted in Carnegie's teachings)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-quote">
+        "You can make more friends in two months by becoming interested in other people than in two years by trying to get people interested in you."
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.principle-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    cards.forEach(c => {
+                        if (c !== card) c.classList.remove('active');
+                    });
+                    this.classList.toggle('active');
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.principle-card')) {
+                    cards.forEach(c => c.classList.remove('active'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
