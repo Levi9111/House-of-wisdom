@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Management – Brian Tracy | Master Reference</title>
+    <style>
+        @page { size: A4; margin: 15mm; }
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "Georgia", serif;
+            color: #d1d5db;
+            background: radial-gradient(circle at top left, #1e293b, #0f172a 50%, #020617 100%);
+            min-height: 100vh;
+            padding: 60px 20px;
+            line-height: 1.7;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        header { text-align: center; margin-bottom: 80px; }
+
+        h1 {
+            font-size: 64px;
+            letter-spacing: -1px;
+            margin: 0;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #f1f5f9, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.2));
+        }
+
+        .author-tag {
+            font-size: 14px;
+            letter-spacing: 5px;
+            color: #38bdf8;
+            text-transform: uppercase;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .intro-manifesto {
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(56, 189, 248, 0.1);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            font-size: 19px;
+            text-align: center;
+            border-left: 4px solid #38bdf8;
+        }
+
+        .master-layout { display: flex; flex-direction: column; gap: 30px; }
+
+        .section-node {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-node:hover {
+            background: rgba(30, 41, 59, 0.6);
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: scale(1.01);
+        }
+
+        .section-node.active {
+            background: rgba(15, 23, 42, 0.8);
+            border-color: #38bdf8;
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .node-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+
+        .node-number {
+            font-size: 40px;
+            font-weight: 900;
+            color: rgba(56, 189, 248, 0.1);
+            font-style: italic;
+        }
+
+        .node-title { font-size: 28px; color: #f3f4f6; font-weight: bold; }
+        
+        .node-summary {
+            font-size: 16px;
+            color: #94a3b8;
+            margin-left: 60px;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .node-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.7s ease;
+        }
+
+        .section-node.active .node-details {
+            max-height: 3000px;
+            opacity: 1;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px dashed rgba(56, 189, 248, 0.2);
+        }
+
+        .content-block { margin-bottom: 35px; }
+
+        .block-label {
+            color: #38bdf8;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .detailed-text {
+            font-size: 16px;
+            color: #9ca3af;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .strategy-list { list-style: none; padding: 0; }
+
+        .strategy-list li {
+            margin-bottom: 25px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .strategy-list li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: #38bdf8;
+        }
+
+        .strategy-list strong {
+            color: #f1f5f9;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .numbered-list {
+            list-style-type: decimal;
+            padding-left: 25px;
+            color: #d1d5db;
+        }
+        
+        .numbered-list li {
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+
+        .frog-box {
+            background: linear-gradient(to right, rgba(56, 189, 248, 0.1), transparent);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 2px solid #38bdf8;
+            margin-top: 20px;
+        }
+
+        .quote-footer {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 24px;
+            font-style: italic;
+            color: #38bdf8;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 40px; }
+            .section-node { padding: 25px; }
+            .node-summary { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Time Management</h1>
+            <span class="author-tag">Brian Tracy's Master System</span>
+        </header>
+
+        <div class="intro-manifesto">
+            Time management is not a peripheral skill; it is the **core skill** upon which everything else in life depends. You don't manage time; you manage your <em>life</em>. High performance requires the brutal elimination of low-value activities. Tracy's system is built on decades of research showing that the most successful people allocate their hours differently—they don't work harder, they work smarter by consistently applying fundamental principles.
+        </div>
+
+        <div class="master-layout">
+            
+            <div class="section-node">
+                <div class="node-header">
+                    <div class="node-number">01</div>
+                    <div class="node-title">The Law of Three</div>
+                </div>
+                <div class="node-summary">Identifying the 90% of your value found in just 3 activities.</div>
+                
+                <div class="node-details">
+                    <div class="content-block">
+                        <span class="block-label">The Pareto Principle Applied to Your Workday</span>
+                        <div class="detailed-text">
+                            Brian Tracy's "Law of Three" is a powerful application of the Pareto Principle (80/20 Rule) to personal productivity. Tracy's research revealed that in any job or business, three core activities typically generate 90% of the value and results. Everything else—the remaining dozens of tasks—collectively contributes only 10%. The breakthrough comes from recognizing that not all tasks are created equal. Most people spread their energy thinly across many low-value activities, while high performers identify and focus relentlessly on their vital few.
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">The Discovery Process</span>
+                        <ul class="strategy-list">
+                            <li>
+                                <strong>Step 1: The Activity Audit</strong>
+                                For one week, track every work-related activity you perform. Use a notebook, spreadsheet, or time-tracking app. Be ruthlessly honest—include checking emails, social media, meetings, and administrative work.
+                            </li>
+                            <li>
+                                <strong>Step 2: The Value Analysis</strong>
+                                Review your list and ask: "Which single activity, if I did it superbly well, would have the greatest positive impact on my career or business?" This is your #1 value creator. Then identify #2 and #3.
+                            </li>
+                            <li>
+                                <strong>Step 3: Time Allocation Shift</strong>
+                                Once identified, Tracy recommends immediately reallocating your schedule. Aim to spend 80% of your productive time on these three activities. Delegate, eliminate, or batch-process the remaining tasks into minimal time blocks.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">Common High-Value Activities</span>
+                        <div class="detailed-text">
+                            While individual activities vary, common high-value tasks across professions include: <strong>Revenue-generating activities</strong> (sales calls, client work), <strong>Relationship building</strong> (key client meetings, networking), <strong>Strategic planning</strong> (goal setting, business development), and <strong>Skill development</strong> (learning that enhances your primary value). For a manager, it might be coaching team members; for a writer, it's uninterrupted writing time.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-node">
+                <div class="node-header">
+                    <div class="node-number">02</div>
+                    <div class="node-title">The ABCDE Method</div>
+                </div>
+                <div class="node-summary">A brutal prioritization framework for high-consequence tasks.</div>
+                
+                <div class="node-details">
+                    <div class="content-block">
+                        <span class="block-label">A System for Forcing Decisions</span>
+                        <div class="detailed-text">
+                            The ABCDE method moves beyond simple to-do lists by introducing consequence-based prioritization. Every task is graded A through E before you begin your day. The power lies in its simplicity and forced decision-making—you must assign a letter to everything, which instantly reveals what truly matters. Tracy emphasizes that "A" tasks are rarely urgent but always important, while many "C" tasks feel urgent but have minimal long-term impact.
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">Grading Your Day: The Complete Framework</span>
+                        <ul class="strategy-list">
+                            <li>
+                                <strong>A: "Must Do" — Highest Value/Consequence</strong>
+                                Tasks with serious positive or negative consequences. Failure to complete them significantly impacts goals, income, or responsibilities. There can be A-1, A-2, A-3 subtasks. Rule: Never do a B task when an A task remains undone. Example: Completing a project proposal for your biggest client, having a crucial performance conversation with a team member.
+                            </li>
+                            <li>
+                                <strong>B: "Should Do" — Medium Consequence</strong>
+                                Tasks with mild consequences. They contribute to your work but aren't critical. Doing them well is nice, but not doing them won't cause major problems. Example: Returning a non-urgent email, attending a routine department meeting.
+                            </li>
+                            <li>
+                                <strong>C: "Nice to Do" — No Consequence</strong>
+                                Activities you enjoy that have zero impact on results. They often masquerade as productive work. The trap: C tasks are usually easier and more pleasant than A tasks, creating avoidance behavior. Example: Organizing your desk (when it's already functional), checking social media, making personal calls during work hours.
+                            </li>
+                            <li>
+                                <strong>D: "Delegate" — Someone Else's Job</strong>
+                                Anything that can be done by someone whose hourly rate is lower than yours. Effective delegation frees your time for A-level work. The key is to delegate completely with clear instructions, not partially. Example: Administrative paperwork, scheduling, basic research, data entry.
+                            </li>
+                            <li>
+                                <strong>E: "Eliminate" — The Time Wasters</strong>
+                                Tasks that were once important but no longer contribute to your current primary goals. Regularly ask: "If I weren't already doing this, would I start it today?" If no, it's an E task. Example: Outdated reports no one reads, unnecessary meetings you attend out of habit, low-value subscriptions.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">Daily Implementation Workflow</span>
+                        <ol class="numbered-list">
+                            <li>Each evening or first thing in the morning, list all tasks for the day.</li>
+                            <li>Assign an A, B, C, D, or E to every single item.</li>
+                            <li>Start immediately on your A-1 task. Do not check email, take calls, or do anything else until you've made progress on it.</li>
+                            <li>Review your list mid-day and re-prioritize if new urgent items emerge (though true emergencies are rare).</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-node">
+                <div class="node-header">
+                    <div class="node-number">03</div>
+                    <div class="node-title">Eat That Frog</div>
+                </div>
+                <div class="node-summary">Overcoming procrastination through morning momentum.</div>
+                
+                <div class="node-details">
+                    <div class="content-block">
+                        <span class="block-label">The Psychology of Procrastination</span>
+                        <div class="detailed-text">
+                            Tracy's famous "Eat That Frog" metaphor tackles the core reason people procrastinate: facing large, complex, or intimidating tasks. Your "frog" is your biggest, most important task—the one you're most likely to delay. The anxiety and dread of starting actually consume more mental energy than doing the task itself. Neuroscience supports this: procrastination creates low-grade stress that impairs cognitive function, while completing a difficult task releases dopamine, creating momentum.
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">Why First Thing in the Morning Matters</span>
+                        <div class="detailed-text">
+                            Willpower and decision-making energy are finite resources that deplete throughout the day (a concept called "ego depletion" in psychology). By tackling your biggest challenge first, you leverage peak mental clarity and willpower. This creates a "victory spiral"—starting your day with an accomplishment builds confidence and reduces anxiety, making all subsequent tasks feel easier. As Tracy says, "If you eat a live frog first thing in the morning, you can go through the day with the satisfaction of knowing that is probably the worst thing that is going to happen to you all day."
+                        </div>
+                    </div>
+                    <div class="frog-box">
+                        <strong>The Complete Rules of Frog Eating:</strong>
+                        <ol>
+                            <li><strong>Identify Your Frog:</strong> Use the ABCDE method—your A-1 task is today's frog.</li>
+                            <li><strong>If You Have Two Frogs, Eat the Ugliest First:</strong> Always tackle the biggest, most challenging task first when your energy is highest.</li>
+                            <li><strong>If You Have to Eat a Live Frog, Don't Stare at It:</strong> Procrastinating by thinking about it only increases resistance. The best way to start is to just start—take the first small action immediately.</li>
+                            <li><strong>Develop a Consistent Frog-Eating Routine:</strong> Make it a non-negotiable morning ritual. Prepare your frog the night before by defining the very first physical action required.</li>
+                        </ol>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">Tactical Frog-Eating Strategies</span>
+                        <ul class="strategy-list">
+                            <li>
+                                <strong>The Five-Minute Start:</strong> Commit to working on the frog for just five minutes. Often, starting is the only hurdle—momentum carries you forward.
+                            </li>
+                            <li>
+                                <strong>Frog Slicing:</strong> Break massive frogs into tiny, specific, actionable steps. Instead of "write report," start with "open document and write headline."
+                            </li>
+                            <li>
+                                <strong>Create a Frog-Friendly Environment:</strong> Eliminate distractions before starting. Close email, silence notifications, and use tools like website blockers during your frog-eating session.
+                            </li>
+                            <li>
+                                <strong>The Frog Reward System:</strong> Pair frog completion with a genuine reward—a coffee break, short walk, or checking social media only AFTER the frog is eaten.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-node">
+                <div class="node-header">
+                    <div class="node-number">04</div>
+                    <div class="node-title">The Psychology of Achievement</div>
+                </div>
+                <div class="node-summary">Mental frameworks that enable exceptional productivity.</div>
+                
+                <div class="node-details">
+                    <div class="content-block">
+                        <span class="block-label">The Foundations of a Productive Mindset</span>
+                        <div class="detailed-text">
+                            Tracy emphasizes that time management begins internally. Your self-concept as an efficient person determines your habits. He identifies several key psychological principles: <strong>Clarity</strong> (vague goals yield vague results), <strong>Competence</strong> (continuous skill development speeds work), <strong>Concentration</strong> (the ability to focus single-mindedly), and <strong>Constraint Analysis</strong> (identifying the single biggest bottleneck holding you back).
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">The 10/90 Rule</span>
+                        <div class="detailed-text">
+                            Perhaps Tracy's most powerful mental model: The first 10% of time spent planning and organizing your work will save you 90% of the time in execution. Invest significant time in upfront planning—daily, weekly, monthly, and yearly. This includes not just what to do, but also deciding what NOT to do. A detailed plan reduces friction and decision fatigue throughout your day.
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <span class="block-label">Overcoming the Two Main Time Wasters</span>
+                        <ul class="strategy-list">
+                            <li>
+                                <strong>Procrastination:</strong> Combat it with the "Just Start" principle. Action precedes motivation, not the reverse. Set deadlines and make public commitments.
+                            </li>
+                            <li>
+                                <strong>Interruptions & Distractions:</strong> Use time blocking. Schedule specific hours for deep work and communicate these as unavailable times. Batch-process emails and calls into designated slots.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="quote-footer">
+            "Every minute spent in planning saves ten minutes in execution. The rule is that the better you plan, the better and faster you get the job done, and with less effort." — Brian Tracy
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nodes = document.querySelectorAll('.section-node');
+            nodes.forEach(node => {
+                node.addEventListener('click', function() {
+                    if (this.classList.contains('active')) {
+                        this.classList.remove('active');
+                    } else {
+                        nodes.forEach(n => n.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.section-node')) {
+                    nodes.forEach(n => n.classList.remove('active'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
