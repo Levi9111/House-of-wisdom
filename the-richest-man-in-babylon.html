@@ -41,7 +41,7 @@
             margin-top: 15px;
             font-size: 13px;
             letter-spacing: 5px;
-            color: #4b6cb7; /* Lapis Lazuli Blue */
+            color: #4b6cb7;
             text-transform: uppercase;
             font-weight: bold;
         }
@@ -57,6 +57,14 @@
             text-align: center;
             border-left: 4px solid #d4af37;
             color: #b8a88e;
+        }
+
+        .intro-manifesto p {
+            margin: 0 0 15px 0;
+        }
+
+        .intro-manifesto p:last-child {
+            margin-bottom: 0;
         }
 
         /* Monolithic Layout */
@@ -208,7 +216,18 @@
             margin-bottom: 5px;
         }
 
-        .footer-quote {
+        .character-block em {
+            display: block;
+            margin: 8px 0;
+            font-size: 15px;
+        }
+
+        .character-block p {
+            margin: 8px 0 0 0;
+            font-size: 15px;
+        }
+
+        .quote-footer {
             margin-top: 80px;
             text-align: center;
             font-size: 24px;
@@ -219,10 +238,47 @@
         }
 
         @media (max-width: 800px) {
-            .sub-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 38px; }
-            .principles-table { font-size: 14px; }
-            .principles-table td { padding: 10px; }
+            body { padding: 40px 15px; }
+            h1 { font-size: 36px; letter-spacing: 2px; }
+            .subtitle { font-size: 11px; letter-spacing: 3px; margin-top: 10px; }
+            .intro-manifesto { padding: 25px; font-size: 16px; margin: 30px auto 50px auto; }
+            .monolith-header { padding: 25px; gap: 15px; flex-direction: column; align-items: flex-start; }
+            .m-index { font-size: 24px; }
+            .m-title h2 { font-size: 20px; }
+            .monolith-content { padding: 0 25px; }
+            .monolith.active .monolith-content { padding-bottom: 30px; }
+            .sub-grid { grid-template-columns: 1fr; gap: 25px; }
+            .law-box { padding: 20px; }
+            .tablet-inscription { padding: 15px; font-size: 15px; }
+            .principles-table { font-size: 13px; display: block; overflow-x: auto; }
+            .principles-table td { padding: 12px 10px; }
+            .character-block { padding: 15px; }
+            .p-text { font-size: 15px; }
+            .quote-footer { font-size: 20px; padding: 30px 20px; margin-top: 50px; }
+        }
+
+        @media (max-width: 500px) {
+            body { padding: 30px 12px; }
+            h1 { font-size: 28px; letter-spacing: 1px; }
+            .subtitle { font-size: 10px; letter-spacing: 2px; }
+            .intro-manifesto { padding: 20px; font-size: 15px; text-align: left; }
+            .monolith-header { padding: 20px; gap: 12px; }
+            .m-index { font-size: 20px; }
+            .m-title h2 { font-size: 18px; line-height: 1.3; letter-spacing: 0.5px; }
+            .monolith-content { padding: 0 20px; }
+            .sub-grid { gap: 20px; }
+            .p-text { font-size: 14px; text-align: left; }
+            .law-box { padding: 15px; }
+            .law-box h4 { font-size: 12px; }
+            .tablet-inscription { padding: 12px; font-size: 14px; margin: 15px 0; }
+            .principles-table { font-size: 12px; }
+            .principles-table th { padding: 10px 8px; font-size: 10px; }
+            .principles-table td { padding: 10px 8px; }
+            .character-block { padding: 12px; margin: 10px 0; }
+            .character-block em { font-size: 13px; }
+            .character-block p { font-size: 13px; }
+            .block-title { font-size: 11px; }
+            .quote-footer { font-size: 18px; padding: 25px 15px; }
         }
     </style>
 </head>
@@ -235,8 +291,8 @@
         </header>
 
         <div class="intro-manifesto">
-            <p>"A part of all I earn is mine to keep." This is the foundational rule that made a poor scribe the wealthiest man in Babylon. First published in 1926, George S. Clason's timeless classic uses parables set 4,000 years ago to reveal financial principles as unchanging as the laws of gravity[citation:1][citation:6]. The book has sold over 2 million copies and remains a cornerstone of personal financial advice[citation:7].</p>
-            <p>At its height, Babylon was the wealthiest city in the world because its citizens understood money[citation:1]. This is the wisdom of Arkad, shared to cure a lean purse and teach gold to labor diligently for its owner[citation:6][citation:10].</p>
+            <p>"A part of all I earn is mine to keep." This is the foundational rule that made a poor scribe the wealthiest man in Babylon. First published in 1926, George S. Clason's timeless classic uses parables set 4,000 years ago to reveal financial principles as unchanging as the laws of gravity. The book has sold over 2 million copies and remains a cornerstone of personal financial advice.</p>
+            <p>At its height, Babylon was the wealthiest city in the world because its citizens understood money. This is the wisdom of Arkad, shared to cure a lean purse and teach gold to labor diligently for its owner.</p>
         </div>
 
         <div class="monolith-layout">
@@ -248,9 +304,9 @@
                 </div>
                 <div class="monolith-content">
                     <div class="tablet-inscription">
-                        "Wealth, like a tree, grows from a tiny seed. The first copper you save is the seed from which your tree of wealth shall grow."[citation:3]
+                        "Wealth, like a tree, grows from a tiny seed. The first copper you save is the seed from which your tree of wealth shall grow."
                     </div>
-                    <p class="p-text">Arkad's seven cures are a sequential blueprint for building wealth from any starting point. They begin with the discipline of saving and culminate in the wisdom to protect and grow your fortune[citation:6].</p>
+                    <p class="p-text">Arkad's seven cures are a sequential blueprint for building wealth from any starting point. They begin with the discipline of saving and culminate in the wisdom to protect and grow your fortune.</p>
                     
                     <table class="principles-table">
                         <thead>
@@ -263,45 +319,45 @@
                         <tbody>
                             <tr>
                                 <td><strong>1. Start thy purse to fattening</strong></td>
-                                <td>"For every ten coins thou placest within thy purse, take out for use but nine."[citation:6] Save at least one-tenth of all you earn before you pay any other expense.</td>
-                                <td><strong>Pay Yourself First.</strong> Automate a transfer of 10% of every paycheck to savings or investment before budgeting for anything else. This is the non-negotiable seed of all wealth[citation:2][citation:10].</td>
+                                <td>"For every ten coins thou placest within thy purse, take out for use but nine." Save at least one-tenth of all you earn before you pay any other expense.</td>
+                                <td><strong>Pay Yourself First.</strong> Automate a transfer of 10% of every paycheck to savings or investment before budgeting for anything else. This is the non-negotiable seed of all wealth.</td>
                             </tr>
                             <tr>
                                 <td><strong>2. Control thy expenditures</strong></td>
-                                <td>"Confuse not the necessary expenses with thy desires."[citation:6] Your "necessary" expenses will always grow to match your income unless you consciously decide otherwise[citation:1].</td>
-                                <td><strong>Budget with Intent.</strong> Create a plan for your money that prioritizes goals and fixed costs. Spend freely on what you love, but cut ruthlessly on what doesn't matter. Avoid lifestyle inflation[citation:2][citation:8].</td>
+                                <td>"Confuse not the necessary expenses with thy desires." Your "necessary" expenses will always grow to match your income unless you consciously decide otherwise.</td>
+                                <td><strong>Budget with Intent.</strong> Create a plan for your money that prioritizes goals and fixed costs. Spend freely on what you love, but cut ruthlessly on what doesn't matter. Avoid lifestyle inflation.</td>
                             </tr>
                             <tr>
                                 <td><strong>3. Make thy gold multiply</strong></td>
-                                <td>"Put each coin to laboring that it may reproduce its kind... learn to make your treasure work for you. Make it your slave."[citation:1][citation:6]</td>
-                                <td><strong>Invest Wisely.</strong> Money sitting idle loses value. Seek profitable employment for your savings through investments that generate compound returns. Every dollar invested is a worker for you[citation:3][citation:10].</td>
+                                <td>"Put each coin to laboring that it may reproduce its kind... learn to make your treasure work for you. Make it your slave."</td>
+                                <td><strong>Invest Wisely.</strong> Money sitting idle loses value. Seek profitable employment for your savings through investments that generate compound returns. Every dollar invested is a worker for you.</td>
                             </tr>
                             <tr>
                                 <td><strong>4. Guard thy treasures from loss</strong></td>
-                                <td>"The penalty of risk is probable loss. Study carefully, before parting with thy treasure."[citation:6] Do not be intrigued by impossible earnings or romantic get-rich-quick schemes[citation:1].</td>
-                                <td><strong>Protect Your Principal.</strong> Seek safety first. Consult experts, understand the risks, and diversify. If an investment sounds too good to be true, it likely is[citation:3][citation:8].</td>
+                                <td>"The penalty of risk is probable loss. Study carefully, before parting with thy treasure." Do not be intrigued by impossible earnings or romantic get-rich-quick schemes.</td>
+                                <td><strong>Protect Your Principal.</strong> Seek safety first. Consult experts, understand the risks, and diversify. If an investment sounds too good to be true, it likely is.</td>
                             </tr>
                             <tr>
                                 <td><strong>5. Make of thy dwelling a profitable investment</strong></td>
-                                <td>"Own thy own home."[citation:1] "I recommend that every man own the roof that sheltereth him and his."[citation:6]</td>
-                                <td><strong>Build Equity, Don't Just Pay Rent.</strong> Transition from paying a landlord to building ownership in an appreciating asset. This establishes a foundation of secure, tangible wealth[citation:8][citation:10].</td>
+                                <td>"Own thy own home." "I recommend that every man own the roof that sheltereth him and his."</td>
+                                <td><strong>Build Equity, Don't Just Pay Rent.</strong> Transition from paying a landlord to building ownership in an appreciating asset. This establishes a foundation of secure, tangible wealth.</td>
                             </tr>
                             <tr>
                                 <td><strong>6. Insure a future income</strong></td>
-                                <td>Provide in advance for the needs of your growing age and the protection of your family[citation:6]. Ensure a continuous stream of gold for when you are no longer young[citation:1].</td>
-                                <td><strong>Plan for Retirement & Protection.</strong> Utilize retirement accounts (RSPs, pensions) and insurance to create a future income stream that is independent of your labor. Protect your family's future[citation:7][citation:8].</td>
+                                <td>Provide in advance for the needs of your growing age and the protection of your family. Ensure a continuous stream of gold for when you are no longer young.</td>
+                                <td><strong>Plan for Retirement & Protection.</strong> Utilize retirement accounts (RSPs, pensions) and insurance to create a future income stream that is independent of your labor. Protect your family's future.</td>
                             </tr>
                             <tr>
                                 <td><strong>7. Increase thy ability to earn</strong></td>
-                                <td>"Cultivate thy own powers, to study and become wiser, to become more skillful."[citation:1] "The more of wisdom we know, the more we may earn."[citation:6]</td>
-                                <td><strong>Invest in Yourself.</strong> The highest-return investment is in your own skills and knowledge. As you perfect your craft and wisdom, your capacity to earn—and to invest wisely—increases exponentially[citation:8][citation:10].</td>
+                                <td>"Cultivate thy own powers, to study and become wiser, to become more skillful." "The more of wisdom we know, the more we may earn."</td>
+                                <td><strong>Invest in Yourself.</strong> The highest-return investment is in your own skills and knowledge. As you perfect your craft and wisdom, your capacity to earn—and to invest wisely—increases exponentially.</td>
                             </tr>
                         </tbody>
                     </table>
 
                     <div class="law-box">
                         <h4>The Core Philosophy</h4>
-                        <p class="p-text">"A man's wealth is not in the coins he carries in his purse; it is in the income he buildeth, the golden stream that continually floweth into his purse and keepeth it always bulging."[citation:3] The cures are not about hoarding coins, but about systematically building and protecting a lasting, productive estate. They crush the spirit of procrastination, for "no man can arrive at the fullest measure of success until he does so."[citation:10]</p>
+                        <p class="p-text">"A man's wealth is not in the coins he carries in his purse; it is in the income he buildeth, the golden stream that continually floweth into his purse and keepeth it always bulging." The cures are not about hoarding coins, but about systematically building and protecting a lasting, productive estate. They crush the spirit of procrastination, for "no man can arrive at the fullest measure of success until he does so."</p>
                     </div>
                 </div>
             </div>
@@ -315,36 +371,36 @@
                     <div class="sub-grid">
                         <div>
                             <span class="block-title">The Laws Themselves</span>
-                            <p class="p-text">Given by Arkad to his son, these are the immutable rules that govern money itself. To command gold, one must first obey its laws[citation:6].</p>
+                            <p class="p-text">Given by Arkad to his son, these are the immutable rules that govern money itself. To command gold, one must first obey its laws.</p>
                             <div class="character-block">
                                 <strong>1. The First Law</strong>
-                                <em>"Gold cometh gladly and in increasing quantity to any man who will put by not less than one-tenth of his earnings to create an estate for his future and that of his family."[citation:6]</em>
+                                <em>"Gold cometh gladly and in increasing quantity to any man who will put by not less than one-tenth of his earnings to create an estate for his future and that of his family."</em>
                                 <p>Gold rewards the simple, consistent act of saving first.</p>
                             </div>
                             <div class="character-block">
                                 <strong>2. The Second Law</strong>
-                                <em>"Gold laboreth diligently and contentedly for the wise owner who finds for it profitable employment, multiplying even as the flocks of the field."[citation:6]</em>
+                                <em>"Gold laboreth diligently and contentedly for the wise owner who finds for it profitable employment, multiplying even as the flocks of the field."</em>
                                 <p>Gold is a willing worker. It multiplies through wise investment and compound growth.</p>
                             </div>
                             <div class="character-block">
                                 <strong>3. The Third Law</strong>
-                                <em>"Gold clingeth to the protection of the cautious owner who invests it under the advice of men wise in its handling."[citation:6]</em>
-                                <p>Safety first. Seek counsel from those with proven success, not from every passerby with an opinion[citation:1].</p>
+                                <em>"Gold clingeth to the protection of the cautious owner who invests it under the advice of men wise in its handling."</em>
+                                <p>Safety first. Seek counsel from those with proven success, not from every passerby with an opinion.</p>
                             </div>
                         </div>
                         <div>
                             <span class="block-title">The Laws in Practice</span>
                             <div class="character-block">
                                 <strong>4. The Fourth Law</strong>
-                                <em>"Gold slippeth away from the man who invests it in businesses or purposes with which he is not familiar or which are not approved by those skilled in its keep."[citation:6]</em>
-                                <p>Invest in what you understand. Avoid ventures where you cannot judge the risk. This is the law against following uninformed "tips"[citation:1].</p>
+                                <em>"Gold slippeth away from the man who invests it in businesses or purposes with which he is not familiar or which are not approved by those skilled in its keep."</em>
+                                <p>Invest in what you understand. Avoid ventures where you cannot judge the risk. This is the law against following uninformed "tips".</p>
                             </div>
                             <div class="character-block">
                                 <strong>5. The Fifth Law</strong>
-                                <em>"Gold flees the man who would force it to impossible earnings or who followeth the alluring advice of tricksters and schemers..."[citation:6]</em>
-                                <p>Greed is the great destroyer of wealth. Chasing unrealistic returns or falling for scams will empty your purse faster than anything[citation:1].</p>
+                                <em>"Gold flees the man who would force it to impossible earnings or who followeth the alluring advice of tricksters and schemers..."</em>
+                                <p>Greed is the great destroyer of wealth. Chasing unrealistic returns or falling for scams will empty your purse faster than anything.</p>
                             </div>
-                            <p class="p-text" style="margin-top: 20px;"><strong>The Summation:</strong> "Without wisdom, gold is quickly lost by those who have it, but with wisdom, gold can be secured by those who have it not."[citation:6] These laws teach that the secure accumulation of wealth is a function of wisdom, patience, and disciplined action—not of luck or reckless speculation.</p>
+                            <p class="p-text" style="margin-top: 20px;"><strong>The Summation:</strong> "Without wisdom, gold is quickly lost by those who have it, but with wisdom, gold can be secured by those who have it not." These laws teach that the secure accumulation of wealth is a function of wisdom, patience, and disciplined action—not of luck or reckless speculation.</p>
                         </div>
                     </div>
                 </div>
@@ -359,37 +415,37 @@
                     <div class="sub-grid">
                         <div>
                             <span class="block-title">The Goddess of Luck & The Prepared Mind</span>
-                            <p class="p-text">"Good luck can be enticed by accepting opportunity."[citation:3] The Babylonians understood that luck is not random. <em>"Opportunity is a haughty goddess who wastes no time with those who are unprepared."[citation:3][citation:10]</em></p>
-                            <p class="p-text">True luck is the marriage of <strong>preparation</strong> (saving, gaining wisdom) and <strong>action</strong> (seizing the right moment). It favors those who work diligently and put themselves in the path of opportunity, not those who wait idly at the gaming tables[citation:9].</p>
+                            <p class="p-text">"Good luck can be enticed by accepting opportunity." The Babylonians understood that luck is not random. <em>"Opportunity is a haughty goddess who wastes no time with those who are unprepared."</em></p>
+                            <p class="p-text">True luck is the marriage of <strong>preparation</strong> (saving, gaining wisdom) and <strong>action</strong> (seizing the right moment). It favors those who work diligently and put themselves in the path of opportunity, not those who wait idly at the gaming tables.</p>
                             
                             <span class="block-title" style="margin-top: 30px;">Key Characters of Babylon</span>
                             <div class="character-block">
-                                <strong>Arkad</strong>: The titular richest man. Once a poor scribe, he learned the laws of gold from the wise money lender Algamish and systematically applied them to build his fortune, which he now generously shares[citation:7].
+                                <strong>Arkad</strong>: The titular richest man. Once a poor scribe, he learned the laws of gold from the wise money lender Algamish and systematically applied them to build his fortune, which he now generously shares.
                             </div>
                             <div class="character-block">
-                                <strong>Bansir & Kobbi</strong>: A chariot builder and a musician. Their frustration with their empty purses drives them to seek out Arkad, initiating the book's core teachings[citation:7].
+                                <strong>Bansir & Kobbi</strong>: A chariot builder and a musician. Their frustration with their empty purses drives them to seek out Arkad, initiating the book's core teachings.
                             </div>
                             <div class="character-block">
-                                <strong>Sharru Nada</strong>: The "Camel Trader of Babylon." His parable teaches that <em>"Where the determination is, the way can be found"</em>[citation:6], emphasizing that hard work and perseverance are the base upon which wealth is built[citation:1][citation:9].
+                                <strong>Sharru Nada</strong>: The "Camel Trader of Babylon." His parable teaches that <em>"Where the determination is, the way can be found"</em>, emphasizing that hard work and perseverance are the base upon which wealth is built.
                             </div>
                         </div>
                         <div>
                             <span class="block-title">Other Essential Parables</span>
                             <div class="character-block">
                                 <strong>The Gold Lender of Babylon</strong>
-                                <em>"Better a little caution than a great regret."[citation:6]</em> The parable of Mathon the gold lender teaches prudent lending: always have a guarantee of repayment, and understand that "humans in the throes of great emotions are not safe risks"[citation:1][citation:3].
+                                <em>"Better a little caution than a great regret."</em> The parable of Mathon the gold lender teaches prudent lending: always have a guarantee of repayment, and understand that "humans in the throes of great emotions are not safe risks".
                             </div>
                             <div class="character-block">
                                 <strong>The Walls of Babylon</strong>
-                                <em>"We cannot afford to be without adequate protection."[citation:6]</em> Just as the great walls protected the city's wealth, insurance and safeguards protect your personal fortune from life's unforeseen sieges[citation:7].
+                                <em>"We cannot afford to be without adequate protection."</em> Just as the great walls protected the city's wealth, insurance and safeguards protect your personal fortune from life's unforeseen sieges.
                             </div>
                             <div class="character-block">
                                 <strong>Getting Out of Debt</strong>
-                                A crucial, actionable plan: Live on 70% of your income. Use 20% to repay debts faithfully, and still save 10%. <em>"No man respects himself if he does not repay his debts."</em> With discipline, debts disappear surprisingly fast[citation:1].
+                                A crucial, actionable plan: Live on 70% of your income. Use 20% to repay debts faithfully, and still save 10%. <em>"No man respects himself if he does not repay his debts."</em> With discipline, debts disappear surprisingly fast.
                             </div>
 
                             <span class="block-title" style="margin-top: 30px;">A Final, Powerful Truth</span>
-                            <p class="p-text">The book distinguishes between the mindset of the free and the enslaved: <em>"The soul of a free man looks at the world as a series of problems to be solved. Meanwhile, the soul of a slave whines, 'What can I do?'"</em>[citation:1]</p>
+                            <p class="p-text">The book distinguishes between the mindset of the free and the enslaved: <em>"The soul of a free man looks at the world as a series of problems to be solved. Meanwhile, the soul of a slave whines, 'What can I do?'"</em></p>
                             <p class="p-text">Financial freedom begins with adopting the proactive, determined soul of a free man or woman, taking responsibility, and applying these timeless laws.</p>
                         </div>
                     </div>
@@ -399,7 +455,7 @@
         </div>
 
         <footer class="quote-footer">
-            "Where the determination is, a way can be found."[citation:6]
+            "Where the determination is, a way can be found."
         </footer>
     </div>
 
@@ -424,4 +480,5 @@
         });
     </script>
 </body>
+
 </html>
