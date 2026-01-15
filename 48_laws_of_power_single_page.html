@@ -17,51 +17,123 @@
 
 body {
     margin: 0;
-    font-family: "Georgia", "Times New Roman", serif;
-    color: #1a1a1a;
-    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    font-family: "Cinzel", "Palatino Linotype", "Book Antiqua", serif;
+    color: #e8e8e8;
+    background: #000000;
     min-height: 100vh;
-    padding: 40px 20px;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(178, 34, 34, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(139, 0, 0, 0.12) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.blood-vein {
+    position: fixed;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(139, 0, 0, 0.3), transparent);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.vein-1 { left: 15%; height: 100vh; top: 0; }
+.vein-2 { left: 45%; height: 80vh; top: 10vh; }
+.vein-3 { left: 75%; height: 100vh; top: 0; }
+.vein-4 { right: 20%; height: 90vh; top: 5vh; }
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 80px 40px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
 }
 
 h1 {
-    text-align: center;
-    font-size: 48px;
-    letter-spacing: 3px;
-    margin: 0 0 15px 0;
+    font-size: 72px;
+    letter-spacing: 8px;
+    margin: 0 0 20px 0;
     text-transform: uppercase;
-    background: linear-gradient(135deg, #d4af37, #f4e5b8, #d4af37);
+    background: linear-gradient(135deg, #8b0000, #dc143c, #8b0000);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-weight: bold;
-    text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+    font-weight: 900;
+    text-shadow: 0 0 80px rgba(220, 20, 60, 0.4);
+    position: relative;
+    animation: bloodPulse 4s ease-in-out infinite;
+}
+
+@keyframes bloodPulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #8b0000, transparent);
 }
 
 .subtitle {
-    text-align: center;
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 50px;
+    font-size: 13px;
+    color: #999;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-family: "Georgia", serif;
+    margin-top: 25px;
     font-style: italic;
-    letter-spacing: 2px;
+}
+
+.warning {
+    background: rgba(139, 0, 0, 0.1);
+    border: 1px solid rgba(139, 0, 0, 0.3);
+    border-left: 4px solid #8b0000;
+    padding: 20px 30px;
+    margin: 40px auto;
+    max-width: 800px;
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.8;
+    font-style: italic;
+    backdrop-filter: blur(10px);
 }
 
 .laws {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-    max-width: 1400px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 25px;
 }
 
 .law {
-    padding: 25px;
-    background: rgba(30, 30, 30, 0.7);
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(20, 0, 0, 0.8), rgba(10, 0, 0, 0.9));
+    border: 1px solid rgba(139, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -71,84 +143,119 @@ h1 {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.law:hover {
-    transform: translateY(-5px);
-    border-color: rgba(212, 175, 55, 0.6);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+    background: linear-gradient(90deg, transparent, rgba(139, 0, 0, 0.1), transparent);
+    transition: left 0.6s ease;
 }
 
 .law:hover::before {
-    opacity: 1;
+    left: 100%;
+}
+
+.law::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #8b0000, #dc143c);
+    transition: width 0.4s ease;
+}
+
+.law:hover::after {
+    width: 100%;
+}
+
+.law:hover {
+    transform: translateY(-8px);
+    border-color: rgba(139, 0, 0, 0.6);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.8),
+        0 0 60px rgba(139, 0, 0, 0.2),
+        inset 0 0 80px rgba(139, 0, 0, 0.05);
+    background: linear-gradient(135deg, rgba(30, 0, 0, 0.9), rgba(15, 0, 0, 0.95));
 }
 
 .law.active {
-    border-color: rgba(212, 175, 55, 0.8);
-    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
-    background: rgba(35, 35, 35, 0.85);
+    border-color: #8b0000;
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.9),
+        0 0 80px rgba(139, 0, 0, 0.4),
+        inset 0 0 100px rgba(139, 0, 0, 0.1);
+    background: linear-gradient(135deg, rgba(40, 0, 0, 0.95), rgba(20, 0, 0, 1));
 }
 
 .law.active .law-description {
-    max-height: 300px;
+    max-height: 500px;
     opacity: 1;
-    padding-top: 20px;
-    margin-top: 20px;
+    padding-top: 25px;
+    margin-top: 25px;
 }
 
 .law-number {
     font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    margin-bottom: 10px;
-    color: #d4af37;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    color: #8b0000;
     text-transform: uppercase;
     position: relative;
     z-index: 1;
+    font-family: "Georgia", serif;
 }
 
 .law-title {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #e0e0e0;
-    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.4;
+    color: #f5f5f5;
+    font-weight: 700;
     position: relative;
     z-index: 1;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 16px;
 }
 
 .law-description {
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    transition: all 0.4s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    border-top: 1px solid rgba(139, 0, 0, 0.2);
 }
 
 .law-description p {
-    color: #aaa;
+    color: #bbb;
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.8;
     margin: 0;
     font-style: italic;
+    font-family: "Georgia", serif;
+    text-align: justify;
 }
 
 .law-description::before {
-    content: '✦';
+    content: '◆';
     position: absolute;
     top: -10px;
     left: 50%;
     transform: translateX(-50%);
-    color: #d4af37;
-    background: #1a1a1a;
-    padding: 0 10px;
-    font-size: 12px;
+    color: #8b0000;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 0 12px;
+    font-size: 10px;
+}
+
+.crown-divider {
+    text-align: center;
+    margin: 60px 0;
+    font-size: 24px;
+    color: #8b0000;
+    opacity: 0.3;
 }
 
 @media print {
@@ -160,458 +267,481 @@ h1 {
     .law.active .law-description {
         max-height: none;
         opacity: 1;
-        padding-top: 20px;
-        margin-top: 20px;
+        padding-top: 25px;
+        margin-top: 25px;
     }
 }
 
-@media (max-width: 768px) {
-    h1 {
-        font-size: 32px;
-    }
-    
-    .laws {
-        grid-template-columns: 1fr;
-    }
+@media (max-width: 900px) {
+    .container { padding: 50px 25px; }
+    h1 { font-size: 48px; letter-spacing: 4px; }
+    .laws { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .law { padding: 25px; }
+    .law-title { font-size: 15px; }
+}
+
+@media (max-width: 500px) {
+    .container { padding: 40px 15px; }
+    h1 { font-size: 36px; letter-spacing: 2px; }
+    .subtitle { font-size: 11px; letter-spacing: 2px; }
+    .warning { padding: 15px 20px; font-size: 13px; }
+    .laws { grid-template-columns: 1fr; gap: 15px; }
+    .law { padding: 20px; }
+    .law-title { font-size: 14px; }
+    .law-description p { font-size: 13px; text-align: left; }
+    .blood-vein { display: none; }
 }
 </style>
 </head>
 
 <body>
 
-<h1>The 48 Laws of Power</h1>
-<div class="subtitle">A concise reference edition - Click on any law to reveal its description</div>
+<div class="blood-vein vein-1"></div>
+<div class="blood-vein vein-2"></div>
+<div class="blood-vein vein-3"></div>
+<div class="blood-vein vein-4"></div>
 
-<div class="laws">
-    <!-- Law 1 -->
-    <div class="law">
-        <div class="law-number">Law 1</div>
-        <div class="law-title">Never Outshine the Master</div>
-        <div class="law-description">
-            <p>Always make those above you feel comfortably superior. In your desire to please or impress them, do not go too far in displaying your talents or you might accomplish the opposite—inspire fear and insecurity.</p>
-        </div>
+<div class="container">
+    <header>
+        <h1>The 48 Laws of Power</h1>
+        <div class="subtitle">Amoral • Ruthless • Indispensable</div>
+    </header>
+
+    <div class="warning">
+        ⚠ "Power is amoral. It is neither good nor evil. It simply is. These laws apply to all human interactions—whether you seek power or seek to protect yourself from those who do. Ignore them at your own peril."
     </div>
-    
-    <!-- Law 2 -->
-    <div class="law">
-        <div class="law-number">Law 2</div>
-        <div class="law-title">Never Put Too Much Trust in Friends, Learn How to Use Enemies</div>
-        <div class="law-description">
-            <p>Be wary of friends—they will betray you more quickly, for they are easily aroused to envy. They also become spoiled and tyrannical. But hire a former enemy and he will be more loyal than a friend, because he has more to prove.</p>
+
+    <div class="laws">
+        <!-- Law 1 -->
+        <div class="law">
+            <div class="law-number">Law 1</div>
+            <div class="law-title">Never Outshine the Master</div>
+            <div class="law-description">
+                <p>Always make those above you feel comfortably superior. In your desire to please or impress them, do not go too far in displaying your talents or you might accomplish the opposite—inspire fear and insecurity.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 3 -->
-    <div class="law">
-        <div class="law-number">Law 3</div>
-        <div class="law-title">Conceal Your Intentions</div>
-        <div class="law-description">
-            <p>Keep people off-balance and in the dark by never revealing the purpose behind your actions. If they have no clue what you are up to, they cannot prepare a defense. Guide them far enough down the wrong path, envelop them in enough smoke, and by the time they realize your intentions, it will be too late.</p>
+        
+        <!-- Law 2 -->
+        <div class="law">
+            <div class="law-number">Law 2</div>
+            <div class="law-title">Never Put Too Much Trust in Friends, Learn How to Use Enemies</div>
+            <div class="law-description">
+                <p>Be wary of friends—they will betray you more quickly, for they are easily aroused to envy. They also become spoiled and tyrannical. But hire a former enemy and he will be more loyal than a friend, because he has more to prove.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 4 -->
-    <div class="law">
-        <div class="law-number">Law 4</div>
-        <div class="law-title">Always Say Less Than Necessary</div>
-        <div class="law-description">
-            <p>When you are trying to impress people with words, the more you say, the more common you appear, and the less in control. Even if you are saying something banal, it will seem original if you make it vague, open-ended, and sphinxlike.</p>
+        
+        <!-- Law 3 -->
+        <div class="law">
+            <div class="law-number">Law 3</div>
+            <div class="law-title">Conceal Your Intentions</div>
+            <div class="law-description">
+                <p>Keep people off-balance and in the dark by never revealing the purpose behind your actions. If they have no clue what you are up to, they cannot prepare a defense. Guide them far enough down the wrong path, envelop them in enough smoke, and by the time they realize your intentions, it will be too late.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 5 -->
-    <div class="law">
-        <div class="law-number">Law 5</div>
-        <div class="law-title">So Much Depends on Reputation – Guard It with Your Life</div>
-        <div class="law-description">
-            <p>Reputation is the cornerstone of power. Through reputation alone you can intimidate and win; once it slips, however, you are vulnerable, and will be attacked on all sides. Make your reputation unassailable.</p>
+        
+        <!-- Law 4 -->
+        <div class="law">
+            <div class="law-number">Law 4</div>
+            <div class="law-title">Always Say Less Than Necessary</div>
+            <div class="law-description">
+                <p>When you are trying to impress people with words, the more you say, the more common you appear, and the less in control. Even if you are saying something banal, it will seem original if you make it vague, open-ended, and sphinxlike.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 6 -->
-    <div class="law">
-        <div class="law-number">Law 6</div>
-        <div class="law-title">Court Attention at All Costs</div>
-        <div class="law-description">
-            <p>Everything is judged by its appearance; what is unseen counts for nothing. Never let yourself get lost in the crowd, then, or buried in oblivion. Stand out. Be conspicuous, at all cost. Make yourself a magnet of attention by appearing larger, more colorful, more mysterious than the bland and timid masses.</p>
+        
+        <!-- Law 5 -->
+        <div class="law">
+            <div class="law-number">Law 5</div>
+            <div class="law-title">So Much Depends on Reputation – Guard It with Your Life</div>
+            <div class="law-description">
+                <p>Reputation is the cornerstone of power. Through reputation alone you can intimidate and win; once it slips, however, you are vulnerable, and will be attacked on all sides. Make your reputation unassailable.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 7 -->
-    <div class="law">
-        <div class="law-number">Law 7</div>
-        <div class="law-title">Get Others to Do the Work for You, but Always Take the Credit</div>
-        <div class="law-description">
-            <p>Use the wisdom, knowledge, and legwork of other people to further your own cause. Not only will such assistance save you valuable time and energy, it will give you a godlike aura of efficiency and speed.</p>
+        
+        <!-- Law 6 -->
+        <div class="law">
+            <div class="law-number">Law 6</div>
+            <div class="law-title">Court Attention at All Costs</div>
+            <div class="law-description">
+                <p>Everything is judged by its appearance; what is unseen counts for nothing. Never let yourself get lost in the crowd, then, or buried in oblivion. Stand out. Be conspicuous, at all cost. Make yourself a magnet of attention by appearing larger, more colorful, more mysterious than the bland and timid masses.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 8 -->
-    <div class="law">
-        <div class="law-number">Law 8</div>
-        <div class="law-title">Make Other People Come to You – Use Bait if Necessary</div>
-        <div class="law-description">
-            <p>When you force the other person to act, you are the one in control. It is always better to make your opponent come to you, abandoning his own plans in the process. Lure him with fabulous gains—then attack. You hold the cards.</p>
+        
+        <!-- Law 7 -->
+        <div class="law">
+            <div class="law-number">Law 7</div>
+            <div class="law-title">Get Others to Do the Work for You, but Always Take the Credit</div>
+            <div class="law-description">
+                <p>Use the wisdom, knowledge, and legwork of other people to further your own cause. Not only will such assistance save you valuable time and energy, it will give you a godlike aura of efficiency and speed.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 9 -->
-    <div class="law">
-        <div class="law-number">Law 9</div>
-        <div class="law-title">Win Through Your Actions, Never Through Argument</div>
-        <div class="law-description">
-            <p>Any momentary triumph you think you have gained through argument is really a Pyrrhic victory: The resentment and ill will you stir up is stronger and lasts longer than any momentary change of opinion. It is much more powerful to get others to agree with you through your actions, without saying a word.</p>
+        
+        <!-- Law 8 -->
+        <div class="law">
+            <div class="law-number">Law 8</div>
+            <div class="law-title">Make Other People Come to You – Use Bait if Necessary</div>
+            <div class="law-description">
+                <p>When you force the other person to act, you are the one in control. It is always better to make your opponent come to you, abandoning his own plans in the process. Lure him with fabulous gains—then attack. You hold the cards.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 10 -->
-    <div class="law">
-        <div class="law-number">Law 10</div>
-        <div class="law-title">Infection: Avoid the Unhappy and Unlucky</div>
-        <div class="law-description">
-            <p>You can die from someone else's misery—emotional states are as infectious as diseases. You may feel you are helping the drowning man but you are only precipitating your own disaster. The unfortunate sometimes draw misfortune on themselves; they will also draw it on you.</p>
+        
+        <!-- Law 9 -->
+        <div class="law">
+            <div class="law-number">Law 9</div>
+            <div class="law-title">Win Through Your Actions, Never Through Argument</div>
+            <div class="law-description">
+                <p>Any momentary triumph you think you have gained through argument is really a Pyrrhic victory: The resentment and ill will you stir up is stronger and lasts longer than any momentary change of opinion. It is much more powerful to get others to agree with you through your actions, without saying a word.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 11 -->
-    <div class="law">
-        <div class="law-number">Law 11</div>
-        <div class="law-title">Learn to Keep People Dependent on You</div>
-        <div class="law-description">
-            <p>To maintain your independence you must always be needed and wanted. The more you are relied on, the more freedom you have. Make people depend on you for their happiness and prosperity and you have nothing to fear. Never teach them enough so that they can do without you.</p>
+        
+        <!-- Law 10 -->
+        <div class="law">
+            <div class="law-number">Law 10</div>
+            <div class="law-title">Infection: Avoid the Unhappy and Unlucky</div>
+            <div class="law-description">
+                <p>You can die from someone else's misery—emotional states are as infectious as diseases. You may feel you are helping the drowning man but you are only precipitating your own disaster. The unfortunate sometimes draw misfortune on themselves; they will also draw it on you.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 12 -->
-    <div class="law">
-        <div class="law-number">Law 12</div>
-        <div class="law-title">Use Selective Honesty and Generosity to Disarm Your Victim</div>
-        <div class="law-description">
-            <p>One sincere and honest move will cover over dozens of dishonest ones. Open-hearted gestures of honesty and generosity bring down the guard of even the most suspicious people. Once your selective honesty opens a hole in their armor, you can deceive and manipulate them at will.</p>
+        
+        <!-- Law 11 -->
+        <div class="law">
+            <div class="law-number">Law 11</div>
+            <div class="law-title">Learn to Keep People Dependent on You</div>
+            <div class="law-description">
+                <p>To maintain your independence you must always be needed and wanted. The more you are relied on, the more freedom you have. Make people depend on you for their happiness and prosperity and you have nothing to fear. Never teach them enough so that they can do without you.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 13 -->
-    <div class="law">
-        <div class="law-number">Law 13</div>
-        <div class="law-title">When Asking for Help, Appeal to People's Self-Interest, Never to Their Mercy or Gratitude</div>
-        <div class="law-description">
-            <p>If you need to turn to an ally for help, do not bother to remind him of your past assistance and good deeds. He will find a way to ignore you. Instead, uncover something in your request, or in your alliance with him, that will benefit him, and emphasize it out of all proportion.</p>
+        
+        <!-- Law 12 -->
+        <div class="law">
+            <div class="law-number">Law 12</div>
+            <div class="law-title">Use Selective Honesty and Generosity to Disarm Your Victim</div>
+            <div class="law-description">
+                <p>One sincere and honest move will cover over dozens of dishonest ones. Open-hearted gestures of honesty and generosity bring down the guard of even the most suspicious people. Once your selective honesty opens a hole in their armor, you can deceive and manipulate them at will.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 14 -->
-    <div class="law">
-        <div class="law-number">Law 14</div>
-        <div class="law-title">Pose as a Friend, Work as a Spy</div>
-        <div class="law-description">
-            <p>Knowing about your rival is critical. Use spies to gather valuable information that will keep you a step ahead. Better still: Play the spy yourself. In polite social encounters, learn to probe. Ask indirect questions to get people to reveal their weaknesses and intentions.</p>
+        
+        <!-- Law 13 -->
+        <div class="law">
+            <div class="law-number">Law 13</div>
+            <div class="law-title">When Asking for Help, Appeal to People's Self-Interest, Never to Their Mercy or Gratitude</div>
+            <div class="law-description">
+                <p>If you need to turn to an ally for help, do not bother to remind him of your past assistance and good deeds. He will find a way to ignore you. Instead, uncover something in your request, or in your alliance with him, that will benefit him, and emphasize it out of all proportion.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 15 -->
-    <div class="law">
-        <div class="law-number">Law 15</div>
-        <div class="law-title">Crush Your Enemy Totally</div>
-        <div class="law-description">
-            <p>All great leaders since Moses have known that a feared enemy must be crushed completely. (Sometimes they have learned this the hard way.) If one ember is left alight, no matter how dimly it smolders, a fire will eventually break out. More is lost through stopping halfway than through total annihilation.</p>
+        
+        <!-- Law 14 -->
+        <div class="law">
+            <div class="law-number">Law 14</div>
+            <div class="law-title">Pose as a Friend, Work as a Spy</div>
+            <div class="law-description">
+                <p>Knowing about your rival is critical. Use spies to gather valuable information that will keep you a step ahead. Better still: Play the spy yourself. In polite social encounters, learn to probe. Ask indirect questions to get people to reveal their weaknesses and intentions.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 16 -->
-    <div class="law">
-        <div class="law-number">Law 16</div>
-        <div class="law-title">Use Absence to Increase Respect and Honor</div>
-        <div class="law-description">
-            <p>The more you are seen and heard from, the more common you appear. If you are already established in a group, temporary withdrawal from it will make you more talked about, even more admired. You must learn when to leave. Create value through scarcity.</p>
+        
+        <!-- Law 15 -->
+        <div class="law">
+            <div class="law-number">Law 15</div>
+            <div class="law-title">Crush Your Enemy Totally</div>
+            <div class="law-description">
+                <p>All great leaders since Moses have known that a feared enemy must be crushed completely. (Sometimes they have learned this the hard way.) If one ember is left alight, no matter how dimly it smolders, a fire will eventually break out. More is lost through stopping halfway than through total annihilation.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 17 -->
-    <div class="law">
-        <div class="law-number">Law 17</div>
-        <div class="law-title">Keep Others in Suspended Terror: Cultivate an Air of Unpredictability</div>
-        <div class="law-description">
-            <p>Humans are creatures of habit with an insatiable need to see familiarity in other people's actions. Your predictability gives them a sense of control. Turn the tables: Be deliberately unpredictable. Behavior that seems to have no consistency or purpose will keep them off-balance.</p>
+        
+        <!-- Law 16 -->
+        <div class="law">
+            <div class="law-number">Law 16</div>
+            <div class="law-title">Use Absence to Increase Respect and Honor</div>
+            <div class="law-description">
+                <p>The more you are seen and heard from, the more common you appear. If you are already established in a group, temporary withdrawal from it will make you more talked about, even more admired. You must learn when to leave. Create value through scarcity.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 18 -->
-    <div class="law">
-        <div class="law-number">Law 18</div>
-        <div class="law-title">Do Not Build Fortresses to Protect Yourself – Isolation Is Dangerous</div>
-        <div class="law-description">
-            <p>The world is dangerous and enemies are everywhere—everyone has to protect themselves. A fortress seems the safest. But isolation exposes you to more dangers than it protects you from—it cuts you off from valuable information, it makes you conspicuous and an easy target.</p>
+        
+        <!-- Law 17 -->
+        <div class="law">
+            <div class="law-number">Law 17</div>
+            <div class="law-title">Keep Others in Suspended Terror: Cultivate an Air of Unpredictability</div>
+            <div class="law-description">
+                <p>Humans are creatures of habit with an insatiable need to see familiarity in other people's actions. Your predictability gives them a sense of control. Turn the tables: Be deliberately unpredictable. Behavior that seems to have no consistency or purpose will keep them off-balance.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 19 -->
-    <div class="law">
-        <div class="law-number">Law 19</div>
-        <div class="law-title">Know Who You're Dealing With – Do Not Offend the Wrong Person</div>
-        <div class="law-description">
-            <p>There are many different kinds of people in the world, and you can never assume that everyone will react to your strategies in the same way. Deceive or outmaneuver some people and they will spend the rest of their lives seeking revenge. Choose your victims and opponents carefully.</p>
+        
+        <!-- Law 18 -->
+        <div class="law">
+            <div class="law-number">Law 18</div>
+            <div class="law-title">Do Not Build Fortresses to Protect Yourself – Isolation Is Dangerous</div>
+            <div class="law-description">
+                <p>The world is dangerous and enemies are everywhere—everyone has to protect themselves. A fortress seems the safest. But isolation exposes you to more dangers than it protects you from—it cuts you off from valuable information, it makes you conspicuous and an easy target.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 20 -->
-    <div class="law">
-        <div class="law-number">Law 20</div>
-        <div class="law-title">Do Not Commit to Anyone</div>
-        <div class="law-description">
-            <p>It is the fool who always rushes to take sides. Do not commit to any side or cause but yourself. By maintaining your independence, you become the master of others—playing people against one another, making them pursue you.</p>
+        
+        <!-- Law 19 -->
+        <div class="law">
+            <div class="law-number">Law 19</div>
+            <div class="law-title">Know Who You're Dealing With – Do Not Offend the Wrong Person</div>
+            <div class="law-description">
+                <p>There are many different kinds of people in the world, and you can never assume that everyone will react to your strategies in the same way. Deceive or outmaneuver some people and they will spend the rest of their lives seeking revenge. Choose your victims and opponents carefully.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 21 -->
-    <div class="law">
-        <div class="law-number">Law 21</div>
-        <div class="law-title">Play a Sucker to Catch a Sucker – Seem Dumber Than Your Mark</div>
-        <div class="law-description">
-            <p>No one likes feeling stupider than the next person. The trick, then, is to make your victims feel smart—and not just smart, but smarter than you are. Once convinced of this, they will never suspect that you may have ulterior motives.</p>
+        
+        <!-- Law 20 -->
+        <div class="law">
+            <div class="law-number">Law 20</div>
+            <div class="law-title">Do Not Commit to Anyone</div>
+            <div class="law-description">
+                <p>It is the fool who always rushes to take sides. Do not commit to any side or cause but yourself. By maintaining your independence, you become the master of others—playing people against one another, making them pursue you.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 22 -->
-    <div class="law">
-        <div class="law-number">Law 22</div>
-        <div class="law-title">Use the Surrender Tactic: Transform Weakness into Power</div>
-        <div class="law-description">
-            <p>When you are weaker, never fight for honor's sake; choose surrender instead. Surrender gives you time to recover, time to torment and irritate your conqueror, time to wait for his power to wane. Do not give him the satisfaction of fighting and defeating you—surrender first.</p>
+        
+        <!-- Law 21 -->
+        <div class="law">
+            <div class="law-number">Law 21</div>
+            <div class="law-title">Play a Sucker to Catch a Sucker – Seem Dumber Than Your Mark</div>
+            <div class="law-description">
+                <p>No one likes feeling stupider than the next person. The trick, then, is to make your victims feel smart—and not just smart, but smarter than you are. Once convinced of this, they will never suspect that you may have ulterior motives.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 23 -->
-    <div class="law">
-        <div class="law-number">Law 23</div>
-        <div class="law-title">Concentrate Your Forces</div>
-        <div class="law-description">
-            <p>Conserve your forces and energies by keeping them concentrated at their strongest point. You gain more by finding a rich mine and mining it deeper, than by flitting from one shallow mine to another—intensity defeats extensity every time.</p>
+        
+        <!-- Law 22 -->
+        <div class="law">
+            <div class="law-number">Law 22</div>
+            <div class="law-title">Use the Surrender Tactic: Transform Weakness into Power</div>
+            <div class="law-description">
+                <p>When you are weaker, never fight for honor's sake; choose surrender instead. Surrender gives you time to recover, time to torment and irritate your conqueror, time to wait for his power to wane. Do not give him the satisfaction of fighting and defeating you—surrender first.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 24 -->
-    <div class="law">
-        <div class="law-number">Law 24</div>
-        <div class="law-title">Play the Perfect Courtier</div>
-        <div class="law-description">
-            <p>The perfect courtier thrives in a world where everything revolves around power and political dexterity. He has mastered the art of indirection; he flatters, yields to superiors, and asserts power over others in the most oblique and graceful manner.</p>
+        
+        <!-- Law 23 -->
+        <div class="law">
+            <div class="law-number">Law 23</div>
+            <div class="law-title">Concentrate Your Forces</div>
+            <div class="law-description">
+                <p>Conserve your forces and energies by keeping them concentrated at their strongest point. You gain more by finding a rich mine and mining it deeper, than by flitting from one shallow mine to another—intensity defeats extensity every time.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 25 -->
-    <div class="law">
-        <div class="law-number">Law 25</div>
-        <div class="law-title">Re-Create Yourself</div>
-        <div class="law-description">
-            <p>Do not accept the roles that society foists on you. Re-create yourself by forging a new identity, one that commands attention and never bores the audience. Be the master of your own image rather than letting others define it for you.</p>
+        
+        <!-- Law 24 -->
+        <div class="law">
+            <div class="law-number">Law 24</div>
+            <div class="law-title">Play the Perfect Courtier</div>
+            <div class="law-description">
+                <p>The perfect courtier thrives in a world where everything revolves around power and political dexterity. He has mastered the art of indirection; he flatters, yields to superiors, and asserts power over others in the most oblique and graceful manner.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 26 -->
-    <div class="law">
-        <div class="law-number">Law 26</div>
-        <div class="law-title">Keep Your Hands Clean</div>
-        <div class="law-description">
-            <p>You must seem a paragon of civility and efficiency: Your hands are never soiled by mistakes and nasty deeds. Maintain such a spotless appearance by using others as scapegoats and cat's-paws to disguise your involvement.</p>
+        
+        <!-- Law 25 -->
+        <div class="law">
+            <div class="law-number">Law 25</div>
+            <div class="law-title">Re-Create Yourself</div>
+            <div class="law-description">
+                <p>Do not accept the roles that society foists on you. Re-create yourself by forging a new identity, one that commands attention and never bores the audience. Be the master of your own image rather than letting others define it for you.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 27 -->
-    <div class="law">
-        <div class="law-number">Law 27</div>
-        <div class="law-title">Play on People's Need to Believe to Create a Cultlike Following</div>
-        <div class="law-description">
-            <p>People have an overwhelming desire to believe in something. Become the focal point of such desire by offering them a cause, a new faith to follow. Keep your words vague but full of promise; emphasize enthusiasm over rationality and clear thinking.</p>
+        
+        <!-- Law 26 -->
+        <div class="law">
+            <div class="law-number">Law 26</div>
+            <div class="law-title">Keep Your Hands Clean</div>
+            <div class="law-description">
+                <p>You must seem a paragon of civility and efficiency: Your hands are never soiled by mistakes and nasty deeds. Maintain such a spotless appearance by using others as scapegoats and cat's-paws to disguise your involvement.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 28 -->
-    <div class="law">
-        <div class="law-number">Law 28</div>
-        <div class="law-title">Enter Action with Boldness</div>
-        <div class="law-description">
-            <p>If you are unsure of a course of action, do not attempt it. Your doubts and hesitations will infect your execution. Timidity is dangerous: Better to enter with boldness. Any mistakes you commit through audacity are easily corrected with more audacity.</p>
+        
+        <!-- Law 27 -->
+        <div class="law">
+            <div class="law-number">Law 27</div>
+            <div class="law-title">Play on People's Need to Believe to Create a Cultlike Following</div>
+            <div class="law-description">
+                <p>People have an overwhelming desire to believe in something. Become the focal point of such desire by offering them a cause, a new faith to follow. Keep your words vague but full of promise; emphasize enthusiasm over rationality and clear thinking.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 29 -->
-    <div class="law">
-        <div class="law-number">Law 29</div>
-        <div class="law-title">Plan All the Way to the End</div>
-        <div class="law-description">
-            <p>The ending is everything. Plan all the way to it, taking into account all the possible consequences, obstacles, and twists of fortune that might reverse your hard work and give the glory to others. By planning to the end you will not be overwhelmed by circumstances and you will know when to stop.</p>
+        
+        <!-- Law 28 -->
+        <div class="law">
+            <div class="law-number">Law 28</div>
+            <div class="law-title">Enter Action with Boldness</div>
+            <div class="law-description">
+                <p>If you are unsure of a course of action, do not attempt it. Your doubts and hesitations will infect your execution. Timidity is dangerous: Better to enter with boldness. Any mistakes you commit through audacity are easily corrected with more audacity.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 30 -->
-    <div class="law">
-        <div class="law-number">Law 30</div>
-        <div class="law-title">Make Your Accomplishments Seem Effortless</div>
-        <div class="law-description">
-            <p>Your actions must seem natural and executed with ease. All the toil and practice that go into them, and also all the clever tricks, must be concealed. When you act, act effortlessly, as if you could do much more. Avoid the temptation of revealing how hard you work—it only raises questions.</p>
+        
+        <!-- Law 29 -->
+        <div class="law">
+            <div class="law-number">Law 29</div>
+            <div class="law-title">Plan All the Way to the End</div>
+            <div class="law-description">
+                <p>The ending is everything. Plan all the way to it, taking into account all the possible consequences, obstacles, and twists of fortune that might reverse your hard work and give the glory to others. By planning to the end you will not be overwhelmed by circumstances and you will know when to stop.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 31 -->
-    <div class="law">
-        <div class="law-number">Law 31</div>
-        <div class="law-title">Control the Options: Get Others to Play with the Cards You Deal</div>
-        <div class="law-description">
-            <p>The best deceptions are the ones that seem to give the other person a choice: Your victims feel they are in control, but are actually your puppets. Give people options that come out in your favor whichever one they choose.</p>
+        
+        <!-- Law 30 -->
+        <div class="law">
+            <div class="law-number">Law 30</div>
+            <div class="law-title">Make Your Accomplishments Seem Effortless</div>
+            <div class="law-description">
+                <p>Your actions must seem natural and executed with ease. All the toil and practice that go into them, and also all the clever tricks, must be concealed. When you act, act effortlessly, as if you could do much more. Avoid the temptation of revealing how hard you work—it only raises questions.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 32 -->
-    <div class="law">
-        <div class="law-number">Law 32</div>
-        <div class="law-title">Play to People's Fantasies</div>
-        <div class="law-description">
-            <p>The truth is often avoided because it is ugly and unpleasant. Never appeal to truth and reality unless you are prepared for the anger that comes from disenchantment. Life is so harsh and distressing that people who can manufacture romance or conjure up fantasy are like oases in the desert.</p>
+        
+        <!-- Law 31 -->
+        <div class="law">
+            <div class="law-number">Law 31</div>
+            <div class="law-title">Control the Options: Get Others to Play with the Cards You Deal</div>
+            <div class="law-description">
+                <p>The best deceptions are the ones that seem to give the other person a choice: Your victims feel they are in control, but are actually your puppets. Give people options that come out in your favor whichever one they choose.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 33 -->
-    <div class="law">
-        <div class="law-number">Law 33</div>
-        <div class="law-title">Discover Each Man's Thumbscrew</div>
-        <div class="law-description">
-            <p>Everyone has a weakness, a gap in the castle wall. That weakness is usually an insecurity, an uncontrollable emotion or need; it can also be a small secret pleasure. Either way, once found, it is a thumbscrew you can turn to your advantage.</p>
+        
+        <!-- Law 32 -->
+        <div class="law">
+            <div class="law-number">Law 32</div>
+            <div class="law-title">Play to People's Fantasies</div>
+            <div class="law-description">
+                <p>The truth is often avoided because it is ugly and unpleasant. Never appeal to truth and reality unless you are prepared for the anger that comes from disenchantment. Life is so harsh and distressing that people who can manufacture romance or conjure up fantasy are like oases in the desert.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 34 -->
-    <div class="law">
-        <div class="law-number">Law 34</div>
-        <div class="law-title">Be Royal in Your Own Fashion: Act Like a King to Be Treated Like One</div>
-        <div class="law-description">
-            <p>The way you carry yourself will often determine how you are treated: In the long run, appearing vulgar or common will make people disrespect you. For a king respects himself and inspires the same sentiment in others.</p>
+        
+        <!-- Law 33 -->
+        <div class="law">
+            <div class="law-number">Law 33</div>
+            <div class="law-title">Discover Each Man's Thumbscrew</div>
+            <div class="law-description">
+                <p>Everyone has a weakness, a gap in the castle wall. That weakness is usually an insecurity, an uncontrollable emotion or need; it can also be a small secret pleasure. Either way, once found, it is a thumbscrew you can turn to your advantage.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 35 -->
-    <div class="law">
-        <div class="law-number">Law 35</div>
-        <div class="law-title">Master the Art of Timing</div>
-        <div class="law-description">
-            <p>Never seem to be in a hurry—hurrying betrays a lack of control over yourself, and over time. Always seem patient, as if you know that everything will come to you eventually. Become a detective of the right moment; sniff out the spirit of the times, the trends that will carry you to power.</p>
+        
+        <!-- Law 34 -->
+        <div class="law">
+            <div class="law-number">Law 34</div>
+            <div class="law-title">Be Royal in Your Own Fashion: Act Like a King to Be Treated Like One</div>
+            <div class="law-description">
+                <p>The way you carry yourself will often determine how you are treated: In the long run, appearing vulgar or common will make people disrespect you. For a king respects himself and inspires the same sentiment in others.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 36 -->
-    <div class="law">
-        <div class="law-number">Law 36</div>
-        <div class="law-title">Disdain Things You Cannot Have: Ignoring Them Is the Best Revenge</div>
-        <div class="law-description">
-            <p>By acknowledging a petty problem you give it existence and credibility. The more attention you pay an enemy, the stronger you make him; and a small mistake is often made worse and more visible when you try to fix it. It is sometimes best to leave things alone.</p>
+        
+        <!-- Law 35 -->
+        <div class="law">
+            <div class="law-number">Law 35</div>
+            <div class="law-title">Master the Art of Timing</div>
+            <div class="law-description">
+                <p>Never seem to be in a hurry—hurrying betrays a lack of control over yourself, and over time. Always seem patient, as if you know that everything will come to you eventually. Become a detective of the right moment; sniff out the spirit of the times, the trends that will carry you to power.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 37 -->
-    <div class="law">
-        <div class="law-number">Law 37</div>
-        <div class="law-title">Create Compelling Spectacles</div>
-        <div class="law-description">
-            <p>Striking imagery and grand symbolic gestures create the aura of power—everyone responds to them. Stage spectacles for those around you, then, full of arresting visuals and radiant symbols that heighten your presence.</p>
+        
+        <!-- Law 36 -->
+        <div class="law">
+            <div class="law-number">Law 36</div>
+            <div class="law-title">Disdain Things You Cannot Have: Ignoring Them Is the Best Revenge</div>
+            <div class="law-description">
+                <p>By acknowledging a petty problem you give it existence and credibility. The more attention you pay an enemy, the stronger you make him; and a small mistake is often made worse and more visible when you try to fix it. It is sometimes best to leave things alone.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 38 -->
-    <div class="law">
-        <div class="law-number">Law 38</div>
-        <div class="law-title">Think as You Like but Behave Like Others</div>
-        <div class="law-description">
-            <p>If you make a show of going against the times, flaunting your unconventional ideas and unorthodox ways, people will think that you only want attention and that you look down upon them. They will find a way to punish you for making them feel inferior.</p>
+        
+        <!-- Law 37 -->
+        <div class="law">
+            <div class="law-number">Law 37</div>
+            <div class="law-title">Create Compelling Spectacles</div>
+            <div class="law-description">
+                <p>Striking imagery and grand symbolic gestures create the aura of power—everyone responds to them. Stage spectacles for those around you, then, full of arresting visuals and radiant symbols that heighten your presence.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 39 -->
-    <div class="law">
-        <div class="law-number">Law 39</div>
-        <div class="law-title">Stir Up Waters to Catch Fish</div>
-        <div class="law-description">
-            <p>Anger and emotion are strategically counterproductive. You must always stay calm and objective. But if you can make your enemies angry while staying calm yourself, you gain a decided advantage. Put your enemies off-balance: Find the chink in their vanity through which you can rattle them and you hold the strings.</p>
+        
+        <!-- Law 38 -->
+        <div class="law">
+            <div class="law-number">Law 38</div>
+            <div class="law-title">Think as You Like but Behave Like Others</div>
+            <div class="law-description">
+                <p>If you make a show of going against the times, flaunting your unconventional ideas and unorthodox ways, people will think that you only want attention and that you look down upon them. They will find a way to punish you for making them feel inferior.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 40 -->
-    <div class="law">
-        <div class="law-number">Law 40</div>
-        <div class="law-title">Despise the Free Lunch</div>
-        <div class="law-description">
-            <p>What is offered for free is dangerous—it usually involves either a trick or a hidden obligation. What has worth is worth paying for. By paying your own way you stay clear of gratitude, guilt, and deceit. It is also often wise to pay the full price—there is no cutting corners with excellence.</p>
+        
+        <!-- Law 39 -->
+        <div class="law">
+            <div class="law-number">Law 39</div>
+            <div class="law-title">Stir Up Waters to Catch Fish</div>
+            <div class="law-description">
+                <p>Anger and emotion are strategically counterproductive. You must always stay calm and objective. But if you can make your enemies angry while staying calm yourself, you gain a decided advantage. Put your enemies off-balance: Find the chink in their vanity through which you can rattle them and you hold the strings.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 41 -->
-    <div class="law">
-        <div class="law-number">Law 41</div>
-        <div class="law-title">Avoid Stepping into a Great Man's Shoes</div>
-        <div class="law-description">
-            <p>What happens first always appears better and more original than what comes after. If you succeed a great man or have a famous parent, you will have to accomplish double their achievements to outshine them. Do not get lost in their shadow, or stuck in a past not of your own making: Establish your own name and identity by changing course.</p>
+        
+        <!-- Law 40 -->
+        <div class="law">
+            <div class="law-number">Law 40</div>
+            <div class="law-title">Despise the Free Lunch</div>
+            <div class="law-description">
+                <p>What is offered for free is dangerous—it usually involves either a trick or a hidden obligation. What has worth is worth paying for. By paying your own way you stay clear of gratitude, guilt, and deceit. It is also often wise to pay the full price—there is no cutting corners with excellence.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 42 -->
-    <div class="law">
-        <div class="law-number">Law 42</div>
-        <div class="law-title">Strike the Shepherd and the Sheep Will Scatter</div>
-        <div class="law-description">
-            <p>Trouble can often be traced to a single strong individual—the stirrer, the arrogant underling, the poisoner of goodwill. If you allow such people room to operate, others will succumb to their influence. Do not wait for the troubles they cause to multiply, do not try to negotiate with them—neutralize their influence by isolating or banishing them.</p>
+        
+        <!-- Law 41 -->
+        <div class="law">
+            <div class="law-number">Law 41</div>
+            <div class="law-title">Avoid Stepping into a Great Man's Shoes</div>
+            <div class="law-description">
+                <p>What happens first always appears better and more original than what comes after. If you succeed a great man or have a famous parent, you will have to accomplish double their achievements to outshine them. Do not get lost in their shadow, or stuck in a past not of your own making: Establish your own name and identity by changing course.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 43 -->
-    <div class="law">
-        <div class="law-number">Law 43</div>
-        <div class="law-title">Work on the Hearts and Minds of Others</div>
-        <div class="law-description">
-            <p>Coercion creates a reaction that will eventually work against you. You must seduce others into wanting to move in your direction. A person you have seduced becomes your loyal pawn. And the way to seduce others is to operate on their individual psychologies and weaknesses.</p>
+        
+        <!-- Law 42 -->
+        <div class="law">
+            <div class="law-number">Law 42</div>
+            <div class="law-title">Strike the Shepherd and the Sheep Will Scatter</div>
+            <div class="law-description">
+                <p>Trouble can often be traced to a single strong individual—the stirrer, the arrogant underling, the poisoner of goodwill. If you allow such people room to operate, others will succumb to their influence. Do not wait for the troubles they cause to multiply, do not try to negotiate with them—neutralize their influence by isolating or banishing them.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 44 -->
-    <div class="law">
-        <div class="law-number">Law 44</div>
-        <div class="law-title">Disarm and Infuriate with the Mirror Effect</div>
-        <div class="law-description">
-            <p>The mirror reflects reality, but it is also the perfect tool for deception: When you mirror your enemies, doing exactly as they do, they cannot figure out your strategy. The Mirror Effect mocks and humiliates them, making them overreact. By holding up a mirror to their psyches, you seduce them with the illusion that you share their values.</p>
+        
+        <!-- Law 43 -->
+        <div class="law">
+            <div class="law-number">Law 43</div>
+            <div class="law-title">Work on the Hearts and Minds of Others</div>
+            <div class="law-description">
+                <p>Coercion creates a reaction that will eventually work against you. You must seduce others into wanting to move in your direction. A person you have seduced becomes your loyal pawn. And the way to seduce others is to operate on their individual psychologies and weaknesses.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 45 -->
-    <div class="law">
-        <div class="law-number">Law 45</div>
-        <div class="law-title">Preach the Need for Change, but Never Reform Too Much at Once</div>
-        <div class="law-description">
-            <p>Everyone understands the need for change in the abstract, but on the day-to-day level people are creatures of habit. Too much innovation is traumatic, and will lead to revolt. If you are new to a position of power, or an outsider trying to build a power base, make a show of respecting the old way of doing things.</p>
+        
+        <!-- Law 44 -->
+        <div class="law">
+            <div class="law-number">Law 44</div>
+            <div class="law-title">Disarm and Infuriate with the Mirror Effect</div>
+            <div class="law-description">
+                <p>The mirror reflects reality, but it is also the perfect tool for deception: When you mirror your enemies, doing exactly as they do, they cannot figure out your strategy. The Mirror Effect mocks and humiliates them, making them overreact. By holding up a mirror to their psyches, you seduce them with the illusion that you share their values.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 46 -->
-    <div class="law">
-        <div class="law-number">Law 46</div>
-        <div class="law-title">Never Appear Too Perfect</div>
-        <div class="law-description">
-            <p>Appearing better than others is always dangerous, but most dangerous of all is to appear to have no faults or weaknesses. Envy creates silent enemies. It is smart to occasionally display defects, and admit to harmless vices, in order to deflect envy and appear more human and approachable.</p>
+        
+        <!-- Law 45 -->
+        <div class="law">
+            <div class="law-number">Law 45</div>
+            <div class="law-title">Preach the Need for Change, but Never Reform Too Much at Once</div>
+            <div class="law-description">
+                <p>Everyone understands the need for change in the abstract, but on the day-to-day level people are creatures of habit. Too much innovation is traumatic, and will lead to revolt. If you are new to a position of power, or an outsider trying to build a power base, make a show of respecting the old way of doing things.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 47 -->
-    <div class="law">
-        <div class="law-number">Law 47</div>
-        <div class="law-title">Do Not Go Past the Mark You Aimed For; In Victory, Learn When to Stop</div>
-        <div class="law-description">
-            <p>The moment of victory is often the moment of greatest peril. In the heat of victory, arrogance and overconfidence can push you past the goal you had aimed for, and by going too far, you make more enemies than you defeat. Do not allow success to go to your head.</p>
+        
+        <!-- Law 46 -->
+        <div class="law">
+            <div class="law-number">Law 46</div>
+            <div class="law-title">Never Appear Too Perfect</div>
+            <div class="law-description">
+                <p>Appearing better than others is always dangerous, but most dangerous of all is to appear to have no faults or weaknesses. Envy creates silent enemies. It is smart to occasionally display defects, and admit to harmless vices, in order to deflect envy and appear more human and approachable.</p>
+            </div>
         </div>
-    </div>
-    
-    <!-- Law 48 -->
-    <div class="law">
-        <div class="law-number">Law 48</div>
-        <div class="law-title">Assume Formlessness</div>
-        <div class="law-description">
-            <p>By taking a shape, by having a visible plan, you open yourself to attack. Instead of taking a form for your enemy to grasp, keep yourself adaptable and on the move. Accept the fact that nothing is certain and no law is fixed. The best way to protect yourself is to be as fluid and formless as water; never bet on stability or lasting order.</p>
+        
+        <!-- Law 47 -->
+        <div class="law">
+            <div class="law-number">Law 47</div>
+            <div class="law-title">Do Not Go Past the Mark You Aimed For; In Victory, Learn When to Stop</div>
+            <div class="law-description">
+                <p>The moment of victory is often the moment of greatest peril. In the heat of victory, arrogance and overconfidence can push you past the goal you had aimed for, and by going too far, you make more enemies than you defeat. Do not allow success to go to your head.</p>
+            </div>
+        </div>
+        
+        <!-- Law 48 -->
+        <div class="law">
+            <div class="law-number">Law 48</div>
+            <div class="law-title">Assume Formlessness</div>
+            <div class="law-description">
+                <p>By taking a shape, by having a visible plan, you open yourself to attack. Instead of taking a form for your enemy to grasp, keep yourself adaptable and on the move. Accept the fact that nothing is certain and no law is fixed. The best way to protect yourself is to be as fluid and formless as water; never bet on stability or lasting order.</p>
+            </div>
         </div>
     </div>
 </div>
@@ -622,19 +752,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
     laws.forEach(law => {
         law.addEventListener('click', function() {
-            // Close other open laws
             laws.forEach(otherLaw => {
                 if (otherLaw !== law && otherLaw.classList.contains('active')) {
                     otherLaw.classList.remove('active');
                 }
             });
             
-            // Toggle current law
             this.classList.toggle('active');
         });
     });
     
-    // Close law when clicking outside
     document.addEventListener('click', function(event) {
         if (!event.target.closest('.law')) {
             laws.forEach(law => {
