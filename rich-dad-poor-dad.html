@@ -14,32 +14,40 @@
             color: #d4c4b5;
             background: radial-gradient(circle at center, #1a1a1a, #0a0a0a 100%);
             min-height: 100vh;
-            padding: 80px 20px;
+            padding: 30px 15px;
             line-height: 1.8;
         }
 
-        .container { max-width: 1000px; margin: 0 auto; }
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto;
+            width: 100%; 
+        }
 
-        header { text-align: center; margin-bottom: 100px; }
+        header { 
+            text-align: center; 
+            margin-bottom: 60px; 
+            padding: 0 10px;
+        }
 
         h1 {
-            font-size: 62px;
+            font-size: 36px;
             margin: 0;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             background: linear-gradient(to bottom, #f3e5ab, #d4af37);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 900;
-            line-height: 1;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2));
+            line-height: 1.1;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.2));
         }
 
         .subtitle {
             display: block;
-            margin-top: 20px;
-            font-size: 13px;
-            letter-spacing: 6px;
+            margin-top: 15px;
+            font-size: 11px;
+            letter-spacing: 3px;
             color: #d4af37;
             text-transform: uppercase;
             font-weight: bold;
@@ -47,24 +55,25 @@
 
         .intro-text {
             text-align: center;
-            font-size: 19px;
+            font-size: 17px;
             color: #a8a29e;
-            margin: 40px auto 80px auto;
-            max-width: 850px;
+            margin: 30px auto 50px auto;
+            max-width: 100%;
             font-style: italic;
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            padding-bottom: 40px;
+            padding: 0 15px 30px 15px;
         }
 
-        /* Monolithic Blocks */
+        /* Monolithic Blocks - Responsive Base */
         .monolith {
             background: rgba(25, 25, 25, 0.8);
             border: 1px solid rgba(212, 175, 55, 0.1);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            border-radius: 4px;
         }
 
         .monolith:hover {
@@ -75,36 +84,37 @@
         .monolith.active {
             border-color: #d4af37;
             background: #111111;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
         }
 
         .monolith-header {
-            padding: 50px;
+            padding: 25px 20px;
             display: flex;
             align-items: center;
-            gap: 40px;
+            gap: 20px;
         }
 
         .m-index {
-            font-size: 45px;
+            font-size: 32px;
             font-weight: 900;
             color: rgba(212, 175, 55, 0.15);
             font-family: Arial, sans-serif;
+            min-width: 40px;
         }
 
         .m-title h2 {
             margin: 0;
-            font-size: 30px;
+            font-size: 22px;
             color: #f3f4f6;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .m-title p {
-            margin: 8px 0 0 0;
+            margin: 5px 0 0 0;
             color: #d4af37;
             text-transform: uppercase;
-            font-size: 11px;
-            letter-spacing: 2px;
+            font-size: 10px;
+            letter-spacing: 1px;
             font-weight: bold;
         }
 
@@ -113,48 +123,50 @@
             max-height: 0;
             opacity: 0;
             overflow: hidden;
-            padding: 0 50px;
+            padding: 0 20px;
             transition: all 0.7s ease;
         }
 
         .monolith.active .monolith-content {
-            max-height: 4000px;
+            max-height: 5000px;
             opacity: 1;
-            padding-bottom: 60px;
+            padding-bottom: 35px;
         }
 
         .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 20px;
+            display: block;
+            margin-top: 15px;
+        }
+
+        .sub-section {
+            margin-bottom: 30px;
         }
 
         .sub-section h3 {
             color: #d4af37;
             text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 8px;
+            padding-bottom: 6px;
         }
 
         .detailed-p {
-            font-size: 16px;
+            font-size: 15px;
             color: #a8a29e;
-            text-align: justify;
-            line-height: 1.8;
+            text-align: left;
+            line-height: 1.7;
         }
 
         .highlight-box {
-            grid-column: span 2;
             background: rgba(212, 175, 55, 0.05);
-            padding: 30px;
+            padding: 20px;
             border-left: 3px solid #d4af37;
             color: #f3f4f6;
-            font-size: 17px;
+            font-size: 16px;
             font-style: italic;
+            margin: 25px 0;
         }
 
         .bullet-list {
@@ -167,6 +179,8 @@
             padding-left: 25px;
             position: relative;
             color: #d1d5db;
+            font-size: 15px;
+            line-height: 1.6;
         }
 
         .bullet-list li::before {
@@ -175,38 +189,257 @@
             left: 0;
             color: #d4af37;
             font-weight: bold;
+            font-size: 18px;
         }
         
         .numbered-list {
             list-style-type: decimal;
             padding-left: 25px;
             color: #d1d5db;
+            font-size: 15px;
         }
         
         .numbered-list li {
             margin-bottom: 15px;
             padding-left: 10px;
+            line-height: 1.6;
         }
 
         footer {
-            margin-top: 100px;
+            margin-top: 70px;
             text-align: center;
-            padding: 60px 0;
+            padding: 40px 15px;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         .final-quote {
-            font-size: 24px;
-            max-width: 750px;
+            font-size: 20px;
+            max-width: 100%;
             margin: 0 auto;
             color: #f3e5ab;
             font-style: italic;
+            line-height: 1.5;
         }
 
-        @media (max-width: 850px) {
-            .content-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 44px; }
-            .monolith-header { padding: 30px; }
+        /* Tablet Styles */
+        @media (min-width: 600px) {
+            body {
+                padding: 50px 25px;
+            }
+            
+            h1 {
+                font-size: 44px;
+                letter-spacing: 3px;
+            }
+            
+            .subtitle {
+                font-size: 12px;
+                letter-spacing: 4px;
+            }
+            
+            .intro-text {
+                font-size: 18px;
+                margin: 40px auto 60px auto;
+                padding: 0 25px 40px 25px;
+            }
+            
+            .monolith-header {
+                padding: 35px 30px;
+            }
+            
+            .m-index {
+                font-size: 40px;
+                min-width: 50px;
+            }
+            
+            .m-title h2 {
+                font-size: 26px;
+            }
+            
+            .monolith-content {
+                padding: 0 30px;
+            }
+            
+            .monolith.active .monolith-content {
+                padding-bottom: 45px;
+            }
+            
+            .sub-section h3 {
+                font-size: 12.5px;
+            }
+            
+            .detailed-p {
+                font-size: 16px;
+            }
+            
+            .final-quote {
+                font-size: 22px;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 850px) {
+            body {
+                padding: 80px 20px;
+            }
+            
+            h1 {
+                font-size: 62px;
+                letter-spacing: 4px;
+            }
+            
+            .subtitle {
+                font-size: 13px;
+                letter-spacing: 6px;
+            }
+            
+            .intro-text {
+                font-size: 19px;
+                max-width: 850px;
+                margin: 40px auto 80px auto;
+                padding-bottom: 40px;
+            }
+            
+            .monolith {
+                margin-bottom: 30px;
+            }
+            
+            .monolith-header {
+                padding: 50px;
+                gap: 40px;
+            }
+            
+            .m-index {
+                font-size: 45px;
+            }
+            
+            .m-title h2 {
+                font-size: 30px;
+                letter-spacing: 1px;
+            }
+            
+            .m-title p {
+                font-size: 11px;
+                letter-spacing: 2px;
+            }
+            
+            .monolith-content {
+                padding: 0 50px;
+            }
+            
+            .monolith.active .monolith-content {
+                padding-bottom: 60px;
+            }
+            
+            .content-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+                margin-top: 20px;
+            }
+            
+            .sub-section {
+                margin-bottom: 0;
+            }
+            
+            .sub-section h3 {
+                font-size: 13px;
+                letter-spacing: 2px;
+                margin-bottom: 15px;
+                padding-bottom: 8px;
+            }
+            
+            .detailed-p {
+                font-size: 16px;
+                text-align: justify;
+                line-height: 1.8;
+            }
+            
+            .highlight-box {
+                grid-column: span 2;
+                padding: 30px;
+                font-size: 17px;
+                margin: 30px 0;
+            }
+            
+            footer {
+                margin-top: 100px;
+                padding: 60px 0;
+            }
+            
+            .final-quote {
+                font-size: 24px;
+                max-width: 750px;
+            }
+        }
+
+        /* Large Desktop Enhancement */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1100px;
+            }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .monolith:hover {
+                border-color: rgba(212, 175, 55, 0.1);
+                background: rgba(25, 25, 25, 0.8);
+            }
+            
+            .monolith.active:hover {
+                border-color: #d4af37;
+                background: #111111;
+            }
+            
+            /* Increase tap target sizes for mobile */
+            .monolith-header {
+                min-height: 80px;
+            }
+            
+            .bullet-list li, .numbered-list li {
+                margin-bottom: 15px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                padding: 20px !important;
+            }
+            
+            .monolith {
+                break-inside: avoid;
+                border: 1px solid #ddd !important;
+                background: white !important;
+                color: black !important;
+                margin-bottom: 30px !important;
+            }
+            
+            .monolith.active .monolith-content {
+                max-height: none !important;
+                display: block !important;
+                opacity: 1 !important;
+            }
+            
+            .monolith-content {
+                max-height: none !important;
+                display: none;
+                opacity: 1 !important;
+            }
+            
+            .highlight-box {
+                background: #f9f9f9 !important;
+                color: #333 !important;
+            }
+            
+            h1, .m-title h2, .final-quote {
+                -webkit-text-fill-color: black !important;
+                color: black !important;
+                background: none !important;
+            }
         }
     </style>
 </head>
@@ -413,11 +646,31 @@
             });
         });
 
+        // Close sections when clicking outside on mobile for better UX
         document.addEventListener('click', function(e) {
-            if (!e.target.closest('.monolith')) {
+            if (window.innerWidth <= 850 && !e.target.closest('.monolith')) {
                 monoliths.forEach(m => m.classList.remove('active'));
             }
         });
+        
+        // Handle touch events for better mobile interaction
+        monoliths.forEach(m => {
+            m.addEventListener('touchend', function(e) {
+                // Prevent triggering both touch and click events
+                if (!this.classList.contains('active')) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+        });
+    });
+    
+    // Adjust content height on window resize
+    window.addEventListener('resize', function() {
+        const activeMonolith = document.querySelector('.monolith.active');
+        if (activeMonolith) {
+            const content = activeMonolith.querySelector('.monolith-content');
+            content.style.maxHeight = content.scrollHeight + 'px';
+        }
     });
 </script>
 
