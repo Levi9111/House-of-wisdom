@@ -156,9 +156,35 @@
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        @media (max-width: 800px) {
-            .sub-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 40px; }
+          @media (max-width: 800px) {
+            body { padding: 40px 15px; }
+            h1 { font-size: 36px; letter-spacing: 1px; }
+            .subtitle { font-size: 11px; letter-spacing: 3px; margin-top: 10px; }
+            .intro-manifesto { padding: 25px; font-size: 16px; margin: 30px auto 50px auto; }
+            .monolith-header { padding: 25px; gap: 15px; flex-direction: column; align-items: flex-start; }
+            .m-index { font-size: 24px; }
+            .m-title h2 { font-size: 20px; }
+            .monolith-content { padding: 0 25px; }
+            .monolith.active .monolith-content { padding-bottom: 30px; }
+            .sub-grid { grid-template-columns: 1fr; gap: 20px; padding-top: 20px; }
+            .lesson-box { padding: 20px; margin-top: 15px; }
+            .p-text { font-size: 15px; }
+            .footer-quote { font-size: 18px; padding: 30px 20px; margin-top: 50px; }
+        }
+        
+        @media (max-width: 500px) {
+            body { padding: 30px 12px; }
+            h1 { font-size: 28px; }
+            .subtitle { font-size: 10px; letter-spacing: 2px; }
+            .intro-manifesto { padding: 20px; font-size: 15px; }
+            .monolith-header { padding: 20px; gap: 12px; }
+            .m-index { font-size: 20px; }
+            .m-title h2 { font-size: 18px; line-height: 1.3; }
+            .monolith-content { padding: 0 20px; }
+            .sub-grid { gap: 15px; }
+            .p-text { font-size: 14px; text-align: left; }
+            .lesson-box { padding: 15px; font-size: 14px; }
+            .footer-quote { font-size: 16px; padding: 25px 15px; }
         }
     </style>
 </head>
@@ -360,4 +386,5 @@
         });
     </script>
 </body>
+
 </html>
